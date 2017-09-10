@@ -37,10 +37,10 @@
     <fieldset>
         {{ csrf_field() }}
         <div>
-            @if($errors->has('email'))
+            @if($errors->has('nickname'))
                 <center>
                 <p class="alert alert-danger">
-                    <strong>{{$errors->first('email')}}</strong>
+                    <strong>{{$errors->first('nickname')}}</strong>
                 </p>
                 </center>
             @endif
