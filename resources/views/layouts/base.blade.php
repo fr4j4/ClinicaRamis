@@ -27,6 +27,9 @@
 
   <body class="nav-md footer_fixed">
   <style type="text/css">
+  footer{
+    z-index: 1000 !important;
+  }
   .no_selection{
     -webkit-user-select: none;  
     -moz-user-select: none;    
