@@ -39,10 +39,13 @@
                   <div class="x_content">
 
                     <label class="col-md-2">nombre</label>
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                       <input class="form-control" type="text" id="role_name_input" readonly="">
                     </div>
-                    <a href="javascript:void(0)" id="edit_role_name" >[modificar]</a>
+
+                    <a href="javascript:void(0)" id="edit_role_name" style="display: none;" >[modificar]</a>
+                    
+                    <a class="btn btn-warning pull-right" href="javascript:void(0)" id="save_role_name" style="display: none;" >guardar nombre</a>
 
                   </div>
                 </div>
@@ -102,6 +105,8 @@ function load_data(){
   $('#perms_section').empty()
   $('#roles_section').empty()
   $('#role_name_input').attr('readonly',true);
+  $('#edit_role_name').css('display','none');
+  $('#save_role_name').css('display','none'); 
   for(i in roles){
     r=roles[i]
     $('#roles_section:last').append('<li><a href="javascript:void(0)" onClick="select_role('+r.id+')">'+r.name+'</a></li>')
@@ -111,6 +116,7 @@ function load_data(){
     
     $('#role_name_input').val(selected_role.name);
     $('#edit_role_name').css('display','block');
+    $('#save_role_name').css('display','none');
 
     for (i in categories){
       cat=categories[i];
@@ -215,6 +221,7 @@ load_data();
 $('#edit_role_name').click(function(){
   $('#role_name_input').removeAttr('readonly');
   $(this).css('display','none');
+  $('#save_role_name').css('display','block');
 });
 
 @endsection
