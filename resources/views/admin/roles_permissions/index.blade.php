@@ -53,7 +53,7 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2><!--i class="fa fa-align-left"--></i> Permisos</h2>
-                    <button class="btn btn-warning">guardar permisos</button>
+                    <button class="btn btn-warning pull-right">guardar permisos</button>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
