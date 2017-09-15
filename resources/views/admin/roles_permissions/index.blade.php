@@ -29,10 +29,31 @@
               </div>
 
               <div id="content" class="col-md-8 col-sm-8 col-xs-12">
+<!-- detalles -->
+              <div id="content" class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><!--i class="fa fa-align-left"--></i> Detalles</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                    <label class="col-md-2">nombre</label>
+                    <div class="col-md-8">
+                      <input class="form-control" type="text" id="role_name_input" readonly="">
+                    </div>
+                    <a href="javascript:void(0)" id="edit_role_name" >[modificar]</a>
+
+                  </div>
+                </div>
+              </div>
+<!-- /detalles -->
+
+              <div id="content" class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
                     <h2><!--i class="fa fa-align-left"--></i> Permisos</h2>
-
+                    <button class="btn btn-warning">guardar permisos</button>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -44,6 +65,9 @@
                     <!-- end of accordion -->
                   </div>
                 </div>
+              </div>
+
+
               </div>
 
 
@@ -77,12 +101,17 @@ function select_role(id){
 function load_data(){
   $('#perms_section').empty()
   $('#roles_section').empty()
+  $('#role_name_input').attr('readonly',true);
   for(i in roles){
     r=roles[i]
     $('#roles_section:last').append('<li><a href="javascript:void(0)" onClick="select_role('+r.id+')">'+r.name+'</a></li>')
   }
 
   if(selected_role!=undefined){//si hay algun rol seleccionado
+    
+    $('#role_name_input').val(selected_role.name);
+    $('#edit_role_name').css('display','block');
+
     for (i in categories){
       cat=categories[i];
       /*CONTENT*/
@@ -135,14 +164,9 @@ function load_data(){
               panel.find('.panel-collapse').addClass('in')
             }
           }
-
-
-
-
         }
         $('#panel_'+cat.id).find('.panel-body').append(permission_list)
       }
-
     }
   }else{
     //alert("Hubo un problema con el rol seleccionado")
@@ -167,7 +191,6 @@ categories.push({
 	name:"sin categoria",
 });
 
-
 @foreach($permissions as $p)
 permissions.push({
 	id:{{$p->id}},
@@ -188,7 +211,14 @@ tmp_role={
 roles.push(tmp_role)
 @endforeach
 load_data();
+
+$('#edit_role_name').click(function(){
+  $('#role_name_input').removeAttr('readonly');
+  $(this).css('display','none');
+});
+
 @endsection
+
 
 </script>
 
