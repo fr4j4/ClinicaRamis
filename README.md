@@ -23,7 +23,7 @@ Plataforma web modular creada para la gestión de una clinica
 * **Spartie** [Roles y permisos] https://github.com/spatie/laravel-permission
 
 #### Frontend
-
+* **toggles** (switches visuales) https://simontabor.com/labs/toggles/
 * **Bootstrap** http://getbootstrap.com/
 * **JS Cookie** https://github.com/js-cookie/js-cookie
 * **Gentelella** (plantilla HTML) https://github.com/puikinsh/gentelella

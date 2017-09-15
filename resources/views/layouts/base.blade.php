@@ -13,12 +13,17 @@
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="{{asset('vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+  
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/jquery-toggles/css/toggles.css')}}">
+   <link rel="stylesheet" type="text/css" href="{{asset('vendors/jquery-toggles/css/themes/toggles-all.css')}}">
+
     <!-- NProgress -->
     <link href="{{asset('vendors/nprogress/nprogress.css')}}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="{{asset('css/custom.css')}}" rel="stylesheet">
   </head>
+  @yield('styles')
 
   <body class="nav-md footer_fixed">
   <style type="text/css">
@@ -194,8 +199,11 @@
     <!-- NProgress -->
     <script src="{{asset('vendors/nprogress/nprogress.js')}}"></script>
     
+    <script src="{{asset('vendors/jquery-toggles/toggles.min.js')}}"></script>
     <!-- Custom Theme Scripts -->
     <script src="{{asset('js/custom.js')}}"></script>
+
+
     <script type="text/javascript">
 
 

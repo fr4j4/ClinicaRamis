@@ -72,8 +72,6 @@ class RolesPermsTableSeeder extends Seeder{
         ]);
 
 
-
-
         $admin->givePermissionTo('create_users');
         $admin->givePermissionTo('read_users');
         $admin->givePermissionTo('update_users');
@@ -102,7 +100,7 @@ class RolesPermsTableSeeder extends Seeder{
         $cat_patients->save();
 
         /*Asignar categorias a los permisos*/
-        //$cat_system->permissions()->save(Permission::where('name','=','create_users')->first());
+        $cat_system->permissions()->save(Permission::where('name','=','create_users')->first());
         $cat_system->permissions()->save(Permission::where('name','=','read_users')->first());
         $cat_system->permissions()->save(Permission::where('name','=','update_users')->first());
         $cat_system->permissions()->save(Permission::where('name','=','delete_users')->first());
