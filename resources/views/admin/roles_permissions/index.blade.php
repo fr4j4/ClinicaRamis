@@ -124,7 +124,7 @@ function load_data(){
 
       panel=$('<div id="panel_'+cat.id+'" class="panel">\
         <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#'+cat.id+'" aria-expanded="true" aria-controls="'+cat.id+'">\
-          <h4 class="panel-title">'+cat.name+'</h4>\
+          <h4 class="panel-title">'+cat.name+' <i class="fa fa-chevron-down"></i></h4>\
         </a>\
         <div id="'+cat.id+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">\
           <div class="panel-body">\
