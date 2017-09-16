@@ -27,7 +27,7 @@
 
     <a class="btn btn-success" href="{{route('edit_user_form',[$user->id])}}" style="width: 100%;"><i class="fa fa-edit m-right-xs"></i> Modificar Perfil</a>
 
-    <a class="btn btn-danger" style="width: 100%;"><i class="fa fa-trash m-right-xs"></i> Eliminar Perfil</a>
+    <a class="btn btn-danger" href="{{route('delete_user',[$user->id])}}" style="width: 100%;"><i class="fa fa-trash m-right-xs"></i> Eliminar Perfil</a>
 
     <br />
 

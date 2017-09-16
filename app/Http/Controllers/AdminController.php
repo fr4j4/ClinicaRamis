@@ -53,6 +53,12 @@ class AdminController extends Controller{
         }
     }
 
+    public function delete_user($uid){
+        $user= User::find($uid);
+        $user->delete();
+        return redirect()->route('admin_users_index');
+    }
+
 
 /*Roles*/
     public function roles_permissions_index(){
