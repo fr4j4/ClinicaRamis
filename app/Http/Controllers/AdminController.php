@@ -77,16 +77,14 @@ class AdminController extends Controller{
 
 
     public function create_new_role(NewRoleFormRequest $req){
-
         $r=new Role(array(
             'name' => strtolower($req->get('name')),
-            'display_name' => strtolower($req->get('display_name')),
+            'display_name' => strtolower($req->get('name')),
         ));
         if(strlen($r->name)==0){
             $r->name=$r->display_name;
         }
         $r->save();
-
         return redirect()->route('roles_permissions_index');
     }
 

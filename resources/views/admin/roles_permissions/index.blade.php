@@ -21,7 +21,6 @@
                   <div class="x_content">
                     <!-- start accordion -->
                     <ul style="list-style-type:none" id="roles_section">
-
                     </ul>
                     <!-- end of accordion -->
                   </div>
@@ -73,6 +72,43 @@
 
               </div>
 
+<div id="newRoleForm_modal" data-backdrop="static" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Crear nuevo rol</h4>
+      </div>
+      <div class="modal-body">
+        <p></p>
+        <form id="newRoleForm" method="post" action="{{route('post_new_role')}}">
+          <fieldset>
+            {{csrf_field()}}
+            @if($errors->has('name'))
+                <center>
+                <p class="alert alert-danger">
+                    <strong>{{$errors->first('name')}}</strong>
+                </p>
+                </center>
+            @endif
+            <div class="form-group">
+              <label class="col-md-2" for="name">Nombre</label>
+              <div class="col-md-10">
+                <input class="form-control" type="text" name="name">
+              </div>
+            </div>
+          </fieldset>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning pull-left" onclick="resetRoleForm()" data-dismiss="modal">Cancelar y volver</button>
+            <button class="btn btn-success">Crear rol</button>
+          </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
 
    
 @endsection
@@ -101,9 +137,18 @@ function select_role(id){
   }
 }
 
+function showNewRoleForm(){
+  $('#newRoleForm_modal').modal('show');
+}
+
+function resetRoleForm(){
+  $('#newRoleForm')[0].reset();
+}
+
 function load_data(){
   $('#perms_section').empty()
   $('#roles_section').empty()
+  $('#roles_section').append('<li><button class="btn btn-primary" onClick="showNewRoleForm()">Crear nuevo rol</button></li>')
   $('#role_name_input').attr('readonly',true);
   $('#edit_role_name').css('display','none');
   $('#save_role_name').css('display','none'); 
@@ -179,12 +224,17 @@ function load_data(){
   }
 }
 
+
+
+
 @endsection
 
 <!-- scripts que corren cuando el documento este listo -->
 
 @section('ready_scripts')
-
+@if($errors->has('name'))
+showNewRoleForm();
+@endif
 //inicializar arreglos de permisos y roles
 @foreach($categories as $c)
 categories.push({
