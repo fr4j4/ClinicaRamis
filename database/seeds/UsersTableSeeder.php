@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder{
             'password'=>bcrypt('admin'),
         ));
         $admin->save();
-        $admin->assignRole('admin');
+        $admin->assignRole('administrador');
 
 
         $doc1=new User(array(
@@ -38,7 +38,7 @@ class UsersTableSeeder extends Seeder{
         ));
         $doc2->save();
         $doc2->assignRole('doctor');
-        $doc2->assignRole('admin');
+        $doc2->assignRole('administrador');
 
     }
 }

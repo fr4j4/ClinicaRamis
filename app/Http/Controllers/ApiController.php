@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Spatie\Permission\Models\Role;
 
 use Illuminate\Http\Request;
@@ -13,4 +12,8 @@ class ApiController extends Controller{
 		$role->save();
 		return response()->json(['result'=>'ok']);
 	}    
+
+	public function setPermissionsToRole(){
+
+	}
 }

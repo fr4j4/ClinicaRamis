@@ -19,7 +19,6 @@ class CreatePermissionTables extends Migration
         Schema::create('permissionsCat', function (Blueprint $table){
             $table->increments('id');
             $table->string('name')->unique();
-            $table->string('display_name')->nullable();
             $table->timestamps();
         });
 
@@ -27,7 +26,6 @@ class CreatePermissionTables extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('guard_name');
-            $table->string('display_name')->nullable();
             $table->integer('cat_id')->unsigned(11)->nullable();
             $table->foreign('cat_id')->references('id')->on('permissionsCat')->onDelete('cascade');
             $table->timestamps();
@@ -37,7 +35,6 @@ class CreatePermissionTables extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('guard_name');
-            $table->string('display_name')->nullable();
             $table->timestamps();
         });
 

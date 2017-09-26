@@ -68,8 +68,6 @@
                   </div>
                 </div>
               </div>
-
-
               </div>
 
 <div id="newRoleForm_modal" data-backdrop="static" class="modal fade" role="dialog">
@@ -239,7 +237,7 @@ showNewRoleForm();
 @foreach($categories as $c)
 categories.push({
 	id:{{$c->id}},
-	name:"{{$c->display_name}}",
+	name:"{{$c->name}}",
 });
 @endforeach
 categories.push({
@@ -250,7 +248,7 @@ categories.push({
 @foreach($permissions as $p)
 permissions.push({
 	id:{{$p->id}},
-	name:"{{$p->display_name}}",
+	name:"{{$p->name}}",
 	cat_id:{{$p->category?$p->category->id:-1}},
 });
 @endforeach
@@ -258,7 +256,7 @@ permissions.push({
 @foreach($roles as $r)
 tmp_role={
   id:{{$r->id}},
-  name:"{{$r->display_name}}",
+  name:"{{$r->name}}",
   permissions:[]
 }
 @foreach($r->permissions as $p)
