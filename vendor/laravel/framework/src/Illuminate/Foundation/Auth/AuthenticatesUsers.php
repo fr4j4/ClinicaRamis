@@ -17,14 +17,14 @@ trait AuthenticatesUsers
      */
     public function showLoginForm()
     {
-        return view('auth.login2');
+        return view('auth.login');
     }
 
     /**
      * Handle a login request to the application.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Http\JsonResponse
      */
     public function login(Request $request)
     {
@@ -74,7 +74,7 @@ trait AuthenticatesUsers
     protected function attemptLogin(Request $request)
     {
         return $this->guard()->attempt(
-            $this->credentials($request), $request->has('remember')
+            $this->credentials($request), $request->filled('remember')
         );
     }
 
@@ -121,7 +121,9 @@ trait AuthenticatesUsers
      * Get the failed login response instance.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @throws ValidationException
      */
     protected function sendFailedLoginResponse(Request $request)
     {
@@ -137,8 +139,7 @@ trait AuthenticatesUsers
      */
     public function username()
     {
-        //return 'email';
-        return 'nickname';
+        return 'email';
     }
 
     /**

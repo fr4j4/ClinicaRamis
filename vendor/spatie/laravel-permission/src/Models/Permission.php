@@ -38,10 +38,6 @@ class Permission extends Model implements PermissionContract
         return static::query()->create($attributes);
     }
 
-    public function category(){
-        return $this->belongsTo('App\PermCat','cat_id','id');
-    }
-
     /**
      * A permission can be applied to roles.
      */

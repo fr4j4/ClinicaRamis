@@ -56,7 +56,7 @@
                 </p>
                 </center>
                 @endif
-                <input type="text" class="form-control" placeholder="email" required name="nickname" />
+                <input type="text" class="form-control" placeholder="email" required name="email" />
               </div>
               <div>
                 @if($errors->has('password'))
@@ -98,7 +98,7 @@
                 <input type="text" class="form-control" placeholder="Username" required="" />
               </div>
               <div>
-                <input type="email" class="form-control" placeholder="Email" required="" />
+                <input type="text" class="form-control" placeholder="Email" required="" />
               </div>
               <div>
                 <input type="password" class="form-control" placeholder="Password" required="" />
