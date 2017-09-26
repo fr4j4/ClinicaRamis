@@ -6,8 +6,8 @@ use App\Http\Requests\NewUserFormRequest;
 use App\Http\Requests\NewRoleFormRequest;
 use Illuminate\Http\Request;
 
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
+use App\Role;
+use App\Permission;
 
 use App\User;
 use App\PermCat;/*categorias de permisos*/

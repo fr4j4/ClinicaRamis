@@ -21,8 +21,8 @@ class NewUserFormRequest extends FormRequest{
     public function rules(){
         return [
             'rut'=>'unique:users',
-            'name'=>'unique:users',
-            'lastname'=>'unique:users',
+            'name'=>'required',
+            'lastname'=>'required',
             'email'=>'unique:users',
             'nickname'=>'unique:users',
         ];

@@ -12,6 +12,6 @@ class PermCat extends Model{
     protected $table='permissionsCat';
 
     public function permissions(){
-    	return $this->hasMany('Spatie\Permission\Models\Permission','cat_id','id');
+    	return $this->hasMany('App\Permission','cat_id','id');
     }
 }
