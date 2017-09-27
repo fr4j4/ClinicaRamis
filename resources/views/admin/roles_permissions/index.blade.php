@@ -42,10 +42,12 @@
                       <input class="form-control" type="text" id="role_name_input" readonly="">
                     </div>
 
-                    <a href="javascript:void(0)" id="edit_role_name" style="display: none;" >[modificar]</a>
+                    <a href="javascript:void(0)" id="edit_role_name" style="display: none;" >[desbloquear]</a>
                     
+                    <!--
                     <a class="btn btn-warning pull-right" href="javascript:void(0)" id="save_role_name" style="display: none;" >guardar nombre</a>
-
+                    -->
+  
                   </div>
                 </div>
               </div>
@@ -55,7 +57,7 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2><!--i class="fa fa-align-left"--></i> Permisos</h2>
-                    <button class="btn btn-warning pull-right">guardar permisos</button>
+                    <button class="btn btn-warning pull-right" onclick="ajax_savePermissions()">guardar permisos</button>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -119,6 +121,53 @@ var categories=[];
 var roles=[];
 var selected_role=undefined;
 var collapsed_categories=[]//guarda las categorias que estan colapsadas
+
+/*añade permisos si no esta o lo quita si esta*/
+function toggle_permission(pid,state){
+  if(selected_role!=undefined){
+//    if(selected_role.permissions.includes(pid)){
+    if(state===false && selected_role.permissions.includes(pid)){
+      console.log("rem");
+      selected_role.permissions.splice(selected_role.permissions.indexOf(pid),1);
+    }else if(state==true && !selected_role.permissions.includes(pid)){
+      console.log("add");
+      selected_role.permissions.push(pid);
+    }
+  }else{
+    alert("Se ha detectado un error al intentar cambiar un permiso para un rol inexistente");
+    load_data();
+  }
+}
+
+function ajax_savePermissions(){
+  if(selected_role!= undefined){
+    console.log("reading")
+        data={
+          '_token':"{{csrf_token()}}",
+          'roles':roles,
+        };
+    $.ajax({
+      async:true,
+      type:"POST",
+      url:"{{route('update_roles')}}",
+      data:data,
+        headers: {
+          'X-CSRF-TOKEN': "{{ csrf_token() }}",
+        },
+      success:function(msg){
+        /*
+        console.log('done!');
+        console.log(msg);
+        */
+        alert("Cambios guardados con éxito!");
+        location.reload();
+      },
+    });
+  }else{
+    alert("Debe seleccionar al menos un rol");
+  }
+
+}
 
 function select_role(id){
   selected_role=undefined;
@@ -188,7 +237,8 @@ function load_data(){
               $(this).css({color:'inherit'})
             })
           permission_div=$("<div class'col-md-12'><span class='first'></span><span class='second'></span></div>")
-          permission_toggle=$('<div class="toggles toggle-light" data-toggle-on="true"  data-toggle-height="25" data-toggle-width="110"></div>')
+          permission_toggle=$('<div id="toggle_'+p.id+'" perm_id="'+p.id+'"class="toggle toggle-light" data-toggle-on="true"  data-toggle-height="25" data-toggle-width="110" onClick="toggle_permission('+p.id+')" ></div>')
+
           permission_label=$('<label>'+p.name+'</label>');
 
           permission_div.find('.first').addClass('col-sm-6');
@@ -205,6 +255,7 @@ function load_data(){
               off:'desactivado'
             },
           });
+
           permission_toggle.toggles(false);
           for (x in selected_role.permissions){
             sel_perm=selected_role.permissions[x];
@@ -217,6 +268,16 @@ function load_data(){
         $('#panel_'+cat.id).find('.panel-body').append(permission_list)
       }
     }
+
+  $('.toggle').on('toggle', function(e, active) {
+        toggle_permission(parseInt($(this).attr('perm_id')),active);/*
+      if (active) {
+        //console.log('Toggle is now ON!');
+      } else {
+        //console.log('Toggle is now OFF!');
+        toggle_permission(parseInt($(this).attr('perm_id')),false);
+      }*/
+    });
   }else{
     //alert("Hubo un problema con el rol seleccionado")
   }

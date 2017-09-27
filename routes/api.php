@@ -19,3 +19,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/role/{id}/setname/{name}','ApiController@setRoleName')->name('api_change_role_name');
 
+/*
+Route::group(['middleware' => ['apiTokenChecker']],function(){
+	
+});
+*/
+
+Route::post('/updateRoles','ApiController@updateRoles')->name('update_roles');
+
+Route::post('/test','ApiController@test')->name('test_api');
+

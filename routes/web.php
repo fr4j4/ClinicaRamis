@@ -48,3 +48,6 @@ Route::group(['middleware'=>['checkLogin'],],function(){
 });
 
 
+Route::get('/test/api',function(){
+	return view('test.api1');
+});
