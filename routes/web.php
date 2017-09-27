@@ -30,7 +30,8 @@ Route::group(['middleware'=>['checkLogin'],],function(){
 			Route::post('nuevo','AdminController@create_new_user');
 
 			Route::get('{id}/detalles','AdminController@show_user_details')->name('show_user_details');
-			Route::get('{id}/editar','AdminController@edit_user_form')->name('edit_user_form');
+			Route::get('{id}/editar', 'AdminController@edit_user_form')->name('edit_user_form');
+			Route::post('/editar','AdminController@update_user')->name('post_update_user');
 		});
 
 		Route::group(['prefix'=>'rolesYpermisos'],function(){

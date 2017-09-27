@@ -3,8 +3,18 @@
 @section('panel_title','')
 @section('content')
 
-<form class="form">
+<form class="form" method="post" action="{{route('post_update_user')}}">
 	{{csrf_field()}}
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<input type="hidden" name="uid" value="{{$user->id}}">
 	<div class="row form-group">
 		<label for="name" class="control-label col-md-1">Nombre</label>
 		<div class="col-md-4">
@@ -24,7 +34,21 @@
 		</div>
 		<a href="javascript:void(0)" onclick="clear_photo_input()">[limpiar]</a>
 	</div>
+<div class="form-group col-md-12">
+	<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Contraseña <span class="required">*</span></label>
+	<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+		<input type="password" class="form-control has-feedback-left" id="password" name="password">
+		<span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
+	</div>
+</div>
 
+<div class="form-group col-md-12">
+	<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Reingresar contraseña <span class="required">*</span></label>
+	<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+		<input type="password" class="form-control has-feedback-left" id="password" name="password_confirmation">
+		<span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
+	</div>
+</div>
 	<div class="form-group">
 		
 	</div>

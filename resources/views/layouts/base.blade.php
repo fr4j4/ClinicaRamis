@@ -86,9 +86,9 @@
                       <li class="{{ Route::currentRouteNamed('dashboard') ? 'current-page' : '' }}"><a href="{{route('dashboard')}}">Dashboard</a></li>
                     </ul>
                   </li>
-                  <li class="{{ Route::currentRouteNamed('admin_users_index')||Route::currentRouteNamed('new_user_form') ? 'active' : '' }}"><a><i class="fa fa-cogs"></i> Admin <span class="fa fa-chevron-down"></span></a>
+                  <li class="{{ Route::currentRouteNamed('admin_users_index')||Route::currentRouteNamed('new_user_form') ? 'active' : '' }}"><a><i class="fa fa-cogs"></i> Administración <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li class="{{ Route::currentRouteNamed('admin_users_index') ? 'current-page' : '' }}"><a href="{{route('admin_users_index')}}">Usuarios</a></li>
+                      <li class="{{ Route::currentRouteNamed('admin_users_index') ? 'current-page' : '' }}"><a href="{{route('admin_users_index')}}">Gestión de usuarios</a></li>
                       <li class="{{ Route::currentRouteNamed('roles_permissions_index') ? 'current-page' : '' }}"><a href="{{route('roles_permissions_index')}}" >Roles & permisos</a></li>
                     </ul>
                   </li>

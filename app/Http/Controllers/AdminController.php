@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\NewUserFormRequest;
+use App\Http\Requests\UpdateUserFormRequest;
 use App\Http\Requests\NewRoleFormRequest;
 use Illuminate\Http\Request;
 
@@ -25,18 +26,34 @@ class AdminController extends Controller{
     }
     
     public function create_new_user(NewUserFormRequest $req){
+
         $u=new User(array(
             'name'=>$req->get('firstname'),
             'lastname'=>$req->get('lastname'),
-            //'password'=>bcrypt($req->get('password')),
+            'password'=>bcrypt($req->get('password')),
             'nickname'=>$req->get('nickname'),
-            'password'=>bcrypt(uniqid()),
             'phone'=>$req->get('phone'),
             'email'=>$req->get('email'),
             'rut'=>$req->get('rut'),
         ));
         $u->save();
         return redirect()->route('admin_users_index');
+    }
+
+    public function update_user(UpdateUserFormRequest $req){
+        $user=user::findOrFail($req->get('uid'));
+        
+        $user->lastname=$req->get('lastname');
+        if($req->get('password')){
+            $user->password=bcrypt($req->get('password'));
+        }
+        if($req->get('name')){
+            $user->name=$req->get('name');
+        }
+
+
+        $user->save();
+        return redirect()->action('AdminController@show_user_details',compact('user'));
     }
 
     public function edit_user_form($id){
