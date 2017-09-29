@@ -1,7 +1,13 @@
 @extends('layouts.base')
-@section('title','Registrar nuevo usuario')
+@section('title')
+Registrar nuevo usuario
+@endsection
 @section('panel_title')
-<h4>Por favor, complete el formulario de registro.</h4>
+<h6>
+	
+<a class="btn btn-warning btn-sm" href="{{route('admin_users_index')}}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver a lista de usuarios</a>
+</h6>
+
 @endsection
 @section('content')
 

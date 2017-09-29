@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Role;
 use App\Permission;
 
+use Auth;
 use App\User;
 use App\PermCat;/*categorias de permisos*/
 class AdminController extends Controller{
@@ -56,6 +57,22 @@ class AdminController extends Controller{
         return redirect()->action('AdminController@show_user_details',compact('user'));
     }
 
+    function edit_user_roles_form($id){
+        $user=User::findOrFail($id);
+        $roles=Role::all();
+        return view('admin.users.roles',compact('user','roles'));
+    }
+
+    function edit_user_roles(Request $req){
+        $user=User::find($req->get('user_id'));
+        if($req->get('role')){
+            $user->syncRoles($req->get('role'));
+        }else{
+            $user->syncRoles([]);
+        }
+        return redirect()->action('AdminController@show_user_details',$user->id);
+    }
+
     public function edit_user_form($id){
         $user=User::findOrFail($id);
         return view('admin.users.edit',compact('user'));
@@ -71,8 +88,11 @@ class AdminController extends Controller{
     }
 
     public function delete_user($uid){
-        $user= User::find($uid);
-        $user->delete();
+        /*Elimina al usuario si y solo si no es el usuario que está actualmente realizando la operacion*/
+        if(Auth::user()->id!=$uid){
+            $user= User::find($uid);
+            $user->delete();
+        }
         return redirect()->route('admin_users_index');
     }
 

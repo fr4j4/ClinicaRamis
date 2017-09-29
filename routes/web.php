@@ -24,17 +24,19 @@ Route::group(['middleware'=>['checkLogin'],],function(){
 	Route::group(['prefix'=>'admin'],function(){
 		
 		/*Grupo de rutas con pefijo 'admin/usuarios'*/
-		Route::group(['prefix'=>'usuarios'],function(){
+		Route::group(['prefix'=>'usuarios','middleware'=>['permission:crear_usuarios|modificar_usuarios|ver_usuarios|eliminar_usuarios']],function(){
 			Route::get('/','AdminController@users_index')->name('admin_users_index');	
 			Route::get('nuevo','AdminController@new_user_form')->name('new_user_form');
 			Route::post('nuevo','AdminController@create_new_user');
 
 			Route::get('{id}/detalles','AdminController@show_user_details')->name('show_user_details');
 			Route::get('{id}/editar', 'AdminController@edit_user_form')->name('edit_user_form');
+			Route::get('{id}/roles', 'AdminController@edit_user_roles_form')->name('edit_user_roles_form');
+			Route::post('{id}/roles', 'AdminController@edit_user_roles')->name('edit_user_roles');
 			Route::post('/editar','AdminController@update_user')->name('post_update_user');
 		});
 
-		Route::group(['prefix'=>'rolesYpermisos'],function(){
+		Route::group(['prefix'=>'rolesYpermisos','middleware'=>['role:administrador']],function(){
 			Route::get('/','AdminController@roles_permissions_index')->name('roles_permissions_index');
 			Route::post('/nuevoRol',"AdminController@create_new_role")->name('post_new_role');
 			Route::post('/guardarPermisos','AdminController@save_permissions')->name('save_permissions');

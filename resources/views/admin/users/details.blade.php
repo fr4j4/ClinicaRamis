@@ -25,18 +25,12 @@
 -->
     </ul>
 
-    <a class="btn btn-success" href="{{route('edit_user_form',[$user->id])}}" style="width: 100%;"><i class="fa fa-edit m-right-xs"></i> Modificar Perfil</a>
-
-    <a class="btn btn-danger" href="{{route('delete_user',[$user->id])}}" style="width: 100%;"><i class="fa fa-trash m-right-xs"></i> Eliminar Perfil</a>
-
-    <br />
-
     <!-- start roles -->
     <h4>Roles asignados</h4>
-    <ul class="list-unstyled user_data">
+    <ul class="list-unstyledd user_data">
       @if(count($user->roles)>0)
       @foreach($user->roles as $role)
-      <li>{{$role->display_name}}</li>
+      <li style="text-transform: capitalize;">{{$role->name}}</li>
       @endforeach
       @else
       No existen roles asociados
@@ -44,12 +38,28 @@
     </ul>
     <!-- end of roles -->
 
+    <br />
+
+
+
     
+  </div>
+  <div class="col-md-9 col-sm-9 col-xs-12">
+    <a class="btn btn-success" href="{{route('edit_user_form',[$user->id])}}" ><i class="fa fa-edit m-right-xs"></i> Modificar Perfil</a>
+
+    <a class="btn btn-info" href="{{route('edit_user_roles_form',[$user->id])}}" ><i class="fa fa-edit m-right-xs"></i> Asignacion de roles</a>
+
+    <a class="btn btn-danger" id="delete_btn" href="{{route('delete_user',[$user->id])}}" ><i class="fa fa-trash m-right-xs"></i> Eliminar Perfil</a>    
   </div>
 
 @endsection
 
-
+<script type="text/javascript">
 @section('scripts')
-
+  $(function() {
+    $('#delete_btn').click(function(){
+        return window.confirm("Está seguro de que desea eliminar este usuario?");
+    });
+  });
 @endsection
+</script>
