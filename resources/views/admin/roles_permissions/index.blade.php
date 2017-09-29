@@ -11,6 +11,37 @@
 
 @section('content')
 
+<style type="text/css">
+
+  .test_name{
+    text-transform:capitalize;
+  }
+
+  .role_item{
+    cursor:pointer;
+    font-weight: bold;
+    border:1px solid rgba(0,0,0,0.25);
+    border-radius: 2px;
+    padding: .5em;
+    text-align: left;
+    text-transform:capitalize;
+  }
+
+  .role_item:hover{
+    background-color:rgba(59, 89, 152,.125);
+  }
+
+  .selected_role a{ 
+    color: white;
+  }
+  .selected_role:hover{
+    background-color: #45A31F;
+  } 
+  .selected_role{
+    background-color: #45A31F;
+  }
+</style>
+
               <div id="content" class="col-md-4 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
@@ -27,27 +58,40 @@
                 </div>
               </div>
 
-              <div id="content" class="col-md-8 col-sm-8 col-xs-12">
+              <div id="right_panel_no_message">
+                <p>
+                <h1>Seleccione un rol para ver o cambiar sus permisos</h1>
+                </p>
+              </div>
+
+              <div id="right_panel" class="col-md-8 col-sm-8 col-xs-12" style="display: none;">
 <!-- detalles -->
               <div id="content" class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
                     <h2><!--i class="fa fa-align-left"--></i> Detalles</h2>
+
                     <div class="clearfix"></div>
+                  <a href="javascript:void(0)" class="btn btn-info" id="edit_role" style="display: none;" ><i class="fa fa-unlock-alt" aria-hidden="true"></i> [desbloquear detalles]</a>
                   </div>
                   <div class="x_content">
 
-                    <label class="col-md-2">nombre</label>
-                    <div class="col-md-6">
-                      <input class="form-control" type="text" id="role_name_input" readonly="">
+                    <div class="col col-md-12">
+                      <label class="col-md-2">nombre de rol</label>
+                      <div class="col-md-6">
+                        <input class="form-control" type="text" id="role_name_input" disabled="">
+                      </div>
+                      <div class="col-md-4">  
+                      <a class="btn btn-warning" href="javascript:void(0)" id="save_role_name" style="display: none;" >guardar nombre</a>
+                      </div>
                     </div>
 
-                    <a href="javascript:void(0)" id="edit_role_name" style="display: none;" >[desbloquear]</a>
-                    
-                    <!--
-                    <a class="btn btn-warning pull-right" href="javascript:void(0)" id="save_role_name" style="display: none;" >guardar nombre</a>
-                    -->
-  
+                    <div class="col col-md-12">
+                        <div class="col-md-4 pull-right">
+                          <a class="btn btn-danger" style="width: 100%" href="javascript:void(0)" disabled><i class="fa fa-minus" aria-hidden="true"></i> Eliminar rol</a>
+                        </div>
+                    </div>    
+
                   </div>
                 </div>
               </div>
@@ -195,20 +239,33 @@ function resetRoleForm(){
 function load_data(){
   $('#perms_section').empty()
   $('#roles_section').empty()
-  $('#roles_section').append('<li><button class="btn btn-primary" onClick="showNewRoleForm()">Crear nuevo rol</button></li>')
-  $('#role_name_input').attr('readonly',true);
-  $('#edit_role_name').css('display','none');
+  $('#roles_section').append('<li><button class="btn btn-primary" onClick="showNewRoleForm()"><i class="fa fa-plus fa-align-left"></i>  Crear nuevo rol</button></li>')
+  $('#role_name_input').attr('disabled',true);
+  $('#edit_role').css('display','none');
   $('#save_role_name').css('display','none'); 
+
+  $('#right_panel').css('display','none');
+  $('#right_panel_no_message').css('display','inherit');
+
   for(i in roles){
     r=roles[i]
-    $('#roles_section:last').append('<li><a href="javascript:void(0)" onClick="select_role('+r.id+')">'+r.name+'</a></li>')
+    $('#roles_section:last').append('<li class="role_item" id="role_item_'+r.id+'"  onClick="select_role('+r.id+')"><a href="javascript:void(0)">'+r.name+'</a></li>')
   }
+
+
+  $('.role_item').removeClass('selected_role');
 
   if(selected_role!=undefined){//si hay algun rol seleccionado
     
+    $('#right_panel').css('display','inherit');
+    $('#right_panel_no_message').css('display','none');
+
     $('#role_name_input').val(selected_role.name);
-    $('#edit_role_name').css('display','block');
+    $('#edit_role').css('display','block');
     $('#save_role_name').css('display','none');
+
+    $('#role_item_'+selected_role.id).addClass('selected_role')
+
 
     for (i in categories){
       cat=categories[i];
@@ -237,12 +294,12 @@ function load_data(){
               $(this).css({color:'inherit'})
             })
           permission_div=$("<div class'col-md-12'><span class='first'></span><span class='second'></span></div>")
-          permission_toggle=$('<div id="toggle_'+p.id+'" perm_id="'+p.id+'"class="toggle toggle-light" data-toggle-on="true"  data-toggle-height="25" data-toggle-width="110" onClick="toggle_permission('+p.id+')" ></div>')
+          permission_toggle=$('<div id="toggle_'+p.id+'" perm_id="'+p.id+'"class="toggle toggle-light" data-toggle-on="true"  data-toggle-height="25" data-toggle-width="150" onClick="toggle_permission('+p.id+')" ></div>')
 
-          permission_label=$('<label>'+p.name+'</label>');
+          permission_label=$('<label class="test_name">'+p.name+'</label>');
 
-          permission_div.find('.first').addClass('col-sm-6');
-          permission_div.find('.second').addClass('col-sm-6');
+          permission_div.find('.first').addClass('col-md-6');
+          permission_div.find('.second').addClass('col-md-6');
           permission_div.find('.first').append(permission_label);
           permission_div.find('.second').append(permission_toggle);
 
@@ -327,8 +384,9 @@ roles.push(tmp_role)
 @endforeach
 load_data();
 
-$('#edit_role_name').click(function(){
-  $('#role_name_input').removeAttr('readonly');
+$('#edit_role').click(function(){
+  $('#role_name_input').removeAttr('disabled');
+  $('#delete_role_button').removeAttr('disabled');
   $(this).css('display','none');
   $('#save_role_name').css('display','block');
 });
