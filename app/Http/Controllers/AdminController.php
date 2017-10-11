@@ -111,8 +111,6 @@ class AdminController extends Controller{
         return view('admin.roles_permissions.new_role',compact('permissions'));
     }
 
-
-
     public function create_new_role(NewRoleFormRequest $req){
         $r=new Role(array(
             'name' => strtolower($req->get('name')),
