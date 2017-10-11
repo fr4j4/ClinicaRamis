@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Role;
 use App\Permission;
-
+use Auth;
 class ApiController extends Controller{
 	public function setRoleName($role_id,$role_name){
 		//return response()->json(['result'=>'ok']);
@@ -81,7 +81,13 @@ class ApiController extends Controller{
 
 	}
 	
-	public function test(Request $r){
-		return response()->json($r);
+	public function test(){
+		$query = http_build_query([
+        'client_id' => 'client-id',
+        'redirect_uri' => 'http://example.com/callback',
+        'response_type' => 'code',
+        'scope' => '',
+    	]);
+    	return $query;
 	}
 }

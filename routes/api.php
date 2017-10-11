@@ -27,5 +27,4 @@ Route::group(['middleware' => ['apiTokenChecker']],function(){
 
 Route::post('/updateRoles','ApiController@updateRoles')->name('update_roles');
 
-Route::post('/test','ApiController@test')->name('test_api');
-
+Route::get('/test','ApiController@test')->name('test_api');

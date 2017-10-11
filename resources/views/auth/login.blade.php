@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Clinica Ramis | Iniciar sesión</title>
+    <title>Clinica Ramis | Iniciar sesión.</title>
 
     <!-- Bootstrap -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
@@ -47,7 +47,7 @@
           <section class="login_content">
             <form method="POST" action="{{ route('login') }}">
               {{ csrf_field() }}
-              <h1>Iniciar Sesión</h1>
+              <h1>Iniciar Sesión.</h1>
               <div>
                 @if($errors->has('email'))
                 <center>
