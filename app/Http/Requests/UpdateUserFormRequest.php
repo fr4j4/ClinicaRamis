@@ -20,13 +20,14 @@ class UpdateUserFormRequest extends FormRequest
      *
      * @return array
      */
+    /*asegurarse de pasar la id del usuario con nombre "uid" en el input oculto*/
     public function rules()
     {
         return [
             'name'=>'required',
-            'rut'=>'unique:users',
-            'email'=>'unique:users',
-            'nickname'=>'unique:users',
+            'rut'=>'nullable|unique:users',
+            'email'=>'unique:users,email,'.$this->uid,
+            'alias'=>'unique:users,nickname,'.$this->uid,
             'password'=>'confirmed',
             'password_confirmation'=>'sometimes|required_with:password',
         ];

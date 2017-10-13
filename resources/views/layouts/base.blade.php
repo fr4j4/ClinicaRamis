@@ -223,6 +223,8 @@
     <!-- Custom Theme Scripts -->
     <script src="{{asset('js/custom.js')}}"></script>
 
+    <!-- jquery.inputmask -->
+    <script src="{{asset('vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js')}}"></script>
 
     <script type="text/javascript">
 
