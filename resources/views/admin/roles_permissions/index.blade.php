@@ -19,109 +19,60 @@
 
   .role_item{
     cursor:pointer;
-    font-weight: bold;
-    border:1px solid rgba(0,0,0,0.25);
-    border-radius: 2px;
-    padding: .5em;
     text-align: left;
     text-transform:capitalize;
   }
 
-  .role_item:hover{
-    background-color:rgba(59, 89, 152,.125);
-  }
-
-  .selected_role a{ 
-    color: white;
-  }
-  .selected_role:hover{
-    background-color: #45A31F;
-  } 
-  .selected_role{
-    background-color: #45A31F;
-  }
 </style>
 
-              <div id="content" class="col-md-4 col-sm-4 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2><!--i class="fa fa-align-left"--></i> Roles</h2>
+<div id="content" class="col-md-4 col-sm-4 col-xs-12">
+  <div class="x_panel">
+    <div class="x_title">
+      <h2><!--i class="fa fa-align-left"--></i>Roles</h2>
+      <div class="clearfix"></div>
+    </div>
+    <div class="container">
+      <!-- start accordion -->
+      <div class="col-md-offset-1 col-md-10" id="roles_section">
+      <!-- create rol and rol list section here!!!!! -->
+      </div>
+      <!-- end of accordion -->
+    </div>
+  </div>
+</div>
 
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <!-- start accordion -->
-                    <ul style="list-style-type:none" id="roles_section">
-                    </ul>
-                    <!-- end of accordion -->
-                  </div>
-                </div>
-              </div>
+<div id="right_panel_no_message">
+  <p>
+  <h1>Seleccione un rol para ver o cambiar sus permisos</h1>
+  </p>
+</div>
 
-              <div id="right_panel_no_message">
-                <p>
-                <h1>Seleccione un rol para ver o cambiar sus permisos</h1>
-                </p>
-              </div>
+<div id="right_panel" class="col-md-8 col-sm-8 col-xs-12" style="display: none;">
+ 
+  <div id="content" class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2><!--i class="fa fa-align-left"--></i> Permisos</h2>
+        <button class="btn btn-warning pull-right" onclick="ajax_savePermissions()">Guardar permisos</button>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <!-- start accordion -->
+        <div class="accordion" id="perms_section" role="tablist" aria-multiselectable="true">
 
-              <div id="right_panel" class="col-md-8 col-sm-8 col-xs-12" style="display: none;">
-<!-- detalles -->
-              <div id="content" class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2><!--i class="fa fa-align-left"--></i> Detalles</h2>
-
-                    <div class="clearfix"></div>
-                  <a href="javascript:void(0)" class="btn btn-info" id="edit_role" style="display: none;" ><i class="fa fa-unlock-alt" aria-hidden="true"></i> [desbloquear detalles]</a>
-                  </div>
-                  <div class="x_content">
-
-                    <div class="col col-md-12">
-                      <label class="col-md-2">nombre de rol</label>
-                      <div class="col-md-6">
-                        <input class="form-control" type="text" id="role_name_input" disabled="">
-                      </div>
-                      <div class="col-md-4">  
-                      <a class="btn btn-warning" href="javascript:void(0)" id="save_role_name" style="display: none;" >guardar nombre</a>
-                      </div>
-                    </div>
-
-                    <div class="col col-md-12">
-                        <div class="col-md-4 pull-right">
-                          <a class="btn btn-danger" style="width: 100%" href="javascript:void(0)" disabled><i class="fa fa-minus" aria-hidden="true"></i> Eliminar rol</a>
-                        </div>
-                    </div>    
-
-                  </div>
-                </div>
-              </div>
-<!-- /detalles -->
-
-              <div id="content" class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2><!--i class="fa fa-align-left"--></i> Permisos</h2>
-                    <button class="btn btn-warning pull-right" onclick="ajax_savePermissions()">guardar permisos</button>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-
-                    <!-- start accordion -->
-                    <div class="accordion" id="perms_section" role="tablist" aria-multiselectable="true">
-
-                    </div>
-                    <!-- end of accordion -->
-                  </div>
-                </div>
-              </div>
-              </div>
+        </div>
+        <!-- end of accordion -->
+      </div>
+    </div>
+  </div>
+</div>
 
 <div id="newRoleForm_modal" data-backdrop="static" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Crear nuevo rol</h4>
+        <h4 class="modal-title">Crear Rol</h4>
       </div>
       <div class="modal-body">
         <p></p>
@@ -144,15 +95,51 @@
           </fieldset>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-warning pull-left" onclick="resetRoleForm()" data-dismiss="modal">Cancelar y volver</button>
-            <button class="btn btn-success">Crear rol</button>
+            <button class="btn btn-success">Crear</button>
+            <button type="button" class="btn btn-warning" onclick="resetRoleForm()" data-dismiss="modal">Cancelar</button>
           </div>
       </form>
     </div>
-
+  </div>
   </div>
 </div>
 
+<div id="newRoleForm_modal2" data-backdrop="static" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Editar nombre del rol</h4>
+      </div>
+      <div class="modal-body">
+        <p></p>
+        <form id="newRoleForm2">
+          <fieldset>
+            {{csrf_field()}}
+            @if($errors->has('name'))
+                <center>
+                <p class="alert alert-danger">
+                    <strong>{{$errors->first('name')}}</strong>
+                </p>
+                </center>
+            @endif
+            <div class="form-group">
+              <label class="col-md-2" for="name">Nombre</label>
+              <div class="col-md-10">
+                <input class="form-control" id="role_name_input" type="text" name="name">
+              </div>
+            </div>
+          </fieldset>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-success" onclick="name_edit()">Aceptar</button>
+            <button type="button" class="btn btn-warning" onclick="resetRoleForm2()" data-dismiss="modal">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
    
 @endsection
@@ -183,6 +170,17 @@ function toggle_permission(pid,state){
   }
 }
 
+function name_edit(id){
+  for(i in roles){
+    r=roles[i];
+    if(r.id===id){
+      r.name=$('#role_name_input').val();
+      
+      break;
+    }    
+  }
+}
+
 function ajax_savePermissions(){
   if(selected_role!= undefined){
     console.log("reading")
@@ -210,7 +208,6 @@ function ajax_savePermissions(){
   }else{
     alert("Debe seleccionar al menos un rol");
   }
-
 }
 
 function select_role(id){
@@ -232,24 +229,41 @@ function showNewRoleForm(){
   $('#newRoleForm_modal').modal('show');
 }
 
+function showNewRoleForm2(role_name){
+  $('#newRoleForm_modal2').modal('show');
+  $('#role_name_input').val(role_name);
+}
+
 function resetRoleForm(){
   $('#newRoleForm')[0].reset();
+}
+
+function resetRoleForm2(){
+  $('#newRoleForm2')[0].reset();
 }
 
 function load_data(){
   $('#perms_section').empty()
   $('#roles_section').empty()
-  $('#roles_section').append('<li><button class="btn btn-primary" onClick="showNewRoleForm()"><i class="fa fa-plus fa-align-left"></i>  Crear nuevo rol</button></li>')
-  $('#role_name_input').attr('disabled',true);
-  $('#edit_role').css('display','none');
-  $('#save_role_name').css('display','none'); 
-
+  $('#roles_section').append('\
+      <div class="row"><button class="btn btn-primary col-md-12 col-sm-12" onClick="showNewRoleForm()">\
+        Crear Rol <span class="glyphicon glyphicon-plus" text-align="center"></span></button></div>')
   $('#right_panel').css('display','none');
   $('#right_panel_no_message').css('display','inherit');
 
+
   for(i in roles){
     r=roles[i]
-    $('#roles_section:last').append('<li class="role_item" id="role_item_'+r.id+'"  onClick="select_role('+r.id+')"><a href="javascript:void(0)">'+r.name+'</a></li>')
+    $('#roles_section:last').append('\
+      <div class="row">\
+        <div class="btn-group" style="width:100%">\
+          <button class="btn btn-default role_item" style="width:70%" type="button" id="role_item_'+r.id+'" onClick="select_role('+r.id+')" >'+r.name+'</button>\
+          <button class="btn btn-default role_item" style="width:15%" type="button" id="btncog_'+r.id+'" onClick="showNewRoleForm2(\''+r.name+'\');name_edit('+r.id+');;"><span class="glyphicon glyphicon-cog"></span></button>\
+          <button class="btn btn-danger role_item" style="width:15%" type="button" id="btntrash_'+r.id+'"><span class="glyphicon glyphicon-trash"></span></button>\
+        </div>\
+      </div>')
+    $('#btncog_'+r.id).height($('#role_item_'+r.id).height());
+    $('#btntrash_'+r.id).height($('#role_item_'+r.id).height());
   }
 
 
@@ -259,13 +273,7 @@ function load_data(){
     
     $('#right_panel').css('display','inherit');
     $('#right_panel_no_message').css('display','none');
-
-    $('#role_name_input').val(selected_role.name);
-    $('#edit_role').css('display','block');
-    $('#save_role_name').css('display','none');
-
-    $('#role_item_'+selected_role.id).addClass('selected_role')
-
+    $('#role_item_'+selected_role.id).addClass('selected_role active');
 
     for (i in categories){
       cat=categories[i];
@@ -273,7 +281,7 @@ function load_data(){
 
       panel=$('<div id="panel_'+cat.id+'" class="panel">\
         <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#'+cat.id+'" aria-expanded="true" aria-controls="'+cat.id+'">\
-          <h4 class="panel-title">'+cat.name+' <i class="fa fa-chevron-down"></i></h4>\
+          <h4 class="panel-title">'+cat.name+'<i class="fa fa-chevron-down"></i></h4>\
         </a>\
         <div id="'+cat.id+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">\
           <div class="panel-body">\
@@ -296,7 +304,7 @@ function load_data(){
           permission_div=$("<div class'col-md-12'><span class='first'></span><span class='second'></span></div>")
           permission_toggle=$('<div id="toggle_'+p.id+'" perm_id="'+p.id+'"class="toggle toggle-light" data-toggle-on="true"  data-toggle-height="25" data-toggle-width="150" onClick="toggle_permission('+p.id+')" ></div>')
 
-          permission_label=$('<label class="test_name">'+p.name+'</label>');
+          permission_label=$('<label class="test_name">'+p.name+'someshit</label>');
 
           permission_div.find('.first').addClass('col-md-6');
           permission_div.find('.second').addClass('col-md-6');
@@ -327,74 +335,53 @@ function load_data(){
     }
 
   $('.toggle').on('toggle', function(e, active) {
-        toggle_permission(parseInt($(this).attr('perm_id')),active);/*
-      if (active) {
-        //console.log('Toggle is now ON!');
-      } else {
-        //console.log('Toggle is now OFF!');
-        toggle_permission(parseInt($(this).attr('perm_id')),false);
-      }*/
+        toggle_permission(parseInt($(this).attr('perm_id')),active);
     });
-  }else{
+  }
+  else{
     //alert("Hubo un problema con el rol seleccionado")
   }
 }
-
-
-
 
 @endsection
 
 <!-- scripts que corren cuando el documento este listo -->
 
 @section('ready_scripts')
-@if($errors->has('name'))
-showNewRoleForm();
-@endif
-//inicializar arreglos de permisos y roles
-@foreach($categories as $c)
-categories.push({
-	id:{{$c->id}},
-	name:"{{$c->name}}",
-});
-@endforeach
-categories.push({
-	id:-1,
-	name:"sin categoria",
-});
+  @if($errors->has('name'))
+  showNewRoleForm();
+  @endif
+  //inicializar arreglos de permisos y roles
+  @foreach($categories as $c)
+    categories.push({
+    	id:{{$c->id}},
+    	name:"{{$c->name}}",
+    });
+  @endforeach
+  categories.push({
+  	id:-1,
+  	name:"sin categoria",
+  });
 
-@foreach($permissions as $p)
-permissions.push({
-	id:{{$p->id}},
-	name:"{{$p->name}}",
-	cat_id:{{$p->category?$p->category->id:-1}},
-});
-@endforeach
+  @foreach($permissions as $p)
+    permissions.push({
+    	id:{{$p->id}},
+    	name:"{{$p->name}}",
+    	cat_id:{{$p->category?$p->category->id:-1}},
+    });
+  @endforeach
 
-@foreach($roles as $r)
-tmp_role={
-  id:{{$r->id}},
-  name:"{{$r->name}}",
-  permissions:[]
-}
-@foreach($r->permissions as $p)
-  tmp_role.permissions.push({{$p->id}});
-@endforeach
-roles.push(tmp_role)
-@endforeach
-load_data();
-
-$('#edit_role').click(function(){
-  $('#role_name_input').removeAttr('disabled');
-  $('#delete_role_button').removeAttr('disabled');
-  $(this).css('display','none');
-  $('#save_role_name').css('display','block');
-});
-
+  @foreach($roles as $r)
+    tmp_role={
+      id:{{$r->id}},
+      name:"{{$r->name}}",
+      permissions:[]
+    }
+    @foreach($r->permissions as $p)
+      tmp_role.permissions.push({{$p->id}});
+    @endforeach
+    roles.push(tmp_role)
+  @endforeach
+  load_data();
 @endsection
-
-
 </script>
-
-
-                     
