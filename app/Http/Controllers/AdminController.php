@@ -41,17 +41,25 @@ class AdminController extends Controller{
         return redirect()->route('admin_users_index');
     }
 
-    public function update_user(UpdateUserFormRequest $req){
-        $user=user::findOrFail($req->get('uid'));
+    public function update_user(UpdateUserFormRequest $req){ 
         
-        $user->lastname=$req->get('lastname');
+        $user=user::findOrFail($req->get('uid'));
+
         if($req->get('password')){
             $user->password=bcrypt($req->get('password'));
         }
         if($req->get('name')){
             $user->name=$req->get('name');
         }
-
+        if($req->get('lastname')){
+            $user->lastname=$req->get('lastname');
+        }
+        if($req->get('phone')){
+            $user->phone=$req->get('phone');
+        }
+        if($req->get('alias')){
+            $user->nickname=$req->get('alias');
+        }
 
         $user->save();
         return redirect()->action('AdminController@show_user_details',compact('user'));

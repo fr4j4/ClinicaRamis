@@ -1,69 +1,91 @@
 @extends('layouts.base')
 @section('title','Modificar perfil')
-@section('panel_title','')
+@section('panel_title')
+@endsection
 @section('content')
 
-<form class="form" method="post" action="{{route('post_update_user')}}">
-	{{csrf_field()}}
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-<input type="hidden" name="uid" value="{{$user->id}}">
-	<div class="row form-group">
-		<label for="name" class="control-label col-md-1">Nombre</label>
-		<div class="col-md-4">
-			<input class="form-control" type="text" name="name" value="{{$user->name}}">
-		</div>
+<div class="x_content">
+	<br />
+	<form class="form-horizontal form-label-left input_mask" method="post" action="{{route('post_update_user')}}">
+		{{csrf_field()}}
+	@if ($errors->any())
+	<div class="alert alert-danger">
+		<ul>
+			@foreach ($errors->all() as $error)
+			<li>{{ $error }}</li>
+			@endforeach
+		</ul>
+	</div>
+	@endif
+		<input type="hidden" name="uid" value="{{$user->id}}">
 		
-		<label for="lastname" class="control-label col-md-1">Apellido</label>
-		<div class="col-md-4">
-			<input class="form-control" type="text" name="lastname" value="{{$user->lastname}}">
-		</div>
-	</div>
+		<label class="control-label">Datos personales</label>
+		<div class="ln_solid"></div>
 
-	<div class="row form-group">
-		<label class="col-md-1" for="photo">Fotografía</label>
-		<div class="col-md-3">
-			<input id="photo_input" class="form-control" type="file" name="photo" value="{{$user->lastname}}">
+		<label class="control-label col-md-1 col-sm-1 col-xs-12">Nombre</label>
+		<div class="col-md-5 col-sm-5 col-xs-12 form-group has-feedback">
+			<input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="Nombre" value="{{$user->name}}" name="name">
+			<span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
 		</div>
-		<a href="javascript:void(0)" onclick="clear_photo_input()">[limpiar]</a>
-	</div>
-<div class="form-group col-md-12">
-	<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Contraseña <span class="required">*</span></label>
-	<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-		<input type="password" class="form-control has-feedback-left" id="password" name="password">
-		<span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
-	</div>
+
+		<label class="control-label col-md-1 col-sm-1 col-xs-12">Apellido</label>
+		<div class="col-md-5 col-sm-5 col-xs-12 form-group has-feedback">
+			<input type="text" class="form-control" id="inputSuccess3" placeholder="Apellido" value="{{$user->lastname}}" name="lastname">
+			<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+		</div>
+
+		<label class="control-label col-md-1 col-sm-1 col-xs-12">R.U.T</label>
+		<div class="col-md-5 col-sm-5 col-xs-5">
+			<input type="text" class="form-control has-feedback-left" data-inputmask="'mask':'99.999.999-9|k','placeholder': '0'" value="{{$user->rut}}" name="rut">
+			<span class="fa fa-address-card-o form-control-feedback left" aria-hidden="true"></span>
+		</div>
+
+		<label class="control-label col-md-1 col-sm-1 col-xs-12">E-mail</label>
+		<div class="col-md-5 col-sm-5 col-xs-12 form-group has-feedback">
+			<input type="text" class="form-control has-feedback-right" id="inputSuccess4" placeholder="Email" data-inputmask="'alias':'email','placeholder': ''" value="{{$user->email}}" name="email">
+			<span class="fa fa-envelope form-control-feedback right" aria-hidden="true"></span>
+		</div>
+
+		<label class="control-label col-md-1 col-sm-1 col-xs-12">Teléfono</label>
+		<div class="col-md-5 col-sm-5 col-xs-12 form-group has-feedback">
+			<input class="form-control has-feedback-left" type="text" id="inputSuccess5" placeholder="Teléfono" value="{{$user->phone}}" name="phone">
+			<span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
+		</div>
+
+
+		<div class="form-group">
+			<label class="control-label col-md-1 col-sm-1 col-xs-12">Alias</label>
+			<div class="col-md-5 col-sm-5 col-xs-12">
+				<input type="text" class="form-control has-feedback-right" placeholder="Alias" value="{{$user->nickname}}" name="alias">
+				<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+			</div>
+		</div>
+
+		<div class="ln_solid"></div>
+		<label class="control-label">Cambio de contraseña (dejar en blanco para mantener)</label>
+		<div class="form-group">
+			<label class="control-label col-md-3 col-sm-3 col-xs-12">Nueva contraseña</label>
+			<div class="col-md-9 col-sm-9 col-xs-12">
+				<input type="password" class="form-control" placeholder="Nueva contraseña" name="password">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-3 col-sm-3 col-xs-12">Confirmar nueva contraseña</label>
+			<div class="col-md-9 col-sm-9 col-xs-12">
+				<input type="password" class="form-control" placeholder="Repetir nueva contraseña" name="password_confirmation">
+			</div>
+		</div>
+
+		<div class="ln_solid"></div>
+		<div class="form-group">
+			<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+				<button class="btn btn-primary" type="reset">Reset</button>
+				<button type="submit" class="btn btn-success">Submit</button>
+			</div>
+		</div>
+
+	</form>
 </div>
 
-<div class="form-group col-md-12">
-	<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Reingresar contraseña <span class="required">*</span></label>
-	<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-		<input type="password" class="form-control has-feedback-left" id="password" name="password_confirmation">
-		<span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
-	</div>
-</div>
-	<div class="form-group">
-		
-	</div>
-
-	<button type="submit" class="btn btn-success">Guardar</button>
-	<a class="btn btn-warning" href="{{route('show_user_details',[$user->id])}}">Cancelar y volver al perfil</a>
-</form>
 @endsection
-
-<script type="text/javascript">
-@section('scripts')
-	function clear_photo_input(){
-		$('#photo_input').wrap('<form>').closest('form').get(0).reset();
-		$('#photo_input').unwrap();
-	}
-
-@endsection
-</script>
