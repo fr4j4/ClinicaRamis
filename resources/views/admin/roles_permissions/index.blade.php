@@ -134,8 +134,8 @@
           </fieldset>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-success" onclick="/*name_edit()*/">Aceptar</button>
-            <button type="button" class="btn btn-warning" onclick="resetRoleForm2()" data-dismiss="modal">Cancelar</button>
+            <button class="btn btn-success" onclick="/*name_edit()*/">Guardar cambios</button>
+            <button type="button" class="btn btn-warning" onclick="resetRoleForm2()" data-dismiss="modal">Cancelar y volver</button>
           </div>
         </form>
       </div>
@@ -321,7 +321,7 @@ function load_data(){
           permission_div=$("<div class'col-md-12'><span class='first'></span><span class='second'></span></div>")
           permission_toggle=$('<div id="toggle_'+p.id+'" perm_id="'+p.id+'"class="toggle toggle-light" data-toggle-on="true"  data-toggle-height="25" data-toggle-width="150" onClick="toggle_permission('+p.id+')" ></div>')
 
-          permission_label=$('<label class="test_name">'+p.name+'someshit</label>');
+          permission_label=$('<label class="test_name">'+p.name+'</label>');
 
           permission_div.find('.first').addClass('col-md-6');
           permission_div.find('.second').addClass('col-md-6');
