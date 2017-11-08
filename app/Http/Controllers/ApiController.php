@@ -8,12 +8,33 @@ use App\Role;
 use App\Permission;
 use Auth;
 class ApiController extends Controller{
-	public function setRoleName($role_id,$role_name){
-		//return response()->json(['result'=>'ok']);
-		$role=Role::find($role_id);
-		$role->name=$role_name;
-		$role->save();
-		return response()->json(['result'=>'ok']);
+	public function setRoleName(Request $request){
+		$success=true;
+		$error=["code"=>0,"message"=>"NO_ERROR"];
+		$role_id=$request->get('role_id');
+		$role_new_name=$request->get('role_new_name');
+		if($role_id && $role_new_name){
+			if($role_id!=1){
+				$role=Role::find($role_id);
+				$role->name=$role_new_name;
+				$role->save();
+			}else{
+				$success=false;
+				$error['code']==2;
+				$error['message']="can't change administrator role name";
+			}
+		}else{
+			$success=false;
+			$error['code']=1;
+			$error['message']="role_id and role_new_name expected";
+		}
+		return redirect()->action('AdminController@roles_permissions_index');
+		if($success){
+			return response()->json(['result'=>'ok']);
+		}else{
+			
+			return response()->json(['result'=>'failed',"error"=>$error]);
+		}
 	}    
 
 	public function updateRoles(Request $r){
@@ -89,5 +110,10 @@ class ApiController extends Controller{
         'scope' => '',
     	]);
     	return $query;
+	}
+
+	public function show_token(){
+		echo "<input type='text' value='{{csrf_token()}}'</input>";
+		//return response()->json(['token'=>$token]);
 	}
 }

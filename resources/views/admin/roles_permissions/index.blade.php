@@ -104,7 +104,7 @@
   </div>
 </div>
 
-<div id="newRoleForm_modal2" data-backdrop="static" class="modal fade" role="dialog">
+<div id="newRoleForm_modal2" data-backdrop="static" class="modal fade" role="dialog" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -113,9 +113,11 @@
       </div>
       <div class="modal-body">
         <p></p>
-        <form id="newRoleForm2">
+        <form id="newRoleForm2" method="POST" action="{{route('api_change_role_name')}}">
           <fieldset>
             {{csrf_field()}}
+
+            <input type="hidden" value="" name="role_id" id="new_role_id">
             @if($errors->has('name'))
                 <center>
                 <p class="alert alert-danger">
@@ -126,13 +128,13 @@
             <div class="form-group">
               <label class="col-md-2" for="name">Nombre</label>
               <div class="col-md-10">
-                <input class="form-control" id="role_name_input" type="text" name="name">
+                <input class="form-control" id="role_name_input" type="text" name="role_new_name">
               </div>
             </div>
           </fieldset>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-success" onclick="name_edit()">Aceptar</button>
+            <button class="btn btn-success" onclick="/*name_edit()*/">Aceptar</button>
             <button type="button" class="btn btn-warning" onclick="resetRoleForm2()" data-dismiss="modal">Cancelar</button>
           </div>
         </form>
@@ -229,9 +231,24 @@ function showNewRoleForm(){
   $('#newRoleForm_modal').modal('show');
 }
 
-function showNewRoleForm2(role_name){
+function showNewRoleForm2(role_id){
+  /*
+  new_role_name
+  new_role_id
+  */
+
   $('#newRoleForm_modal2').modal('show');
-  $('#role_name_input').val(role_name);
+  $('#role_name_input').attr("autofocus","false");
+
+  for(i in roles){
+    role=roles[i];
+    if(role.id==role_id){
+      $('#role_name_input').val(role.name);
+      $('#role_name_input').attr("autofocus","true");
+      $('#role_name_input').select();
+      $('#new_role_id').val(role_id)
+    }
+  }
 }
 
 function resetRoleForm(){
@@ -258,7 +275,7 @@ function load_data(){
       <div class="row">\
         <div class="btn-group" style="width:100%">\
           <button class="btn btn-default role_item" style="width:70%" type="button" id="role_item_'+r.id+'" onClick="select_role('+r.id+')" >'+r.name+'</button>\
-          <button class="btn btn-default role_item" style="width:15%" type="button" id="btncog_'+r.id+'" onClick="showNewRoleForm2(\''+r.name+'\');name_edit('+r.id+');;"><span class="glyphicon glyphicon-cog"></span></button>\
+          <button class="btn btn-default role_item" style="width:15%" type="button" id="btncog_'+r.id+'" onClick="showNewRoleForm2(\''+r.id+'\');name_edit('+r.id+');;"><span class="glyphicon glyphicon-cog"></span></button>\
           <button class="btn btn-danger role_item" style="width:15%" type="button" id="btntrash_'+r.id+'"><span class="glyphicon glyphicon-trash"></span></button>\
         </div>\
       </div>')

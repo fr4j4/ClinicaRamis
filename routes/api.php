@@ -17,14 +17,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/role/{id}/setname/{name}','ApiController@setRoleName')->name('api_change_role_name');
+Route::get('/token','ApiController@show_token');
+
+//Route::get('/role/{id}/setname/{name}','ApiController@setRoleName')->name('api_change_role_name');
 
 /*
 Route::group(['middleware' => ['apiTokenChecker']],function(){
 	
 });
 */
-
+Route::post('/setRoleName','ApiController@setRoleName')->name('api_change_role_name');
 Route::post('/updateRoles','ApiController@updateRoles')->name('update_roles');
 
 Route::get('/test','ApiController@test')->name('test_api');
