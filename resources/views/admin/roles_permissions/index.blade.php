@@ -109,7 +109,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Editar nombre del rol</h4>
+        <h4 class="modal-title">Editar rol</h4>
       </div>
       <div class="modal-body">
         <p></p>
@@ -130,6 +130,15 @@
               <div class="col-md-10">
                 <input class="form-control" id="role_name_input" type="text" name="role_new_name">
               </div>
+            </div>
+              <div class="clearfix col-md-12">&nbsp;</div>
+              <div class="clearfix col-md-12">&nbsp;</div>
+              <div class="clearfix col-md-12">&nbsp;</div>
+            <div class="form-group">
+              <div class="col-md-12">  
+                <p class="alert alert-info">Si ha modificado permisos asignados a roles y no los ha
+                guardado, asegúrese de guardarlos antes de enviar este formulario. Al guardar los cambios de este rol, la pantalla actual se refrescará provocando que las asignaciones de permisos sin guardar se pierdan</p>
+              </div>          
             </div>
           </fieldset>
           </div>
@@ -171,6 +180,7 @@ function toggle_permission(pid,state){
     load_data();
   }
 }
+
 
 function name_edit(id){
   for(i in roles){
@@ -259,6 +269,20 @@ function resetRoleForm2(){
   $('#newRoleForm2')[0].reset();
 }
 
+function delete_role(id){
+  rname=""
+  for(i in roles){
+    role=roles[i];
+    if(role.id==id){
+      rname=role.name;
+    }
+  }
+  response=confirm("Realmente desea eliminar el rol seleccionado?\n ["+rname+"]");
+  if(response){
+    window.location="{{route('delete_role',["rid"])}}".replace('rid',id);
+  }
+}
+
 function load_data(){
   $('#perms_section').empty()
   $('#roles_section').empty()
@@ -276,7 +300,7 @@ function load_data(){
         <div class="btn-group" style="width:100%">\
           <button class="btn btn-default role_item" style="width:70%" type="button" id="role_item_'+r.id+'" onClick="select_role('+r.id+')" >'+r.name+'</button>\
           <button class="btn btn-default role_item" style="width:15%" type="button" id="btncog_'+r.id+'" onClick="showNewRoleForm2(\''+r.id+'\');name_edit('+r.id+');;"><span class="glyphicon glyphicon-cog"></span></button>\
-          <button class="btn btn-danger role_item" style="width:15%" type="button" id="btntrash_'+r.id+'"><span class="glyphicon glyphicon-trash"></span></button>\
+          <button class="btn btn-danger role_item" style="width:15%" type="button" id="btntrash_'+r.id+'" onClick="delete_role('+r.id+')"><span class="glyphicon glyphicon-trash" ></span></button>\
         </div>\
       </div>')
     $('#btncog_'+r.id).height($('#role_item_'+r.id).height());
@@ -333,8 +357,8 @@ function load_data(){
           
           permission_toggle.toggles({
             text:{
-              on:'activado',
-              off:'desactivado'
+              on:'asignado',
+              off:'no asignado'
             },
           });
 

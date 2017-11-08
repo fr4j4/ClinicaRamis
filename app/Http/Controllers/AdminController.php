@@ -127,6 +127,14 @@ class AdminController extends Controller{
         return redirect()->route('roles_permissions_index');
     }
 
+    public function delete_role($rid){
+        $role=Role::find($rid);
+        if($role && $role->name!="administrador"){
+            $role->delete();
+        }
+        return redirect()->route('roles_permissions_index');
+    }
+
     public function save_permissions(Request $req){
         //return $req->get('roles');
         foreach($req->get('roles') as $i){
