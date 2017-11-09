@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title','Adminsitración de usuarios')
+@section('title','Administración de usuarios')
 @section('panel_title')
 <h4>Registre, modifique, elimine y vea los usuarios registrados en el sistema</h4>
 @endsection

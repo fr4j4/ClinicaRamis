@@ -23,7 +23,7 @@
 
 		<label class="control-label col-md-1 col-sm-1 col-xs-12">Nombre</label>
 		<div class="col-md-5 col-sm-5 col-xs-12 form-group has-feedback">
-			<input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="Nombre" name="name">
+			<input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="Nombre" name="firstname">
 			<span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
 		</div>
 
@@ -57,7 +57,7 @@
 		<div class="form-group">
 			<label class="control-label col-md-3 col-sm-3 col-xs-12">Alias</label>
 			<div class="col-md-9 col-sm-9 col-xs-12">
-				<input type="text" class="form-control has-feedback-right" placeholder="Alias" name="alias">
+				<input type="text" class="form-control has-feedback-right" placeholder="Alias" name="nickname">
 				<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
 			</div>
 		</div>
