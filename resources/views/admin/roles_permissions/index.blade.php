@@ -52,7 +52,7 @@
   <div id="content" class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2><!--i class="fa fa-align-left"--></i> Permisos</h2>
+        <h2><!--i class="fa fa-align-left"</i>--> Permisos <span id="permissions_counter"></span></h2>
         <button class="btn btn-warning pull-right" onclick="ajax_savePermissions()">Guardar permisos</button>
         <div class="clearfix"></div>
       </div>
@@ -284,6 +284,7 @@ function delete_role(id){
 }
 
 function load_data(){
+  p_count=0;
   $('#perms_section').empty()
   $('#roles_section').empty()
   $('#roles_section').append('\
@@ -362,16 +363,19 @@ function load_data(){
             },
           });
 
+          
           permission_toggle.toggles(false);
           for (x in selected_role.permissions){
             sel_perm=selected_role.permissions[x];
             if(sel_perm==p.id){
+              p_count++
               permission_toggle.toggles(true);
               panel.find('.panel-collapse').addClass('in')
             }
           }
         }
         $('#panel_'+cat.id).find('.panel-body').append(permission_list)
+        $('#permissions_counter').html('<h4>'+p_count+' permisos asignados</h4>')
       }
     }
 
@@ -401,7 +405,7 @@ function load_data(){
   @endforeach
   categories.push({
   	id:-1,
-  	name:"sin categoria",
+  	name:"permisos sin categoria",
   });
 
   @foreach($permissions as $p)
