@@ -6,7 +6,7 @@
 
 <div class="x_content">
 	<br />
-	<form class="form-horizontal form-label-left input_mask" method="post" action="{{route('post_update_user')}}">
+	<form class="form-horizontal form-label-left" method="post" action="{{route('post_update_user')}}">
 		{{csrf_field()}}
 	@if ($errors->any())
 	<div class="alert alert-danger">
@@ -36,13 +36,13 @@
 
 		<label class="control-label col-md-1 col-sm-1 col-xs-12">R.U.T</label>
 		<div class="col-md-5 col-sm-5 col-xs-5">
-			<input type="text" class="form-control has-feedback-left" data-inputmask="'mask':'99.999.999-9|k','placeholder': '0'" value="{{$user->rut}}" name="rut">
+			<input type="text" class="form-control has-feedback-left" value="{{$user->rut}}" name="rut">
 			<span class="fa fa-address-card-o form-control-feedback left" aria-hidden="true"></span>
 		</div>
 
 		<label class="control-label col-md-1 col-sm-1 col-xs-12">E-mail</label>
 		<div class="col-md-5 col-sm-5 col-xs-12 form-group has-feedback">
-			<input type="text" class="form-control has-feedback-right" id="inputSuccess4" placeholder="Email" data-inputmask="'alias':'email','placeholder': ''" value="{{$user->email}}" name="email">
+			<input type="text" class="form-control has-feedback-right" id="inputSuccess4" placeholder="Email" value="{{$user->email}}" name="email">
 			<span class="fa fa-envelope form-control-feedback right" aria-hidden="true"></span>
 		</div>
 
@@ -53,16 +53,19 @@
 		</div>
 
 
+		<div class="clearfix"></div>
+		<div class="ln_solid"></div>
+		<label class="control-label">Acceso</label>
 		<div class="form-group">
-			<label class="control-label col-md-1 col-sm-1 col-xs-12">Alias</label>
-			<div class="col-md-5 col-sm-5 col-xs-12">
+			<label class="control-label col-md-3 col-sm-3 col-xs-12">Alias</label>
+			<div class="col-md-9 col-sm-9 col-xs-12">
 				<input type="text" class="form-control has-feedback-right" placeholder="Alias" value="{{$user->nickname}}" name="alias">
 				<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
 			</div>
 		</div>
 
-		<div class="ln_solid"></div>
-		<label class="control-label">Cambio de contraseña (dejar en blanco para mantener)</label>
+		<label class="control-label" style="color: orange">Cambio de contraseña, dejar en blanco para mantener</label>
+
 		<div class="form-group">
 			<label class="control-label col-md-3 col-sm-3 col-xs-12">Nueva contraseña</label>
 			<div class="col-md-9 col-sm-9 col-xs-12">

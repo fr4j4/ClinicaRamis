@@ -57,10 +57,12 @@
 	<tbody>
 		@foreach($users as $user)
 			<tr>
-				<td>{{$user->name}}
+				<td>
+					<a href="{{route('show_user_details',[$user->id])}}">{{$user->name}}
 					@if(Auth::user()->id==$user->id)
 					<strong style="color: green">(es usted)</strong>
 					@endif
+					</a>
 				</td>
 				<td>{{$user->lastname}}</td>
 				<td>{{$user->nickname}}</td>
