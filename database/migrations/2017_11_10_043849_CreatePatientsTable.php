@@ -21,6 +21,7 @@ class CreatePatientsTable extends Migration
             $table->string('rut');
             $table->date('birthday');
             $table->string('gender');
+            $table->string('address');
             $table->timestamps();
             $table->softDeletes();
         });

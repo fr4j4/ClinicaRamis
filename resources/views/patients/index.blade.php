@@ -40,17 +40,19 @@
 				<th>Edad</th>
 				<th>Teléfono</th>
 				<th>E-mail</th>
+				<th>Dirección</th>
 			</thead>
 			<tbody>
 				@foreach($patients as $p)
 				<tr class="tr_link" onclick="window.location='{{route('patient_detail',[$p->id])}}'">
 					<td>{{$p->name}}</td>
 					<td>{{$p->lastname}}</td>
-					<td>{{$p->genre}}</td>
+					<td>{{$p->gender}}</td>
 					<td>{{$p->rut}}</td>
-					<td></td>
+					<td>NOT_YET</td>
 					<td>{{$p->phone}}</td>
 					<td>{{$p->email}}</td>
+					<td>{{$p->address}}</td>
 				</tr>
 			
 				@endforeach

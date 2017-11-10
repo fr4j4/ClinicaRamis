@@ -40,6 +40,7 @@ class PatientsTableSeeder extends Seeder{
         		'birthday'=>$faker->dateTimeThisCentury->format('Y-m-d'),
                 'gender'=>$genre==0?'hombre':'mujer',
         		'rut'=>$rut,
+                'address'=>$faker->address(),
         	));
         	$u->save();
         }
