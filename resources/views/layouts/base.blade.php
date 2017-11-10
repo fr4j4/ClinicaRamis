@@ -87,6 +87,18 @@
                     </ul>
                   </li>
 @if(
+  Auth::user()->can('crear_pacientes')
+  )
+
+@endif
+<li class="{{ Route::currentRouteNamed('admin_users_index')||Route::currentRouteNamed('new_user_form') ? 'active' : '' }}"><a><i class="fa fa-users"></i> Pacientes <span class="fa fa-chevron-down"></span></a>
+
+<ul class="nav child_menu">
+  <li class="{{ Route::currentRouteNamed('roles_permissions_index') ? 'current-page' : '' }}"><a href="{{route('patients_index')}}" >Administración de pacientes</a></li>
+</ul>
+
+</li>
+@if(
   Auth::user()->hasRole('administrador')
   ||Auth::user()->can('crear_usuarios')
   ||Auth::user()->can('ver_usuarios')
@@ -103,6 +115,8 @@
 )                      
                       <li class="{{ Route::currentRouteNamed('admin_users_index') ? 'current-page' : '' }}"><a href="{{route('admin_users_index')}}">Gestión de usuarios</a></li>
 @endif
+
+
 @role('administrador')
                       <li class="{{ Route::currentRouteNamed('roles_permissions_index') ? 'current-page' : '' }}"><a href="{{route('roles_permissions_index')}}" >Roles & permisos</a></li>
                     </ul>

@@ -46,6 +46,12 @@ Route::group(['middleware'=>['checkLogin'],],function(){
 		});
 	});	
 
+	Route::group(['prefix'=>'pacientes'],function(){
+		Route::get('/','PatientsController@index')->name('patients_index');
+		Route::get('/{id}/detalles','PatientsController@show_details')->name('patient_detail');
+		Route::get('/nuevo','PatientsController@new_patient_form')->name('new_patient_form');
+	});
+
 	Route::group(['prefix'=>'test'],function(){
 		Route::get('/api1',function(){return view('test.api1');});
 	});
