@@ -30,6 +30,9 @@
 		</div>
 
 	</div>
+	<div class="col-md-12">
+		{{$patients->links()}}
+	</div>
 	<div class="fixed-responsive">
 		<table class="table">
 			<thead>
@@ -56,7 +59,6 @@
 				</tr>
 			
 				@endforeach
-				{{$patients->links()}}
 			</tbody>
 		</table>
 	</div>
