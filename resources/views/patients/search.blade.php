@@ -24,9 +24,8 @@
 		<form method="GET" action="{{route('patients_search')}}">
 		
 		<div class="col-md-5">
-			<input type="text" class="form-control" name="data">
+			<input autofocus onFocus="this.select();" type="text" class="form-control" name="data" value="{{$data}}">
 		</div>
-
 		<div class="col-md-3 pull-right">
 			<button class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
 		</div>

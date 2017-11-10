@@ -39,8 +39,8 @@ class PatientsController extends Controller{
     }
 
     public function patients_search(Request $req){
-        $patients=Patient::Where('name','like',''.$req->get('data')."%")->orWhere('lastname','like',''.$req->get('data')."%")->orWhere('email','like','%'.$req->get('data').'%')->orWhere('phone','like','%'.$req->get('data').'%')->orderBy('lastname','asc')->orderBy('name','asc')->paginate(15);
-
-        return view('patients.search',compact('patients'));
+        $data=$req->get('data');
+        $patients=Patient::Where('name','like',''.$data."%")->orWhere('lastname','like',''.$data."%")->orWhere('email','like','%'.$data.'%')->orWhere('phone','like','%'.$data.'%')->orderBy('lastname','asc')->orderBy('name','asc')->paginate(15);
+        return view('patients.search',compact('patients','data'));
     }
 }
