@@ -16,12 +16,12 @@ class CreatePatientsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('lastname');
-            $table->string('phone');
-            $table->string('email');
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
             $table->string('rut');
-            $table->date('birthday');
-            $table->string('gender');
-            $table->string('address');
+            $table->date('birthday')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('address')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

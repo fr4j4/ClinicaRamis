@@ -9,7 +9,7 @@ use App\Patient;
 
 class PatientsController extends Controller{
     public function index(){
-    	$patients=Patient::OrderBy('lastname','asc')->orderBy('name','asc')->paginate(8);
+    	$patients=Patient::OrderBy('lastname','asc')->orderBy('name','asc')->paginate(15);
     	return view('patients.index',compact('patients'));
     }
 
@@ -31,10 +31,16 @@ class PatientsController extends Controller{
             'gender'=>$req->get('gender'),
             'birthday'=>Carbon::createFromFormat('d/m/Y', $req->get('birthday')),
             'email'=>$req->get('email'),
-            'rut'=>$req->get('rut'),
+            'rut'=>str_replace('.','',$req->get('rut')),
             'phone'=>$req->get('phone'),
         ));
         $patient->save();
         return redirect()->action('PatientsController@index');
+    }
+
+    public function patients_search(Request $req){
+        $patients=Patient::Where('name','like',''.$req->get('data')."%")->orWhere('lastname','like',''.$req->get('data')."%")->orWhere('email','like','%'.$req->get('data').'%')->orWhere('phone','like','%'.$req->get('data').'%')->orderBy('lastname','asc')->orderBy('name','asc')->paginate(15);
+
+        return view('patients.search',compact('patients'));
     }
 }

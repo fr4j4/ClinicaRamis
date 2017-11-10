@@ -24,9 +24,11 @@ class NewPatientRequest extends FormRequest
         return [
             'firstname'=>'required',
             'lastname'=>'required',
-            'email'=>'required',
-            'rut'=>'required',
-            'gender'=>'required',
+            'rut'=>array(
+                'required',
+                'regex:/^\d{1,3}.?\d{3}.?\d{3}-([1-9]|k){1}$/'
+            ),
+            //'rut'=>'required|unique:patients|regex',
         ];
     }
 }

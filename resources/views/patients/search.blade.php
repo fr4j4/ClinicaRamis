@@ -20,23 +20,26 @@
 		<div class="col-md-4">
 			<a class="btn btn-success" href="{{route('new_patient_form')}}">Registrar nuevo paciente</a>
 		</div>
+		
 		<form method="GET" action="{{route('patients_search')}}">
+		
 		<div class="col-md-5">
 			<input type="text" class="form-control" name="data">
 		</div>
+
 		<div class="col-md-3 pull-right">
 			<button class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
 		</div>
 		</form>
 	</div>
-	@if(count($patients)==0)
-	<div class="clearfix"></div>
-		<center><p><h1>No existen pacientes registrados</h1></p></center>
-	@else
 	<div class="col-md-12">
 		{{$patients->links()}}
 	</div>
 	<div class="fixed-responsive">
+		@if(count($patients)==0)
+		<div class="clearfix"></div>
+		<center><p><h1>No se han encontrado coincidencias</h1></p></center>
+		@else
 		<table class="table">
 			<thead>
 				<th>RUT</th>
@@ -64,11 +67,12 @@
 					<td>{{$p->address}}</td>
 					-->
 				</tr>
+			
 				@endforeach
+				@endif
 			</tbody>
 		</table>
 	</div>
-	@endif
 </div>
 
 @endsection

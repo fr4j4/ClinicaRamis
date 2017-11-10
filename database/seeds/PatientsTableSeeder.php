@@ -13,7 +13,7 @@ class PatientsTableSeeder extends Seeder{
 
     public function run(){
         $faker = Faker\Factory::create();
-        for($i=0;$i<100;$i++){
+        for($i=0;$i<10;$i++){
 			$mill=(string)rand(5,23);
 			$mil=(string)rand(0,999);
 			$cent=(string)rand(0,999);
