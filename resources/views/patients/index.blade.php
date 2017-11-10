@@ -49,7 +49,7 @@
 					<td>{{$p->lastname}}</td>
 					<td>{{$p->gender}}</td>
 					<td>{{$p->rut}}</td>
-					<td>NOT_YET</td>
+					<td>{{$p->age()}}</td>
 					<td>{{$p->phone}}</td>
 					<td>{{$p->email}}</td>
 					<td>{{$p->address}}</td>
