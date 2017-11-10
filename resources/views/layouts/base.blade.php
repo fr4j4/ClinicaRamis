@@ -233,6 +233,20 @@
     <!-- NProgress -->
     <script src="{{asset('vendors/nprogress/nprogress.js')}}"></script>
     
+    <!--moment -->
+    <script src="{{asset('vendors/moment/min/moment.min.js')}}"></script>
+    <script src="{{asset('vendors/moment/locale/es.js')}}"></script>
+
+    <!-- datetimepicker -->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css')}}">
+    <script src="{{asset('vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')}}"></script>
+
+
+
+    <!-- daterangepicker -->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/bootstrap-daterangepicker/daterangepicker.css')}}">
+    <script src="{{asset('vendors/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+
     <script src="{{asset('vendors/jquery-toggles/toggles.min.js')}}"></script>
     <!-- Custom Theme Scripts -->
     <script src="{{asset('js/custom.js')}}"></script>
