@@ -7,7 +7,7 @@ use App\Patient;
 
 class PatientsController extends Controller{
     public function index(){
-    	$patients=Patient::paginate(8);
+    	$patients=Patient::OrderBy('lastname','asc')->orderBy('name','asc')->paginate(8);
     	return view('patients.index',compact('patients'));
     }
 

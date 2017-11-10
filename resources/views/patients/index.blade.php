@@ -33,10 +33,10 @@
 	<div class="fixed-responsive">
 		<table class="table">
 			<thead>
-				<th>Nombre</th>
-				<th>Apellido</th>
-				<th>Género</th>
 				<th>RUT</th>
+				<th>Apellido</th>
+				<th>Nombre</th>
+				<th>Género</th>
 				<th>Edad</th>
 				<th>Teléfono</th>
 				<th>E-mail</th>
@@ -45,10 +45,10 @@
 			<tbody>
 				@foreach($patients as $p)
 				<tr class="tr_link" onclick="window.location='{{route('patient_detail',[$p->id])}}'">
-					<td>{{$p->name}}</td>
-					<td>{{$p->lastname}}</td>
-					<td>{{$p->gender}}</td>
 					<td>{{$p->rut}}</td>
+					<td>{{$p->lastname}}</td>
+					<td>{{$p->name}}</td>
+					<td>{{$p->gender}}</td>
 					<td>{{$p->age()}}</td>
 					<td>{{$p->phone}}</td>
 					<td>{{$p->email}}</td>
