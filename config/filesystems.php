@@ -43,6 +43,21 @@ return [
 
     'disks' => [
 
+        /*
+        'ftp' => [
+            'driver'   => 'ftp',
+            'host'     => 'ftp.example.com',
+            'username' => 'your-username',
+            'password' => 'your-password',
+
+            // Optional FTP Settings...
+            // 'port'     => 21,
+            // 'root'     => '',
+            // 'passive'  => true,
+            // 'ssl'      => true,
+            // 'timeout'  => 30,
+        ],
+        */
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
@@ -53,6 +68,11 @@ return [
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
+        ],
+
+        'user_avatars'=>[
+            'driver'=>'local',
+            'root'=>public_path().'/user_avatars',
         ],
 
         's3' => [

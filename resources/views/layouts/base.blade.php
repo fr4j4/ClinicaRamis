@@ -64,7 +64,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="{{asset('images/img.jpg')}}" alt="..." class="img-circle profile_img">
+                <img src="{{ asset('/user_avatars/'.Auth::user()->avatar) }}" alt="Avatar" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Bienvenido,</span>
@@ -142,7 +142,7 @@
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     
-                    <img src="{{asset('images/img.jpg')}}" alt="">{{Auth::user()->name}}
+                    <img src="{{ asset('/user_avatars/'.Auth::user()->avatar) }}" alt="">{{Auth::user()->name}}
                     
                     <span class=" fa fa-angle-down"></span>
                   </a>
@@ -254,6 +254,7 @@
     <!-- jquery.inputmask -->
     <script src="{{asset('vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js')}}"></script>
 
+   
     <script type="text/javascript">
 
 

@@ -6,7 +6,7 @@
 
 <div class="x_content">
 	<br />
-	<form class="form-horizontal form-label-left" method="post" action="{{route('post_update_user')}}">
+	<form enctype="multipart/form-data" class="form-horizontal form-label-left" method="post" action="{{route('post_update_user')}}">
 		{{csrf_field()}}
 	@if ($errors->any())
 	<div class="alert alert-danger">
@@ -18,7 +18,11 @@
 	</div>
 	@endif
 		<input type="hidden" name="uid" value="{{$user->id}}">
-		
+
+		<div class="form-group">
+			<input type="file" name="avatar" accept="image/*">
+		</div>
+
 		<label class="control-label">Datos personales</label>
 		<div class="ln_solid"></div>
 

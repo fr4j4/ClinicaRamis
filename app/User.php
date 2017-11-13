@@ -8,6 +8,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use Illuminate\Support\Facades\Storage;
+
 class User extends Authenticatable
 {
     use Notifiable,HasRoles,SoftDeletes,HasApiTokens;
@@ -29,5 +31,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function get_avatar(){
+        $url = Storage::disk('user_avatars')->url($this->avatar);
+        return $url;
+    }
 
 }

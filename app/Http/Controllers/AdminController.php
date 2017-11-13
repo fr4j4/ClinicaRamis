@@ -13,6 +13,8 @@ use App\Permission;
 use Auth;
 use App\User;
 use App\PermCat;/*categorias de permisos*/
+
+use Illuminate\Support\Facades\Storage;
 class AdminController extends Controller{
     
 
@@ -59,6 +61,13 @@ class AdminController extends Controller{
         }
         if($req->get('alias')){
             $user->nickname=$req->get('alias');
+        }
+
+        if($req->hasFile('avatar')){
+            //$path = $req->file('avatar')->store('avatars');
+            //$path = Storage::putFile('avatars', $req->file('avatar'));
+            $path =Storage::disk('user_avatars')->putFile('/',$req->file('avatar'));
+            $user->avatar=$path;
         }
 
         $user->save();
