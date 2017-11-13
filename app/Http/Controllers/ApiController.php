@@ -8,6 +8,13 @@ use App\Role;
 use App\Permission;
 use Auth;
 class ApiController extends Controller{
+
+/*
+	public function getStats(){
+		$count=User::count();
+		return response()->json(['users_count'=>$count]);
+	}
+*/
 	public function setRoleName(Request $request){
 		$success=true;
 		$error=["code"=>0,"message"=>"NO_ERROR"];

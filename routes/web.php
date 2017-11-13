@@ -15,9 +15,7 @@ Auth::routes();
 
 //grupo de rutas cubiertas por el middleware checklogin
 Route::group(['middleware'=>['checkLogin'],],function(){
-	Route::get('/', function () {
-	    	return view('admin.dashboard');
-	})->name('dashboard');
+	Route::get('/','PagesController@dashboard')->name('dashboard');
 
 
 	/*Grupo de rutas con pefijo 'admin'*/
