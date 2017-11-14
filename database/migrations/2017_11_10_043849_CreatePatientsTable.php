@@ -22,6 +22,7 @@ class CreatePatientsTable extends Migration
             $table->date('birthday')->nullable();
             $table->string('gender')->nullable();
             $table->string('address')->nullable();
+            $table->string('picture')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

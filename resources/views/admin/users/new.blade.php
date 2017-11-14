@@ -23,6 +23,14 @@
 		<label class="control-label">Datos personales</label>
 		<div class="ln_solid"></div>
 
+		<div class="form-group">
+			<div class="col col-md-9 col-md-push-1">
+				<p>Avatar</p>
+				<img id="usr_avatar" alt="avatar" width="100" height="100" src="{{asset('user_avatars/default.png')}}" >
+				<input type="file" name="avatar" accept="image/*" onchange="document.getElementById('usr_avatar').src = window.URL.createObjectURL(this.files[0])">
+			</div>
+		</div>
+
 		<label class="control-label col-md-1 col-sm-1 col-xs-12">Nombre</label>
 		<div class="col-md-5 col-sm-5 col-xs-12 form-group has-feedback">
 			<input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="Nombre" name="firstname">
