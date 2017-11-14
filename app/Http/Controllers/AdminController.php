@@ -66,6 +66,9 @@ class AdminController extends Controller{
         if($req->hasFile('avatar')){
             //$path = $req->file('avatar')->store('avatars');
             //$path = Storage::putFile('avatars', $req->file('avatar'));
+            if($user->avatar!='default.jpg'){
+                Storage::disk('user_avatars')->delete('/',$user->avatar);
+            }
             $path =Storage::disk('user_avatars')->putFile('/',$req->file('avatar'));
             $user->avatar=$path;
         }

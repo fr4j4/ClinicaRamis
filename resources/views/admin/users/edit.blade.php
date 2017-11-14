@@ -1,9 +1,10 @@
 @extends('layouts.base')
 @section('title','Modificar perfil')
 @section('panel_title')
+<h5><a class="btn btn-primary" href="{{route('show_user_details',$user->id)}}"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+ Volver a detalles</a></h5>
 @endsection
 @section('content')
-
 <div class="x_content">
 	<br />
 	<form enctype="multipart/form-data" class="form-horizontal form-label-left" method="post" action="{{route('post_update_user')}}">
@@ -19,12 +20,19 @@
 	@endif
 		<input type="hidden" name="uid" value="{{$user->id}}">
 
-		<div class="form-group">
-			<input type="file" name="avatar" accept="image/*">
-		</div>
+		<!--
+<input type="file" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+		-->
+
 
 		<label class="control-label">Datos personales</label>
 		<div class="ln_solid"></div>
+
+		<div class="form-group">
+			<p>Avatar</p>
+			<img id="usr_avatar" alt="avatar" width="100" height="100" src="{{ asset('/user_avatars/'.$user->avatar) }}" >
+			<input type="file" name="avatar" accept="image/*" onchange="document.getElementById('usr_avatar').src = window.URL.createObjectURL(this.files[0])">
+		</div>
 
 		<label class="control-label col-md-1 col-sm-1 col-xs-12">Nombre</label>
 		<div class="col-md-5 col-sm-5 col-xs-12 form-group has-feedback">

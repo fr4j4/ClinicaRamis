@@ -15,7 +15,7 @@ class PagesController extends Controller{
     		if($user->can('ver_usuarios')){
     			$user_count=[
     				'title'=>'usuarios registrados',
-    				'value'=>User::count(),
+    				'value'=>User::count()	,
     			];
     			array_push($stats,(object)$user_count);
     		}

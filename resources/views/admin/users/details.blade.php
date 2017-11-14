@@ -1,6 +1,9 @@
 @extends('layouts.base')
 @section('title','Detalles del usuario')
-@section('panel_title','')
+@section('panel_title')
+<h5><a class="btn btn-primary" href="{{route('admin_users_index')}}"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+ Volver a lista de usuarios</a></h5>
+@endsection
 @section('content')
   <div class="col-md-3 col-sm-3 col-xs-12 profile_left" style="height: 100%">
     <div class="profile_img">

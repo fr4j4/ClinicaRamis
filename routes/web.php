@@ -36,7 +36,7 @@ Route::group(['middleware'=>['checkLogin'],],function(){
 
 		Route::group(['prefix'=>'rolesYpermisos','middleware'=>['role:administrador']],function(){
 			Route::get('/','AdminController@roles_permissions_index')->name('roles_permissions_index');
-			Route::post('/nuevoRol',"AdminController@create_new_role")->name('post_new_role');
+			Route::post('/nuevoRol','AdminController@create_new_role')->name('post_new_role');
 			Route::post('/guardarPermisos','AdminController@save_permissions')->name('save_permissions');
 			Route::get('{id}/','AdminController@delete_user')->name('delete_user');
 

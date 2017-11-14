@@ -13,7 +13,7 @@ Desde usuarios registrados hasta horas médicas.
 		  </div>
 		  <div class="count">{{$stat->value}}</div>
 		  <h3 style="text-transform: capitalize;">{{$stat->title}}</h3>
-		  <p>Lorem ipsum psdea itgum rixt.</p>
+		  <p><a href="{{route('admin_users_index')}}" class="btn btn-xs btn-info">ver usuarios registrados</a></p>
 		</div>
 	</div>
 @endforeach

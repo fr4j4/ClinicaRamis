@@ -1,7 +1,13 @@
 @extends('layouts.base')
 @section('title','Asignación de roles')
-@section('panel_title','Asigne aquí roles al usuario.')
+@section('panel_title')
+
+<h5><a class="btn btn-primary" href="{{route('show_user_details',$user->id)}}"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+ Volver a detalles</a></h5>
+@endsection
 @section('content')
+
+<p><h3>Asigne aquí roles al usuario</h3></p>
 
 <form method="POST">
 {{csrf_field()}}
