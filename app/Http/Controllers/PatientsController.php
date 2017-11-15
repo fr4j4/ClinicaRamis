@@ -38,6 +38,17 @@ class PatientsController extends Controller{
             'rut'=>str_replace('.','',$req->get('rut')),
             'phone'=>$req->get('phone'),
         ));
+        
+        if($req->hasFile('image')){
+            //$path = $req->file('avatar')->store('avatars');
+            //$path = Storage::putFile('avatars', $req->file('avatar'));
+            if($patient->picture!='default.png'){//eliminar previa imagen si no es default
+                Storage::disk('patient_pictures')->delete('/',$patient->picture);
+            }
+            $path =Storage::disk('patient_pictures')->putFile('/',$req->file('image'));
+
+            $patient->picture=$path;
+        }
         $patient->save();
         return redirect()->action('PatientsController@index');
     }
