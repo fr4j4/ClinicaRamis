@@ -19,7 +19,7 @@
     <p>
     <h3>Datos personales</h3>
 @can('modificar_pacientes')
-    <a href="#" class="btn btn-xs btn-warning">modificar datos personales</a>
+    <a href="{{route('edit_patient_form',$patient->id)}}" class="btn btn-xs btn-warning">modificar datos personales</a>
 @endcan    
     </p>
 
@@ -31,10 +31,14 @@
     			<th class="col-md-3">Nombre</th>
     			<td>{{$patient->name}}</td>
     		</tr>
-    		<tr>
-    			<th>Apellido</th>
-    			<td>{{$patient->lastname}}</td>
-    		</tr>
+        <tr>
+          <th>Apellido</th>
+          <td>{{$patient->lastname}}</td>
+        </tr>
+        <tr>
+          <th>Género</th>
+          <td style="text-transform: capitalize;">{{$patient->gender}}</td>
+        </tr>
     		<tr>
     			<th>Fecha de nacimiento (d/m/y)</th>
     			<td>{{$patient->birthday?Carbon\Carbon::parse($patient->birthday)->format('d/m/Y'):"No existe fecha registrada"}}</td>
@@ -57,7 +61,7 @@
     		</tr>
     		<tr>
     			<th>Dirección</th>
-    			<td>{{$patient->address?$patient->address:"No existe dirección registrada"}}</td>
+    			<td style="text-transform: capitalize;">{{$patient->address?$patient->address:"No existe dirección registrada"}}</td>
     		</tr>
 
     	</tbody>

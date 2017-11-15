@@ -48,7 +48,7 @@ Route::group(['middleware'=>['checkLogin'],],function(){
 		
 		Route::group(['middleware'=>['permission:ver_pacientes']],function(){
 			Route::get('/','PatientsController@index')->name('patients_index');
-			Route::get('/{id}/detalles','PatientsController@show_details')->name('patient_detail');
+			Route::get('/{id}/detalles','PatientsController@show_details')->name('show_patient_details');
 			Route::get('/buscar','PatientsController@patients_search')->name('patients_search');
 		});
 		
@@ -58,6 +58,8 @@ Route::group(['middleware'=>['checkLogin'],],function(){
 		});
 		
 		Route::group(['middleware'=>['permission:modificar_pacientes']],function(){
+			Route::get('/{pid}/editar','PatientsController@edit_patient_form')->name('edit_patient_form');
+			Route::post('/editar/guardar','PatientsController@update_patient')->name('post_update_patient');
 		});
 		
 		Route::group(['middleware'=>['permission:eliminar_pacientes']],function(){

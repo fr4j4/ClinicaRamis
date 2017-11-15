@@ -411,7 +411,7 @@ function load_data(){
   @foreach($permissions as $p)
     permissions.push({
     	id:{{$p->id}},
-    	name:"{{$p->name}}",
+    	name:"{{str_replace('_',' ',$p->name)}}",
     	cat_id:{{$p->category?$p->category->id:-1}},
     });
   @endforeach

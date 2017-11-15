@@ -54,7 +54,7 @@
 			</thead>
 			<tbody>
 				@foreach($patients as $p)
-				<tr class="tr_link" onclick="window.location='{{route('patient_detail',[$p->id])}}'">
+				<tr class="tr_link" onclick="window.location='{{route('show_patient_details',[$p->id])}}'">
 					<td>{{$p->rut}}</td>
 					<td>{{$p->lastname}}</td>
 					<td>{{$p->name}}</td>

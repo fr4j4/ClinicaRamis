@@ -91,10 +91,10 @@
   ||Auth::user()->can('ver_pacientes')
   )
 
-<li class="{{ Route::currentRouteNamed('patients_index')||Route::currentRouteNamed('new_patient_form') ? 'active' : '' }}"><a><i class="fa fa-users"></i> Pacientes <span class="fa fa-chevron-down"></span></a>
+<li class="{{ Route::currentRouteNamed('patients_index')||Route::currentRouteNamed('new_patient_form')||Route::currentRouteNamed('show_patient_details')||Route::currentRouteNamed('patients_search') ? 'active' : '' }}"><a><i class="fa fa-users"></i> Pacientes <span class="fa fa-chevron-down"></span></a>
 
 <ul class="nav child_menu">
-  <li class="{{ Route::currentRouteNamed('roles_permissions_index') ? 'current-page' : '' }}"><a href="{{route('patients_index')}}" >Administración de pacientes</a></li>
+  <li class="{{ Route::currentRouteNamed('patients_index')||Route::currentRouteNamed('show_patient_details')||Route::currentRouteNamed('new_patient_form')||Route::currentRouteNamed('edit_patient_form')||Route::currentRouteNamed('patients_search') ? 'current-page' : '' }}"><a href="{{route('patients_index')}}" >Administración de pacientes</a></li>
 </ul>
 
 </li>

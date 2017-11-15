@@ -25,6 +25,7 @@ class NewPatientRequest extends FormRequest
             'firstname'=>'required',
             'lastname'=>'required',
             'rut'=>array(
+                'unique:patients',
                 'required',
                 'regex:/^\d{1,3}.?\d{3}.?\d{3}-([1-9]|k){1}$/'
             ),
