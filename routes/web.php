@@ -44,13 +44,30 @@ Route::group(['middleware'=>['checkLogin'],],function(){
 		});
 	});	
 
-	Route::group(['prefix'=>'pacientes'],function(){
-		Route::get('/','PatientsController@index')->name('patients_index');
-		Route::get('/{id}/detalles','PatientsController@show_details')->name('patient_detail');
-		Route::get('/nuevo','PatientsController@new_patient_form')->name('new_patient_form');
-		Route::post('/nuevo','PatientsController@register_new_patient')->name('post_new_patient');
+	Route::group(['prefix'=>'pacientes','middleware'=>['permission:crear_pacientes|modificar_pacientes|ver_pacientes|eliminar_pacientes']],function(){
 		
-		Route::get('/buscar','PatientsController@patients_search')->name('patients_search');
+		Route::group(['middleware'=>'permission:ver_pacientes'],function(){
+			Route::get('/','PatientsController@index')->name('patients_index');
+			Route::get('/{id}/detalles','PatientsController@show_details')->name('patient_detail');
+			Route::get('/buscar','PatientsController@patients_search')->name('patients_search');
+		});
+		
+		Route::group(['middleware'=>'permission:crear_pacientes'],function(){
+			Route::get('/nuevo','PatientsController@new_patient_form')->name('new_patient_form');
+			Route::post('/nuevo','PatientsController@register_new_patient')->name('post_new_patient');
+		});
+		
+		Route::group(['middleware'=>'permission:modificar_pacientes'],function(){
+		});
+		
+		Route::group(['middleware'=>'permission:eliminar_pacientes'],function(){
+		});
+
+
+
+			
+			
+			
 	});
 
 	Route::group(['prefix'=>'test'],function(){

@@ -55,6 +55,8 @@ class AdminController extends Controller{
         }
         if($req->get('lastname')){
             $user->lastname=$req->get('lastname');
+        }else{
+            $user->lastname=null;
         }
         if($req->get('phone')){
             $user->phone=$req->get('phone');
@@ -62,14 +64,18 @@ class AdminController extends Controller{
         if($req->get('alias')){
             $user->nickname=$req->get('alias');
         }
+        if($req->get('rut')){
+            $user->rut=$req->get('rut');
+        }
 
         if($req->hasFile('avatar')){
             //$path = $req->file('avatar')->store('avatars');
             //$path = Storage::putFile('avatars', $req->file('avatar'));
-            if($user->avatar!='default.jpg'){
+            if($user->avatar!='default.png'){
                 Storage::disk('user_avatars')->delete('/',$user->avatar);
             }
             $path =Storage::disk('user_avatars')->putFile('/',$req->file('avatar'));
+
             $user->avatar=$path;
         }
 

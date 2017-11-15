@@ -81,16 +81,16 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li class="{{ Route::currentRouteNamed('dashboard') ? 'active' : '' }}" ><a><i class="fa fa-home"></i> Inicio <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li class="{{ Route::currentRouteNamed('dashboard') ? 'current-page' : '' }}"><a href="{{route('dashboard')}}">Dashboard</a></li>
-                    </ul>
+                      <li class="{{ Route::currentRouteNamed('dashboard') ? 'current-page' : '' }}"><a href="{{route('dashboard')}}"><i class="fa fa-home"></i>Inicio</a></li>
+                    
                   </li>
 @if(
   Auth::user()->can('crear_pacientes')
+  ||Auth::user()->can('eliminar_pacientes')
+  ||Auth::user()->can('modificar_pacientes')
+  ||Auth::user()->can('ver_pacientes')
   )
 
-@endif
 <li class="{{ Route::currentRouteNamed('patients_index')||Route::currentRouteNamed('new_patient_form') ? 'active' : '' }}"><a><i class="fa fa-users"></i> Pacientes <span class="fa fa-chevron-down"></span></a>
 
 <ul class="nav child_menu">
@@ -98,6 +98,7 @@
 </ul>
 
 </li>
+@endif
 @if(
   Auth::user()->hasRole('administrador')
   ||Auth::user()->can('crear_usuarios')

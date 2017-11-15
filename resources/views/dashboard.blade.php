@@ -1,10 +1,14 @@
 @extends('layouts.base')
-@section('title','Dashboard')
-@section('panel_title','Bienvenido, esto es el dashboard.')
+@section('title','Inicio')
+@section('panel_title')
+Bienvenido, {{Auth::user()->name}}.
+@endsection
 @section('content')
-En esta pantalla se mostrará información correspondiente al rol que tenga el usuario autenticado
-Desde usuarios registrados hasta horas médicas.
+<p>
+<h3>Resumen del sistema</h3>
+</p>
 
+<div class="container well">
 
 @foreach($stats as $stat)
 	<div class="col-md-3">
@@ -17,6 +21,7 @@ Desde usuarios registrados hasta horas médicas.
 		</div>
 	</div>
 @endforeach
+</div>
 
 <!--
 

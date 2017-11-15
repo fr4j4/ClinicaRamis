@@ -1,8 +1,11 @@
 @extends('layouts.base')
 @section('title','Detalles de paciente')
+@section('panel_title')
+<h5><a class="btn btn-sm btn-primary" href="{{route('patients_index')}}"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+ Volver a lista de pacientes</a></h5>
+@endsection
 @section('content')
 <div class="container">
-
 
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#datos">Datos personales</a></li>
@@ -13,8 +16,12 @@
 
 <div class="tab-content">
   <div id="datos" class="tab-pane fade in active">
+    <p>
     <h3>Datos personales</h3>
-
+@can('modificar_pacientes')
+    <a href="#" class="btn btn-xs btn-warning">modificar datos personales</a>
+@endcan    
+    </p>
 
 <div class="col-md-8">
 

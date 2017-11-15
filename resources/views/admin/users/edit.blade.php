@@ -1,7 +1,7 @@
 @extends('layouts.base')
 @section('title','Modificar perfil')
 @section('panel_title')
-<h5><a class="btn btn-primary" href="{{route('show_user_details',$user->id)}}"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+<h5><a class="btn btn-sm btn-primary" href="{{route('show_user_details',$user->id)}}"><i class="fa fa-arrow-left" aria-hidden="true"></i>
  Volver a detalles</a></h5>
 @endsection
 @section('content')
