@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\NewPatientRequest;
 use App\Patient;
 
+use Illuminate\Support\Facades\Storage;
+
 class PatientsController extends Controller{
     public function index(){
     	$patients=Patient::OrderBy('lastname','asc')->orderBy('name','asc')->paginate(15);
@@ -15,7 +17,8 @@ class PatientsController extends Controller{
 
     public function show_details($id){
     	$patient=Patient::find($id);
-    	return view('patients.details',compact('patient'));
+        $url=Storage::disk('patient_pictures')->url($patient->picture);
+    	return view('patients.details',compact('patient','url'));
     }
 
     public function new_patient_form(){

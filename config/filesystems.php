@@ -75,6 +75,13 @@ return [
             'root'=>public_path().'/user_avatars',
         ],
 
+        'patient_pictures'=>[
+            'driver'=>'local',
+            'root'=>public_path('/patient_pictures'),
+//            'url' => env('APP_URL').'/patient_pictures',
+//          'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_KEY'),
