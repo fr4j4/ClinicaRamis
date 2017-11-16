@@ -23,7 +23,7 @@ class NewUserFormRequest extends FormRequest{
             'rut'=>'unique:users',
             'firstname'=>'required',
             //'lastname'=>'required',
-            'email'=>'unique:users',
+            'email'=>'required|unique:users',
             'nickname'=>'unique:users|required',
             'password'=>'required|confirmed',
             'password_confirmation'=>'required',
