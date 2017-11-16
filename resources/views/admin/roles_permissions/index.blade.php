@@ -300,8 +300,8 @@ function load_data(){
       <div class="row">\
         <div class="btn-group" style="width:100%">\
           <button class="btn btn-default role_item" style="width:70%" type="button" id="role_item_'+r.id+'" onClick="select_role('+r.id+')" >'+r.name+'</button>\
-          <button class="btn btn-default role_item" style="width:15%" type="button" id="btncog_'+r.id+'" onClick="showNewRoleForm2(\''+r.id+'\');name_edit('+r.id+');;"><span class="glyphicon glyphicon-cog"></span></button>\
-          <button class="btn btn-danger role_item" style="width:15%" type="button" id="btntrash_'+r.id+'" onClick="delete_role('+r.id+')"><span class="glyphicon glyphicon-trash" ></span></button>\
+          <button class="btn btn-default role_item" style="width:15%;min-height:34px;" type="button" id="btncog_'+r.id+'" onClick="showNewRoleForm2(\''+r.id+'\');name_edit('+r.id+');;"><span class="glyphicon glyphicon-cog"></span></button>\
+          <button class="btn btn-danger role_item" style="width:15%;min-height:34px;" type="button" id="btntrash_'+r.id+'" onClick="delete_role('+r.id+')"><span class="glyphicon glyphicon-trash" ></span></button>\
         </div>\
       </div>')
     $('#btncog_'+r.id).height($('#role_item_'+r.id).height());
