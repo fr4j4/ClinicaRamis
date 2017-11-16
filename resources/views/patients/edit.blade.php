@@ -34,14 +34,14 @@
 		</div>
 		<div class="col-md-10">
 			
-		<label class="control-label col-md-1 col-sm-1 col-xs-12">Nombre</label>
-		<div class="col-md-5 col-sm-3 col-xs-12 form-group has-feedback">
+		<label class="control-label col-md-2 col-sm-2 col-xs-12 col-md-push-1">Nombre *</label>
+		<div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
 			<input type="text" class="form-control has-feedback-left" id="input_name" placeholder="Nombre" value="{{$patient->name}}" name="name">
 			<span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
 		</div>
 
 		<label class="control-label col-md-1 col-sm-1 col-xs-12">Apellido</label>
-		<div class="col-md-5 col-sm-3 col-xs-12 form-group has-feedback">
+		<div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
 			<input type="text" class="form-control" id="input_apellido" placeholder="Apellido" value="{{$patient->lastname}}" name="lastname">
 			<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
 		</div>
@@ -49,7 +49,7 @@
 
 <div class="col-md-12 ">
       <div class="form-group row">
-                        <label class="control-label col-md-1 col-sm-2 col-xs-12">Género</label>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12 col-md-push-1">Género</label>
                         <div class="col-md-3 col-sm-3 col-xs-12">
                           <div id="gender" class="btn-group" data-toggle="buttons">
                             @if($patient->gender=="mujer")
@@ -81,8 +81,8 @@
       </div>
 </div>
 
-        <label class="control-label col-md-1">Fecha nac.</label>
-        <div class="col-md-5">
+        <label class="control-label col-md-2 col-md-push-0" style="text-align: right;">Fecha nacimiento</label>
+        <div class="col-md-4 ">
             <div class="input-group date" id="fecha_nac" >
                 <span style="color: blue" class="input-group-addon">
                    <span class="glyphicon glyphicon-calendar"></span>
@@ -94,25 +94,25 @@
 
 
 		<label class="control-label col-md-1 col-sm-1 col-xs-12">R.U.T</label>
-		<div class="col-md-5 col-sm-5 col-xs-12 form-group has-feedback">
+		<div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
 			<input type="text" class="form-control has-feedback-right" value="{{$patient->rut}}" name="rut">
 			<span class="fa fa-address-card-o form-control-feedback right " aria-hidden="true"></span>
 		</div>
 
-		<label class="control-label col-md-1 col-sm-1 col-xs-12">E-mail</label>
-		<div class="col-md-5 col-sm-5 col-xs-12 form-group has-feedback">
+		<label class="control-label col-md-2 col-sm-2 col-xs-12 col-md-push-1" >E-mail</label>
+		<div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
 			<input type="text" class="form-control has-feedback-left" id="input_email" placeholder="Email" value="{{$patient->email}}" name="email">
 			<span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
 		</div>
 
 		<label class="control-label col-md-1 col-sm-1 col-xs-12">Teléfono</label>
-		<div class="col-md-5 col-sm-5 col-xs-12 form-group has-feedback">
+		<div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
 			<input class="form-control has-feedback-right" type="text" id="input_telefono" placeholder="Teléfono" value="{{$patient->phone}}" name="phone">
 			<span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
 		</div>
 
-		<label class="control-label col-md-1 col-sm-1 col-xs-12">Dirección</label>
-		<div class="col-md-11 col-sm-11 col-xs-12 form-group has-feedback">
+		<label class="control-label col-md-2 col-sm-2 col-xs-12 col-md-push-1">Dirección</label>
+		<div class="col-md-9 col-sm-9 col-xs-12 form-group has-feedback">
 			<input type="text" class="form-control has-feedback-left" id="input_direccion" placeholder="Dirección" value="{{$patient->address}}" name="address">
 			<span class="fa fa-address-card form-control-feedback left" aria-hidden="true"></span>
 		</div>

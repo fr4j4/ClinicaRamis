@@ -13,13 +13,13 @@
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="{{asset('vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
-  
-    <link rel="stylesheet" type="text/css" href="{{asset('vendors/jquery-toggles/css/toggles.css')}}">
-   <link rel="stylesheet" type="text/css" href="{{asset('vendors/jquery-toggles/css/themes/toggles-all.css')}}">
-
     
     <!-- NProgress -->
     <link href="{{asset('vendors/nprogress/nprogress.css')}}" rel="stylesheet">
+  
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/jquery-toggles/css/toggles.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/jquery-toggles/css/themes/toggles-all.css')}}">
+
 
     <!-- Custom Theme Style -->
     <link href="{{asset('css/custom.css')}}" rel="stylesheet">
@@ -55,6 +55,7 @@
   .right_col{
   }
   </style>
+
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col menu_fixed">
@@ -68,11 +69,13 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
+                <a href="{{route('view_profile')}}">
                 <img src="{{ asset('/user_avatars/'.Auth::user()->avatar) }}" alt="Avatar" alt="..." class="img-circle profile_img">
+              </a>
               </div>
               <div class="profile_info">
                 <span>Bienvenido,</span>
-                <h2>{{Auth::user()->name}}</h2>
+                <a href="{{route('view_profile')}}"><h2>{{Auth::user()->name}}</h2></a>
               </div>
               <div class="clearfix"></div>
             </div>
@@ -152,7 +155,7 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;">Ver perfil</a></li>
+                    <li><a href="{{route('view_profile')}}">Ver perfil</a></li>
                     <!--
                     <li>
                       <a href="javascript:;">
@@ -178,7 +181,7 @@
         <!-- page content -->
 
         <div class="right_col" role="main">
-          <div class="">
+          <div class="" >
             <div class="page-title">
               <div class="title_left">
                 <h3>@yield('title')</h3>
@@ -189,8 +192,8 @@
             <div class="clearfix"></div>
 
             <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
+              <div class="col-md-12 col-sm-12 col-xs-12" >
+                <div class="x_panel" >
                   <div class="x_title">
                     <h2>@yield('panel_title')</h2>
 
@@ -203,6 +206,7 @@
                 </div>
               </div>
             </div>
+
           </div>
         </div>
         <!-- /page content -->

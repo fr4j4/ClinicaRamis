@@ -63,18 +63,18 @@ Route::group(['middleware'=>['checkLogin'],],function(){
 		});
 		
 		Route::group(['middleware'=>['permission:eliminar_pacientes']],function(){
-		});
-
-
-
-			
-			
+		});			
 			
 	});
+
+
+
 
 	Route::group(['prefix'=>'test'],function(){
 		Route::get('/api1',function(){return view('test.api1');});
 	});
+
+	Route::get('/perfil','PagesController@self_profile')->name('view_profile');
 
 });
 Route::get('/test/api',function(){

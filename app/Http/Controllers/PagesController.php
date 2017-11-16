@@ -23,4 +23,9 @@ class PagesController extends Controller{
     	//dd($stats);
     	return view('dashboard',compact('stats'));
     }
+
+    public function self_profile(){
+        $user=Auth::user();
+        return view('common.profile',compact('user'));
+    }
 }

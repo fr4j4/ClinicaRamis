@@ -52,9 +52,12 @@ var CURRENT_URL = window.location.href.split('#')[0].split('?')[0],
 	
 	
 // Sidebar
+
 function init_sidebar() {
 // TODO: This is some kind of easy fix, maybe we can improve this
+
 var setContentHeight = function () {
+
 	// reset height
 	$RIGHT_COL.css('min-height', $(window).height());
 
@@ -116,7 +119,7 @@ $MENU_TOGGLE.on('click', function() {
 
 	$BODY.toggleClass('nav-md nav-sm');
 
-	setContentHeight();
+	//setContentHeight();
 
 	$('.dataTable').each ( function () { $(this).dataTable().fnDraw(); });
 });
@@ -128,13 +131,13 @@ $MENU_TOGGLE.on('click', function() {
 		setContentHeight();
 	}).parent().addClass('active');
 	
-	/*
+	
 	$SIDEBAR_MENU.find('a').filter(function () {
 		return this.href == CURRENT_URL;
 	}).parent('li').addClass('current-page').parents('ul').slideDown(function() {
 		setContentHeight();
 	}).parent().addClass('active');
-	*/
+	
 	// recompute content when resizing
 	$(window).smartresize(function(){  
 		setContentHeight();
@@ -416,10 +419,10 @@ if (typeof NProgress != 'undefined') {
 			[16, 9]
 		];
 		
-		
+		/*
 		for (var i = 0; i < 30; i++) {
 		  chart_plot_02_data.push([new Date(Date.today().add(i).days()).getTime(), randNum() + i + i + 10]);
-		}
+		}*/
 		
 		
 		var chart_plot_01_settings = {
@@ -5036,41 +5039,43 @@ if (typeof NProgress != 'undefined') {
 	   
 	   
 	$(document).ready(function() {
-				
-		init_sparklines();
-		init_flot_chart();
+
+			
+//		init_sparklines();
+//		init_flot_chart();
 		init_sidebar();
-		init_wysiwyg();
-		init_InputMask();
-		init_JQVmap();
-		init_cropper();
-		init_knob();
-		init_IonRangeSlider();
-		init_ColorPicker();
-		init_TagsInput();
-		init_parsley();
-		init_daterangepicker();
-		init_daterangepicker_right();
-		init_daterangepicker_single_call();
-		init_daterangepicker_reservation();
-		init_SmartWizard();
-		init_EasyPieChart();
-		init_charts();
-		init_echarts();
-		init_morris_charts();
-		init_skycons();
-		init_select2();
-		init_validator();
-		init_DataTables();
-		init_chart_doughnut();
-		init_gauge();
-		init_PNotify();
-		init_starrr();
-		init_calendar();
-		init_compose();
-		init_CustomNotification();
-		init_autosize();
-		init_autocomplete();
+//		init_wysiwyg();
+//		init_InputMask();
+//		init_JQVmap();
+//		init_cropper();
+//		init_knob();
+//		init_IonRangeSlider();
+//		init_ColorPicker();
+//		init_TagsInput();
+//		init_parsley();
+//		init_daterangepicker();
+//		init_daterangepicker_right();
+//		init_daterangepicker_single_call();
+//		init_daterangepicker_reservation();
+//		init_SmartWizard();
+//		init_EasyPieChart();
+//		init_charts();
+//		init_echarts();
+//		init_morris_charts();
+//		init_skycons();
+//		init_select2();
+//		init_validator();
+//		init_DataTables();
+//		init_chart_doughnut();
+//		init_gauge();
+//		init_PNotify();
+//		init_starrr();
+//		init_calendar();
+//		init_compose();
+//		init_CustomNotification();
+//		init_autosize();
+//		init_autocomplete();
+
 				
 	});	
 	
