@@ -33,7 +33,7 @@ class PatientsController extends Controller{
             'lastname'=>$req->get('lastname'),
             'address'=>$req->get('address'),
             'gender'=>$req->get('gender'),
-            'birthday'=>Carbon::createFromFormat('d/m/Y', $req->get('birthday')),
+            'birthday'=>$req->get('birthday')?Carbon::createFromFormat('d/m/Y', $req->get('birthday')):null,
             'email'=>$req->get('email'),
             'rut'=>str_replace('.','',$req->get('rut')),
             'phone'=>$req->get('phone'),

@@ -29,39 +29,39 @@
     	<tbody>
     		<tr>
     			<th class="col-md-3">Nombre</th>
-    			<td>{{$patient->name}}</td>
+    			<td>{!!$patient->name!!}</td>
     		</tr>
         <tr>
           <th>Apellido</th>
-          <td>{{$patient->lastname}}</td>
+          <td>{!!$patient->lastname!!}</td>
         </tr>
         <tr>
           <th>Género</th>
-          <td style="text-transform: capitalize;">{{$patient->gender}}</td>
+          <td style="text-transform: capitalize;">{!!$patient->gender?$patient->gender:"<span style='color:gray'>- no especificado -</span>"!!}</td>
         </tr>
     		<tr>
     			<th>Fecha de nacimiento (d/m/y)</th>
-    			<td>{{$patient->birthday?Carbon\Carbon::parse($patient->birthday)->format('d/m/Y'):"No existe fecha registrada"}}</td>
+    			<td>{!!$patient->birthday?Carbon\Carbon::parse($patient->birthday)->format('d/m/Y'):"<span style='color:gray'>- no especificado -</span>"!!}</td>
     		</tr>
     		<tr>
     			<th>Edad (años)</th>
-    			<td>{{$patient->age()?$patient->age():"N/D"}}</td>
+    			<td>{!!$patient->age()?$patient->age():"N/D"!!}</td>
     		</tr>
     		<tr>
     			<th>RUT</th>
-    			<td>{{$patient->rut}}</td>
+    			<td>{!!$patient->rut!!}</td>
     		</tr>
     		<tr>
     			<th>Teléfono</th>
-    			<td>{{$patient->phone?$patient->phone:"No existe teléfono registrado"}}</td>
+    			<td>{!!$patient->phone?$patient->phone:"<span style='color:gray'>- no especificado -</span>"!!}</td>
     		</tr>
     		<tr>
     			<th>E-mail</th>
-    			<td>{{$patient->email?$patient->email:"No existe e-mail registrado"}}</td>
+    			<td>{!!$patient->email?$patient->email:"<span style='color:gray'>- no especificado -</span>"!!}</td>
     		</tr>
     		<tr>
     			<th>Dirección</th>
-    			<td style="text-transform: capitalize;">{{$patient->address?$patient->address:"No existe dirección registrada"}}</td>
+    			<td style="text-transform: capitalize;">{!!$patient->address?$patient->address:"<span style='color:gray'>- no especificado -</span>"!!}</td>
     		</tr>
 
     	</tbody>
