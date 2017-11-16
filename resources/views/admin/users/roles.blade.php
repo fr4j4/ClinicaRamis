@@ -14,13 +14,21 @@
 <input type="hidden" name="user_id" value="{{$user->id}}">
 @foreach($roles as $role)
 <div class="checkbox">
+		<label style="text-transform: capitalize;">
 	@if($user->hasRole($role->name))
-		<label style="text-transform: capitalize;"><input name="role[]" checked="" type="checkbox" value="{{$role->name}}">{{$role->name}}</label>
+
+			<!---
+			<input name="role[]" checked="" type="checkbox" value="{{$role->name}}">{{$role->name}}
+			-->
+			<input type="checkbox" class="switch" name="role[]"  value="{{$role->name}}" checked="" />{{$role->name}}
 	@else
-  		<label style="text-transform: capitalize;"><input name="role[]" type="checkbox" value="{{$role->name}}">{{$role->name}}</label>
+			<input type="checkbox" class="switch" name="role[]"  value="{{$role->name}}"/>{{$role->name}}
   	@endif
+		</label>
 </div>
 @endforeach
+
+	
 
 <button class="btn btn-success">Guardar roles</button>
 </form>
@@ -29,6 +37,13 @@
 @endsection
 
 
-@section('scripts')
+<script type="text/javascript">
 
+@section('scripts')
 @endsection
+@section('ready_scripts')
+	$('.switch').each(function(){
+		var switchery = new Switchery(this, { size: 'small' });
+	})
+@endsection
+</script>

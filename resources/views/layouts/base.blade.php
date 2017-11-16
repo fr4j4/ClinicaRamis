@@ -17,11 +17,15 @@
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/jquery-toggles/css/toggles.css')}}">
    <link rel="stylesheet" type="text/css" href="{{asset('vendors/jquery-toggles/css/themes/toggles-all.css')}}">
 
+    
     <!-- NProgress -->
     <link href="{{asset('vendors/nprogress/nprogress.css')}}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="{{asset('css/custom.css')}}" rel="stylesheet">
+  
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/switchery/dist/switchery.min.css')}}">
+
   </head>
   @yield('styles')
 
@@ -254,6 +258,10 @@
 
     <!-- jquery.inputmask -->
     <script src="{{asset('vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js')}}"></script>
+
+
+    <!-- Switchery -->
+    <script src="{{asset('vendors/switchery/dist/switchery.min.js')}}"></script>
 
    
     <script type="text/javascript">

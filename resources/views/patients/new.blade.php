@@ -31,12 +31,15 @@
     <input type="hidden" name="uid" >
 
 
+
+
+
     <label class="control-label">Datos personales</label>
     <div class="clearfix"></div>
 
-    <div class="col-md-2" style="border:black solid 2px;border-radius:10px;">
+    <div class="col-md-2" style="border:black solid 2px;border-radius:10px;padding: 1px;">
       <center>
-      <img id="patient_img" name="patient_img" alt="avatar" width="100" height="100" src="{{ asset('/patient_pictures/default.png') }}" >
+      <img style="padding: 0px" id="patient_img" name="patient_img" alt="avatar" width="100" height="100" src="{{ asset('/patient_pictures/default.png') }}" >
       <input style="display: none" type="file" id="input_image" name="image" accept="image/*" onchange="document.getElementById('patient_img').src = window.URL.createObjectURL(this.files[0])">
       <label for="input_image" class="btn btn-xs btn-primary">Seleccionar imagen...</label>
       </center>
@@ -126,7 +129,7 @@
 @endsection
 <script type="text/javascript">
 @section('ready_scripts')
-    $('#myDatepicker2').datetimepicker({
+    $('#fecha_nac').datetimepicker({
         format: 'DD/MM/YYYY',
         locale: 'es'
     });
