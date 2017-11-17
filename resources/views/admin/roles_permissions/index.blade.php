@@ -67,90 +67,7 @@
   </div>
 </div>
 
-<div id="newRoleForm_modal" data-backdrop="static" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Crear Rol</h4>
-      </div>
-      <div class="modal-body">
-        <p></p>
-        <form id="newRoleForm" method="post" action="{{route('post_new_role')}}">
-          <fieldset>
-            {{csrf_field()}}
-            @if($errors->has('name'))
-                <center>
-                <p class="alert alert-danger">
-                    <strong>{{$errors->first('name')}}</strong>
-                </p>
-                </center>
-            @endif
-            <div class="form-group">
-              <label class="col-md-2" for="name">Nombre</label>
-              <div class="col-md-10">
-                <input class="form-control" type="text" name="name">
-              </div>
-            </div>
-          </fieldset>
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-success">Crear</button>
-            <button type="button" class="btn btn-warning" onclick="resetRoleForm()" data-dismiss="modal">Cancelar</button>
-          </div>
-      </form>
-    </div>
-  </div>
-  </div>
-</div>
 
-<div id="newRoleForm_modal2" data-backdrop="static" class="modal fade" role="dialog" >
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Editar rol</h4>
-      </div>
-      <div class="modal-body">
-        <p></p>
-        <form id="newRoleForm2" method="POST" action="{{route('api_change_role_name')}}">
-          <fieldset>
-            {{csrf_field()}}
-
-            <input type="hidden" value="" name="role_id" id="new_role_id">
-            @if($errors->has('name'))
-                <center>
-                <p class="alert alert-danger">
-                    <strong>{{$errors->first('name')}}</strong>
-                </p>
-                </center>
-            @endif
-            <div class="form-group">
-              <label class="col-md-2" for="name">Nombre</label>
-              <div class="col-md-10">
-                <input class="form-control" id="role_name_input" type="text" name="role_new_name">
-              </div>
-            </div>
-              <div class="clearfix col-md-12">&nbsp;</div>
-              <div class="clearfix col-md-12">&nbsp;</div>
-              <div class="clearfix col-md-12">&nbsp;</div>
-            <div class="form-group">
-              <div class="col-md-12">  
-                <p class="alert alert-info">Si ha modificado permisos asignados a roles y no los ha
-                guardado, asegúrese de guardarlos antes de enviar este formulario. Al guardar los cambios de este rol, la pantalla actual se refrescará provocando que las asignaciones de permisos sin guardar se pierdan</p>
-              </div>          
-            </div>
-          </fieldset>
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-success" onclick="/*name_edit()*/">Guardar cambios</button>
-            <button type="button" class="btn btn-warning" onclick="resetRoleForm2()" data-dismiss="modal">Cancelar y volver</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 
    
 @endsection
@@ -430,3 +347,91 @@ function load_data(){
   load_data();
 @endsection
 </script>
+
+
+@section('modals')
+<div id="newRoleForm_modal" data-backdrop="static" class="modal animated" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Crear Rol</h4>
+      </div>
+      <div class="modal-body">
+        <p></p>
+        <form id="newRoleForm" method="post" action="{{route('post_new_role')}}">
+          <fieldset>
+            {{csrf_field()}}
+            @if($errors->has('name'))
+                <center>
+                <p class="alert alert-danger">
+                    <strong>{{$errors->first('name')}}</strong>
+                </p>
+                </center>
+            @endif
+            <div class="form-group">
+              <label class="col-md-2" for="name">Nombre</label>
+              <div class="col-md-10">
+                <input class="form-control" type="text" name="name">
+              </div>
+            </div>
+          </fieldset>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-success">Crear</button>
+            <button type="button" class="btn btn-warning" onclick="resetRoleForm()" data-dismiss="modal">Cancelar</button>
+          </div>
+      </form>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div id="newRoleForm_modal2" data-backdrop="static" class="modal fade" role="dialog" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Editar rol</h4>
+      </div>
+      <div class="modal-body">
+        <p></p>
+        <form id="newRoleForm2" method="POST" action="{{route('api_change_role_name')}}">
+          <fieldset>
+            {{csrf_field()}}
+
+            <input type="hidden" value="" name="role_id" id="new_role_id">
+            @if($errors->has('name'))
+                <center>
+                <p class="alert alert-danger">
+                    <strong>{{$errors->first('name')}}</strong>
+                </p>
+                </center>
+            @endif
+            <div class="form-group">
+              <label class="col-md-2" for="name">Nombre</label>
+              <div class="col-md-10">
+                <input class="form-control" id="role_name_input" type="text" name="role_new_name">
+              </div>
+            </div>
+              <div class="clearfix col-md-12">&nbsp;</div>
+              <div class="clearfix col-md-12">&nbsp;</div>
+              <div class="clearfix col-md-12">&nbsp;</div>
+            <div class="form-group">
+              <div class="col-md-12">  
+                <p class="alert alert-info">Si ha modificado permisos asignados a roles y no los ha
+                guardado, asegúrese de guardarlos antes de enviar este formulario. Al guardar los cambios de este rol, la pantalla actual se refrescará provocando que las asignaciones de permisos sin guardar se pierdan</p>
+              </div>          
+            </div>
+          </fieldset>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-success" onclick="/*name_edit()*/">Guardar cambios</button>
+            <button type="button" class="btn btn-warning" onclick="resetRoleForm2()" data-dismiss="modal">Cancelar y volver</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+@endsection

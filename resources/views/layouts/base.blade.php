@@ -211,6 +211,9 @@
 
           </div>
         </div>
+
+@yield('modals')
+
         <!-- /page content -->
 
         <!-- footer content -->
@@ -269,6 +272,7 @@
     <!-- Switchery -->
     <script src="{{asset('vendors/switchery/dist/switchery.min.js')}}"></script>
 
+    <script type="text/javascript" src="{{asset('js/bootstrap-modal-animate-css.js')}}"></script>
    
     <script type="text/javascript">
 
