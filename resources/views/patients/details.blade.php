@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title','Detalles de paciente')
+@section('title','Detalles Paciente')
 
 @section('styles')
 <style type="text/css">
