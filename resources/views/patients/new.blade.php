@@ -42,13 +42,13 @@
       
     <label class="control-label col-md-2 col-sm-2 col-xs-12 col-md-push-1">Nombre *</label>
     <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-      <input type="text" class="form-control has-feedback-left" id="input_name" placeholder="Nombre"  name="firstname">
+      <input type="text" class="form-control has-feedback-left" id="input_name" placeholder="Nombre"  name="firstname" value="{{old("input_name")}}">
       <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
     </div>
 
-    <label class="control-label col-md-1 col-sm-1 col-xs-12">Apellido</label>
+    <label class="control-label col-md-1 col-sm-1 col-xs-12">Apellido*</label>
     <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-      <input type="text" class="form-control" id="input_apellido" placeholder="Apellido"  name="lastname">
+      <input type="text" class="form-control" id="input_apellido" placeholder="Apellido"  name="lastname" value="{{old("input_apellido")}}">
       <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
     </div>
 
@@ -83,27 +83,27 @@
 
 
 
-    <label class="control-label col-md-1 col-sm-1 col-xs-12">R.U.T</label>
+    <label class="control-label col-md-1 col-sm-1 col-xs-12">R.U.T*</label>
     <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-      <input type="text" class="form-control has-feedback-right"  name="rut">
+      <input type="text" class="form-control has-feedback-right"  name="rut" value="{{old("rut")}}" placeholder="ej: 00111222-3">
       <span class="fa fa-address-card-o form-control-feedback right " aria-hidden="true"></span>
     </div>
 
     <label class="control-label col-md-2 col-sm-2 col-xs-12 col-md-push-1" >E-mail</label>
     <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-      <input type="text" class="form-control has-feedback-left" id="input_email" placeholder="Email"  name="email">
+      <input type="text" class="form-control has-feedback-left" id="input_email" placeholder="Email"  name="email" value="{{old("input_email")}}">
       <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
     </div>
 
     <label class="control-label col-md-1 col-sm-1 col-xs-12">Teléfono</label>
     <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-      <input class="form-control has-feedback-right" type="text" id="input_telefono" placeholder="Teléfono"  name="phone">
+      <input class="form-control has-feedback-right" type="text" id="input_telefono" placeholder="Teléfono"  name="phone" value="{{old("input_telefono")}}">
       <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
     </div>
 
     <label class="control-label col-md-2 col-sm-2 col-xs-12 col-md-push-1">Dirección</label>
     <div class="col-md-9 col-sm-9 col-xs-12 form-group has-feedback">
-      <input type="text" class="form-control has-feedback-left" id="input_direccion" placeholder="Dirección"  name="address">
+      <input type="text" class="form-control has-feedback-left" id="input_direccion" value="{{old("input_direccion")}}" placeholder="Dirección"  name="address">
       <span class="fa fa-address-card form-control-feedback left" aria-hidden="true"></span>
     </div>
 

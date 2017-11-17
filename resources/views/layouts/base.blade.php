@@ -33,6 +33,11 @@
 
   <body class="nav-md footer_fixed">
   <style type="text/css">
+
+  button{
+    text-transform: capitalize;
+  }
+
   footer{
     z-index: 1000 !important;
   }

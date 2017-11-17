@@ -40,7 +40,7 @@
 			<span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
 		</div>
 
-		<label class="control-label col-md-1 col-sm-1 col-xs-12">Apellido</label>
+		<label class="control-label col-md-1 col-sm-1 col-xs-12">Apellido*</label>
 		<div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
 			<input type="text" class="form-control" id="input_apellido" placeholder="Apellido" value="{{$patient->lastname}}" name="lastname">
 			<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
@@ -93,9 +93,9 @@
 
 
 
-		<label class="control-label col-md-1 col-sm-1 col-xs-12">R.U.T</label>
+		<label class="control-label col-md-1 col-sm-1 col-xs-12">R.U.T*</label>
 		<div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-			<input type="text" class="form-control has-feedback-right" value="{{$patient->rut}}" name="rut">
+			<input type="text" class="form-control has-feedback-right" value="{{$patient->rut}}" name="rut" placeholder="ej: 00111222-3">
 			<span class="fa fa-address-card-o form-control-feedback right " aria-hidden="true"></span>
 		</div>
 

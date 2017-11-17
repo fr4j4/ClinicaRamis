@@ -27,6 +27,11 @@ class UpdatePatientRequest extends FormRequest
     public function rules()
     {
         return [
+            'rut'=>array(
+                'unique:patients',
+                'required',
+                'regex:/^\d{1,3}.?\d{3}.?\d{3}-([1-9]|k){1}$/'
+            ),
             'email'=>'sometimes|email|nullable',
             'name'=>'required:patients',
             'lastname'=>'required:patients',
