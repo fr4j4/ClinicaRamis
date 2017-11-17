@@ -50,7 +50,7 @@
 <div class="col-md-12 ">
       <div class="form-group row">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12 col-md-push-1">Género</label>
-                        <div class="col-md-3 col-sm-3 col-xs-12">
+                        <div class="col-md-9 col-sm-9 col-xs-12">
                           <div id="gender" class="btn-group" data-toggle="buttons">
                             @if($patient->gender=="mujer")
 		                        <label class="btn btn-default active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
@@ -59,21 +59,30 @@
 		                        <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
 		                          <input type="radio" name="gender" value="hombre"> Hombre
 		                        </label>
+	                            <label class="btn btn-default " data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            	  <input type="radio" name="gender"value ="none"> No especificado
+                            	</label>
 		                    @else
 		                    	@if($patient->gender=="hombre")
 		                    		<label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-		                              <input type="radio" name="gender" value="mujer" => &nbsp; Mujer &nbsp;
+		                              <input type="radio" name="gender" value="mujer" > &nbsp; Mujer &nbsp;
 		                            </label>
 		                            <label class="btn btn-default active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
 		                              <input type="radio" name="gender" value="hombre" checked> Hombre
 		                            </label>
+		                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                	  <input type="radio" name="gender"value ="none"> No especificado
+                                	</label>
 		                    	@else
 									<label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-		                              <input type="radio" name="gender" value="mujer" => &nbsp; Mujer &nbsp;
+		                              <input type="radio" name="gender" value="mujer"> &nbsp; Mujer &nbsp;
 		                            </label>
 		                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
 		                              <input type="radio" name="gender" value="hombre"> Hombre
 		                            </label>
+		                            <label class="btn btn-default active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                	  <input type="radio" name="gender" checkedvalue ="none"> No especificado
+                                	</label>
 		                    	@endif
                             @endif
                           </div>
