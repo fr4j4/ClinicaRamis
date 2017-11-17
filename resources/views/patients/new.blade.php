@@ -3,7 +3,7 @@
 @section('content')
 	<div class="container">
 
-<h5><a href="{{route('patients_index')}}" type="button" class="btn btn-sm btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i> Cancelar y volver a lista de pacientes</a></h5>
+<h5><a href="{{route('patients_index')}}" type="button" class="btn btn-sm btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i> Cancelar y Volver a Lista de Pacientes</a></h5>
 
   <div class="x_panel">
   <div class="x_content">
@@ -35,7 +35,7 @@
       <center>
       <img style="padding: 0px" id="patient_img" name="patient_img" alt="avatar" width="100" height="100" src="{{ asset('/patient_pictures/default.png') }}" >
       <input style="display: none" type="file" id="input_image" name="image" accept="image/*" onchange="document.getElementById('patient_img').src = window.URL.createObjectURL(this.files[0])">
-      <label for="input_image" class="btn btn-xs btn-primary">Seleccionar imagen...</label>
+      <label for="input_image" class="btn btn-xs btn-primary">Seleccionar Imagen...</label>
       </center>
     </div>
     <div class="col-md-10">
@@ -111,8 +111,8 @@
 
     </fieldset>
     <div class="form-group">
-      <button class="btn btn-info" type="reset"><i class="fa fa-refresh" aria-hidden="true"></i> Reiniciar formulario</button>
-      <button class="btn btn-primary" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Registrar nuevo paciente</button>
+      <button class="btn btn-info col-md-2 col-md-offset-4" type="reset"><i class="fa fa-refresh" aria-hidden="true"></i> Reiniciar Formulario</button>
+      <button class="btn btn-primary col-md-2" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Registrar Nuevo Paciente</button>
     </div>
   </form>
 

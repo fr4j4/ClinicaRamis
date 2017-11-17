@@ -20,9 +20,9 @@
 			<!---
 			<input name="role[]" checked="" type="checkbox" value="{{$role->name}}">{{$role->name}}
 			-->
-			<input type="checkbox" class="switch" name="role[]"  value="{{$role->name}}" checked="" />{{$role->name}}
+			<input type="checkbox" class="switch" name="role[]"  value="{{ $role->name}}" checked="" /><span style="padding-left:1em">{{$role->name}}<span/>
 	@else
-			<input type="checkbox" class="switch" name="role[]"  value="{{$role->name}}"/>{{$role->name}}
+			<input type="checkbox" class="switch" name="role[]"  value="{{ $role->name}}"/><span style="padding-left:1em">{{$role->name}}<span/>
   	@endif
 		</label>
 </div>

@@ -6,7 +6,7 @@
 @section('content')
 
 <div>
-	<a class="btn btn-success" href="{{route('new_user_form')}}"><i class="fa fa-plus" aria-hidden="true"></i> Registrar nuevo usuario</a>
+	<a class="btn btn-success" href="{{route('new_user_form')}}"><i class="fa fa-plus" aria-hidden="true"></i> Registrar Nuevo Usuario</a>
 </div>
 
 <div class="panel panel-default">

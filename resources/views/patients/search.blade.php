@@ -18,7 +18,7 @@
 <div class="container">
 	<div class="col col-md-12">
 		<div class="col-md-4">
-			<a class="btn btn-success" href="{{route('new_patient_form')}}">Registrar nuevo paciente</a>
+			<a class="btn btn-success" href="{{route('new_patient_form')}}">Registrar Nuevo Paciente</a>
 		</div>
 		
 		<form method="GET" action="{{route('patients_search')}}">

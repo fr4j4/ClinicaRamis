@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title','Adminsitración de roles y permisos')
+@section('title','Administración de roles y permisos')
 
 @section('panel_title')
 
@@ -53,7 +53,7 @@
     <div class="x_panel">
       <div class="x_title">
         <h2><!--i class="fa fa-align-left"</i>--> Permisos <span id="permissions_counter"></span></h2>
-        <button class="btn btn-warning pull-right" onclick="ajax_savePermissions()">Guardar permisos</button>
+        <button class="btn btn-warning pull-right" onclick="ajax_savePermissions()">Guardar Permisos</button>
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
@@ -217,8 +217,8 @@ function load_data(){
       <div class="row">\
         <div class="btn-group" style="width:100%">\
           <button class="btn btn-default role_item" style="width:70%" type="button" id="role_item_'+r.id+'" onClick="select_role('+r.id+')" >'+r.name+'</button>\
-          <button class="btn btn-default role_item" style="width:15%;min-height:34px;" type="button" id="btncog_'+r.id+'" onClick="showNewRoleForm2(\''+r.id+'\');name_edit('+r.id+');;"><span class="glyphicon glyphicon-cog"></span></button>\
-          <button class="btn btn-danger role_item" style="width:15%;min-height:34px;" type="button" id="btntrash_'+r.id+'" onClick="delete_role('+r.id+')"><span class="glyphicon glyphicon-trash" ></span></button>\
+          <button class="btn btn-default role_item" style="width:15%;min-height:34px;" type="button" id="btncog_'+r.id+'" onClick="showNewRoleForm2(\''+r.id+'\');name_edit('+r.id+');;"><i class="fa fa-cog" aria-hidden="true" style="padding-left:20%;"></i></button>\
+          <button class="btn btn-danger role_item" style="width:15%;min-height:34px;" type="button" id="btntrash_'+r.id+'" onClick="delete_role('+r.id+')"><i class="fa fa-trash" aria-hidden="true" style="padding-left:20%;"></i></button>\
         </div>\
       </div>')
     $('#btncog_'+r.id).height($('#role_item_'+r.id).height());
@@ -250,23 +250,23 @@ function load_data(){
 
       $('#perms_section:last').append(panel)    
       for(j in permissions){
-        permission_list=$('<div class="col-md-9 col-sm-9 col-xs-12"></div>');
+        permission_list=$('<div class="col-md-offset-2 col-sm-offset-2 col-md-8 col-sm-8"></div>');
         p=permissions[j];
         if(p.cat_id===cat.id){
-          permission_item=$("<li style='min-height:3em;list-style-type:none'></li>")
+          permission_item=$("<li style='min-height:3em;list-style-type:none;'></li>")
           permission_item.hover(
             function(){
               $(this).css({color:'blue'})
             },function(){
               $(this).css({color:'inherit'})
             })
-          permission_div=$("<div class'col-md-12'><span class='first'></span><span class='second'></span></div>")
-          permission_toggle=$('<div id="toggle_'+p.id+'" perm_id="'+p.id+'"class="toggle toggle-light" data-toggle-on="true"  data-toggle-height="25" data-toggle-width="150" onClick="toggle_permission('+p.id+')" ></div>')
+          permission_div=$("<div><span class='first'></span><span class='second' ></span></div>")
+          permission_toggle=$('<div id="toggle_'+p.id+'" perm_id="'+p.id+'"class="toggle toggle-light" data-toggle-on="true"  data-toggle-height="25" data-toggle-width="150" onClick="toggle_permission('+p.id+')" style="padding:0; "></div>')
 
           permission_label=$('<label class="test_name">'+p.name+'</label>');
 
-          permission_div.find('.first').addClass('col-md-6');
-          permission_div.find('.second').addClass('col-md-6');
+          permission_div.find('.first').addClass('col-sm-6');
+          permission_div.find('.second').addClass('col-sm-6');
           permission_div.find('.first').append(permission_label);
           permission_div.find('.second').append(permission_toggle);
 
@@ -275,8 +275,8 @@ function load_data(){
           
           permission_toggle.toggles({
             text:{
-              on:'asignado',
-              off:'no asignado'
+              on:'Asignado',
+              off:'No Asignado'
             },
           });
 
@@ -378,8 +378,8 @@ function load_data(){
           </fieldset>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-success">Crear</button>
-            <button type="button" class="btn btn-warning" onclick="resetRoleForm()" data-dismiss="modal">Cancelar</button>
+            <button class="btn btn-success col-md-2 col-md-offset-4"><i class="fa fa-floppy-o" aria-hidden="true"></i> Crear</button>
+            <button type="button" class="btn btn-warning col-md-2" onclick="resetRoleForm()" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</button>
           </div>
       </form>
     </div>
@@ -426,8 +426,8 @@ function load_data(){
           </fieldset>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-success" onclick="/*name_edit()*/">Guardar cambios</button>
-            <button type="button" class="btn btn-warning" onclick="resetRoleForm2()" data-dismiss="modal">Cancelar y volver</button>
+            <button class="btn btn-success col-md-4 col-md-offset-2" onclick="/*name_edit()*/"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar Cambios</button>
+            <button type="button" class="btn btn-warning col-md-4" onclick="resetRoleForm2()" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i> Cancelar y Volver</button>
           </div>
         </form>
       </div>

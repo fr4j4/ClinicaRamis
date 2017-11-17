@@ -19,7 +19,7 @@
 	<div class="col col-md-12">
 	@can('crear_pacientes')
 		<div class="col-md-4">
-			<a class="btn btn-success" href="{{route('new_patient_form')}}">Registrar nuevo paciente</a>
+			<a class="btn btn-success" href="{{route('new_patient_form')}}">Registrar Nuevo Paciente</a>
 		</div>
 	@endcan
 		<form method="GET" action="{{route('patients_search')}}">

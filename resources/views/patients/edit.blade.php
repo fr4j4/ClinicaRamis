@@ -2,7 +2,7 @@
 @section('title','Editar información de paciente')
 @section('panel_title')
 <h5><a class="btn btn-sm btn-warning" href="{{route('show_patient_details',$patient->id)}}"><i class="fa fa-arrow-left" aria-hidden="true"></i>
- Cancelar y volver a detalles del paciente</a></h5>
+ Cancelar y Volver a Detalles del Paciente</a></h5>
 @endsection
 @section('content')
 
@@ -29,7 +29,7 @@
 			<center>
 			<img id="patient_img" name="patient_img" alt="avatar" width="100" height="100" src="{{ asset('/patient_pictures/'.$patient->picture) }}" >
 			<input style="display: none" type="file" id="input_image" name="image" accept="image/*" onchange="document.getElementById('patient_img').src = window.URL.createObjectURL(this.files[0])">
-			<label for="input_image" class="btn btn-xs btn-primary">Seleccionar imagen...</label>
+			<label for="input_image" class="btn btn-xs btn-primary">Seleccionar Imagen...</label>
 			</center>
 		</div>
 		<div class="col-md-10">
@@ -121,8 +121,8 @@
 
 		</fieldset>
 		<div class="form-group">
-			<button class="btn btn-info" type="reset"><i class="fa fa-refresh" aria-hidden="true"></i> Reiniciar formulario</button>
-			<button class="btn btn-primary" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar información</button>
+			<button class="btn btn-info col-md-2 col-md-offset-4" type="reset"><i class="fa fa-refresh" aria-hidden="true"></i> Reiniciar formulario</button>
+			<button class="btn btn-primary col-md-2" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar información</button>
 		</div>
 	</form>
 </div>

@@ -2,7 +2,7 @@
 @section('title','Modificar perfil')
 @section('panel_title')
 <h5><a class="btn btn-sm btn-primary" href="{{route('show_user_details',$user->id)}}"><i class="fa fa-arrow-left" aria-hidden="true"></i>
- Volver a detalles</a></h5>
+ Volver a Detalles</a></h5>
 @endsection
 @section('content')
 <div class="x_content">
@@ -94,9 +94,9 @@
 
 		<div class="ln_solid"></div>
 		<div class="form-group">
-			<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-				<button class="btn btn-primary" type="reset"><i class="fa fa-refresh" aria-hidden="true"></i> Reiniciar formulario</button>
-				<button type="submit" class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar información</button>
+			<div class="row">
+				<button class="btn btn-primary col-md-2 col-md-offset-4" type="reset"><i class="fa fa-refresh" aria-hidden="true"></i> Reiniciar Formulario</button>
+				<button type="submit" class="btn btn-success col-md-2"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar Información</button>
 			</div>
 		</div>
 

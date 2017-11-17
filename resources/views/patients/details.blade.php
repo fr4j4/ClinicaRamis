@@ -2,7 +2,7 @@
 @section('title','Detalles de paciente')
 @section('panel_title')
 <h5><a class="btn btn-sm btn-primary" href="{{route('patients_index')}}"><i class="fa fa-arrow-left" aria-hidden="true"></i>
- Volver a lista de pacientes</a></h5>
+ Volver a Lista de Pacientes</a></h5>
 @endsection
 @section('content')
 <div class="container">
@@ -19,7 +19,7 @@
     <p>
     <h3>Datos personales</h3>
 @can('modificar_pacientes')
-    <a href="{{route('edit_patient_form',$patient->id)}}" class="btn btn-xs btn-warning">modificar datos personales</a>
+    <a href="{{route('edit_patient_form',$patient->id)}}" class="btn btn-xs btn-warning">Modificar Datos Personales</a>
 @endcan    
     </p>
 

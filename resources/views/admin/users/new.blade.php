@@ -87,9 +87,9 @@
 
 		<div class="ln_solid"></div>
 		<div class="form-group">
-			<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-				<button class="btn btn-primary" type="reset">Reset</button>
-				<button type="submit" class="btn btn-success">Submit</button>
+			<div class="row">
+				<button class="btn btn-primary col-md-2 col-md-offset-4" type="reset"><i class="fa fa-refresh" aria-hidden="true"></i> Reiniciar Formulario</button>
+				<button type="submit" class="btn btn-success col-md-2"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar Información</button>	
 			</div>
 		</div>
 
