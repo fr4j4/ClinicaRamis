@@ -28,7 +28,7 @@ class UpdatePatientRequest extends FormRequest
     {
         return [
             'rut'=>array(
-                'unique:patients',
+                'unique:users,rut,'.$this->uid,
                 'required',
                 'regex:/^\d{1,3}.?\d{3}.?\d{3}-([1-9]|k){1}$/'
             ),
