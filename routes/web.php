@@ -63,6 +63,7 @@ Route::group(['middleware'=>['checkLogin'],],function(){
 		});
 		
 		Route::group(['middleware'=>['permission:eliminar_pacientes']],function(){
+			Route::get('/{pid}/delete','PatientsController@delete_patient')->name('delete_patient');
 		});			
 			
 	});

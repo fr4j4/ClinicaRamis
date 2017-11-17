@@ -1,5 +1,18 @@
 @extends('layouts.base')
 @section('title','Detalles de paciente')
+
+@section('styles')
+<style type="text/css">
+  .tab_link{
+    color: white !important;
+  }
+  .tab_link:hover{
+    color: black !important;
+    background-color: inherit;
+  }
+</style>
+@endsection
+
 @section('panel_title')
 <h5><a class="btn btn-sm btn-primary" href="{{route('patients_index')}}"><i class="fa fa-arrow-left" aria-hidden="true"></i>
  Volver a Lista de Pacientes</a></h5>
@@ -7,20 +20,45 @@
 @section('content')
 <div class="container">
 
+
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#datos">Datos personales</a></li>
   <li><a data-toggle="tab" href="#historial">Historial</a></li>
   <li><a data-toggle="tab" href="#fotografias">Fotografías</a></li>
   <li><a data-toggle="tab" href="#docs">Documentos</a></li>
+
+@if(
+  Auth::user()->can('crear_pacientes')
+  ||Auth::user()->can('eliminar_pacientes')
+  ||Auth::user()->can('modificar_pacientes')
+  )
+  <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)"><span style="color: blue">Acciones Administrativas</span>
+      <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        @can('modificar_pacientes')
+        <li>
+          <a href="{{route('edit_patient_form',$patient->id)}}" class="tab_link btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modificar Datos Personales</a>
+        </li>
+        @endcan
+        @can('eliminar_pacientes')
+        <li role="separator" class="divider"></li>
+        <li>
+          <a href="javascript:void(0)" onclick="delete_patient()" class="tab_link btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Eliminar Paciente</a>
+        </li>
+        @endcan
+
+      </ul>
+  </li>
+@endif
 </ul>
 
 <div class="tab-content">
+
+
   <div id="datos" class="tab-pane fade in active">
     <p>
     <h3>Datos personales</h3>
-@can('modificar_pacientes')
-    <a href="{{route('edit_patient_form',$patient->id)}}" class="btn btn-xs btn-warning">Modificar Datos Personales</a>
-@endcan    
     </p>
 
 <div class="col-md-8">
@@ -88,3 +126,17 @@
 
 </div>
 @endsection
+
+<script type="text/javascript">
+@section('scripts')
+
+@can('eliminar_pacientes')
+function delete_patient(){
+  response=confirm("Realmente desea eliminar el paciente?\nESTA ACCIÓN NO PUEDE DESHACERSE");
+  if(response){
+    window.location="{{route('delete_patient',[$patient->id])}}";
+  }
+}
+@endcan
+@endsection
+</script>

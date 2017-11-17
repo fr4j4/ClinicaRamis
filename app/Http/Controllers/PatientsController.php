@@ -124,4 +124,13 @@ class PatientsController extends Controller{
         $patient=Patient::find($pid);
         return view('patients.edit',compact('patient'));
     }
+
+
+    public function delete_patient($pid){
+        $p=Patient::find($pid);
+        if($p){
+            $p->delete();
+        }
+        return redirect()->action('PatientsController@index');
+    }
 }
