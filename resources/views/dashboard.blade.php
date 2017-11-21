@@ -13,11 +13,13 @@ Bienvenido, {{Auth::user()->name}}.
 @foreach($stats as $stat)
 	<div class="col-md-3">
 		<div class="tile-stats">
-		  <div class="icon"><i class="fa fa-users"></i>
+		<div class="icon"><i class="fa {{isset($stat->icon)?$stat->icon:"fa-cog"}}"></i>
 		  </div>
 		  <div class="count">{{$stat->value}}</div>
 		  <h3 style="text-transform: capitalize;">{{$stat->title}}</h3>
-		  <p><a href="{{route('admin_users_index')}}" class="btn btn-xs btn-info">ver usuarios registrados</a></p>
+		  @if(isset($stat->manage_button))
+		  <p><a href="{{$stat->manage_button['url']}}" class="btn btn-xs btn-info">{{$stat->manage_button['title']}}</a></p>
+			@endif
 		</div>
 	</div>
 @endforeach
