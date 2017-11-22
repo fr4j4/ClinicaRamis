@@ -38,6 +38,7 @@ class AdminController extends Controller{
             'phone'=>$req->get('phone'),
             'email'=>$req->get('email'),
             'rut'=>$req->get('rut'),
+            'avatar'=>$req->hasFile('avatar')?Storage::disk('user_avatars')->putFile('/',$req->file('avatar')):'default.png',
         ));
         $u->save();
         return redirect()->route('admin_users_index');
@@ -45,6 +46,8 @@ class AdminController extends Controller{
 
     public function update_user(UpdateUserFormRequest $req){ 
         
+
+
         $user=user::findOrFail($req->get('uid'));
 
         if($req->get('password')){

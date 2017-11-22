@@ -12,6 +12,7 @@ class PagesController extends Controller{
     public function dashboard(){
     	$user=Auth::user();
     	$stats=[];
+
     	if($user){
     		if($user->can('ver_usuarios')){
     			$user_count=[
@@ -26,6 +27,7 @@ class PagesController extends Controller{
     			array_push($stats,(object)$user_count);
     		}
     	}
+        
         if($user->can('ver_pacientes')){
             $patients_count=[
                 'title'=>'Pacientes registrados',
@@ -38,8 +40,8 @@ class PagesController extends Controller{
             ];
             array_push($stats,(object)$patients_count);
         }
-    	//dd($stats);
-    	return view('dashboard',compact('stats'));
+    	
+        return view('dashboard',compact('stats'));
     }
 
     public function self_profile(){
