@@ -128,7 +128,7 @@
   ||Auth::user()->can('modificar_usuarios')
   ||Auth::user()->can('eliminar_usuarios')
 )                      
-                      <li class="{{ Route::currentRouteNamed('admin_users_index') ? 'current-page' : '' }}"><a href="{{route('admin_users_index')}}">Gestión de usuarios</a></li>
+                      <li class="{{ Route::currentRouteNamed('admin_users_index') ? 'current-page' : '' }}"><a href="{{route('admin_users_index')}}">Gestión de pesonal</a></li>
 @endif
 
 
