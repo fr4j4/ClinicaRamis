@@ -56,7 +56,7 @@
                 </p>
                 </center>
                 @endif
-                <input type="text" class="form-control" placeholder="Alias" required name="email" />
+                <input type="text" class="form-control" placeholder="Alias" autofocus required name="email" />
               </div>
               <div>
                 @if($errors->has('password'))

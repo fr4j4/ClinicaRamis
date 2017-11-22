@@ -49,6 +49,9 @@ class AdminController extends Controller{
 
 
         $user=user::findOrFail($req->get('uid'));
+        if($req->get('nickname')){
+            $user->nickname=$req->get('nickname');
+        }
 
         if($req->get('password')){
             $user->password=bcrypt($req->get('password'));
@@ -69,6 +72,9 @@ class AdminController extends Controller{
         }
         if($req->get('rut')){
             $user->rut=$req->get('rut');
+        }
+        if($req->get('email')){
+            $user->email=$req->get('email');
         }
 
         if($req->hasFile('avatar')){
