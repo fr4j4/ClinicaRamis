@@ -1,8 +1,13 @@
 @extends('layouts.base')
 @section('title','Modificar perfil')
 @section('panel_title')
-<h5><a class="btn btn-sm btn-primary" href="{{route('show_user_details',$user->id)}}"><i class="fa fa-arrow-left" aria-hidden="true"></i>
- Volver a Detalles</a></h5>
+<h5><a class="btn btn-sm btn-warning" href="{{route('show_user_details',$user->id)}}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Cancelar y volver a detalles</a></h5>
+				<div class="form-group pull-right">
+				<div class="row">
+					<button id="reset_btn" class="btn btn-primary" type="reset"><i class="fa fa-refresh" aria-hidden="true"></i> Reiniciar Formulario</button>
+					<button id="submit_btn" type="submit" class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar información de usuario</button>	
+				</div>
+				</div>
 @endsection
 @section('content')
 
@@ -18,7 +23,7 @@
 	      </ul>
 	    </div>
 	    @endif
-		<form onreset="" enctype="multipart/form-data" class="form" method="post" action="{{route('post_update_user')}}" >
+		<form id="edit_form" onreset="" enctype="multipart/form-data" class="form" method="post" action="{{route('post_update_user')}}" >
 			{{csrf_field()}}
 			<fieldset>
 				<input type="hidden" name="uid" value="{{$user->id}}">
@@ -103,12 +108,7 @@
 					</div>
 			</fieldset>
 			<div class="ln_solid"></div>
-				<div class="form-group">
-				<div class="row">
-					<button class="btn btn-primary col-md-2 col-md-offset-4" type="reset"><i class="fa fa-refresh" aria-hidden="true"></i> Reiniciar Formulario</button>
-					<button type="submit" class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar información de usuario</button>	
-				</div>
-			</div>
+
 		</form>
 	</div>
 </div>
@@ -216,3 +216,10 @@
 -->
 
 @endsection
+<script type="text/javascript">
+@section('ready_scripts')
+	$('#submit_btn').click(function(){$('#edit_form').submit()})
+
+	$('#reset_btn').click(function(){$('#edit_form')[0].reset()})
+@endsection
+</script>
