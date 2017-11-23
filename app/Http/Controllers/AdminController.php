@@ -13,7 +13,7 @@ use App\Permission;
 use Auth;
 use App\User;
 use App\PermCat;/*categorias de permisos*/
-
+use Spatie\Activitylog\Models\Activity;
 use Illuminate\Support\Facades\Storage;
 class AdminController extends Controller{
     
@@ -46,8 +46,6 @@ class AdminController extends Controller{
 
     public function update_user(UpdateUserFormRequest $req){ 
         
-
-
         $user=user::findOrFail($req->get('uid'));
         if($req->get('nickname')){
             $user->nickname=$req->get('nickname');

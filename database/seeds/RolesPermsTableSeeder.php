@@ -29,8 +29,8 @@ class RolesPermsTableSeeder extends Seeder{
         	//'display_name' => 'editar usuarios'
         ]);
         Permission::create([
-        	'name' => 'eliminar_usuarios',
-        	//'display_name' => 'eliminar usuarios'
+            'name' => 'eliminar_usuarios',
+            //'display_name' => 'eliminar usuarios'
         ]);
 
 
@@ -53,6 +53,12 @@ class RolesPermsTableSeeder extends Seeder{
             //'display_name' => 'eliminar pacientes'
         ]);
 
+
+        //registros
+        Permission::create([
+            'name' => 'ver_registros',
+            //'display_name' => 'eliminar usuarios'
+        ]);
         
         /*Roles*/
 
@@ -76,6 +82,7 @@ class RolesPermsTableSeeder extends Seeder{
         $admin->givePermissionTo('ver_usuarios');
         $admin->givePermissionTo('modificar_usuarios');
         $admin->givePermissionTo('eliminar_usuarios');
+        $admin->givePermissionTo('ver_registros');
 
         $doc->givePermissionTo('crear_pacientes');
         $doc->givePermissionTo('ver_pacientes');
