@@ -25,42 +25,93 @@ Agenda general
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Asignar hora médica</h4>
       </div>
+       @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+    @endif
       <div class="modal-body">
-        <form class="form" id="new_appointment_form">
+        <form class="form" id="new_appointment_form" method="POST" action="{{route('post_new_medical_appointment')}}">
         	<fieldset>
         		{{ csrf_field() }}
         		<input type="hidden" name="doctor_id" id="doctor_id">
         		<input type="hidden" name="assistaint_id" id="assistaint_id">
         		<input type="hidden" name="patient_id" id="patient_id">
         		
+        		<div class="col-md-12">
+
+
         		<div class="form-group">
-        			<label class="control-label col-md-2">Paciente</label>
-        			<div class="col-md-10">
-        				<input class="form-control" name="" id="patient_search" placeholder="buscar por nombre o apellido">
-        			</div>
-        		</div>
-        		<div class="form-group">
-        			<label class="control-label col-md-2">Doctor</label>
-        			<div class="col-md-10">
-        				<input class="form-control" name="" id="doctor_search" placeholder="buscar por nombre o apellido">
+        			<label class="control-label col-md-3">Paciente</label>
+        			<div class="col-md-9">
+        				<input class="form-control" name="" id="patient_search" placeholder="buscar por nombre o apellido ...">
         			</div>
         		</div>
 
         		<div class="form-group">
-        			<label class="control-label col-md-2">Asistente</label>
-        			<div class="col-md-10">
-        				<input class="form-control" name="" id="assistaint_search" placeholder="buscar por nombre o apellido">
+        			<label class="control-label col-md-3">Tratamiento</label>
+        			<div class="col-md-9">
+        				<input type="text" class="form-control" name="treatment" id="" >
         			</div>
         		</div>
 
-        		
+
+        		<div class="form-group">
+        			<label class="control-label col-md-3">Doctor</label>
+        			<div class="col-md-9">
+        				<input class="form-control" name="" id="doctor_search" placeholder="buscar por nombre o apellido ...">
+        			</div>
+        		</div>
+
+        		<div class="form-group">
+        			<label class="control-label col-md-3">Asistente</label>
+        			<div class="col-md-9">
+        				<input class="form-control" name="" id="assistaint_search" placeholder="buscar por nombre o apellido ...">
+        			</div>
+        		</div>
+
+        		<div class="form-group">
+        			<label class="col-md-3">Fecha y hora de inicio</label>
+        			<div class="col-md-9">
+			            <div class="input-group date" id="new_fecha_hora_inicio" >
+			                <span style="color: blue" class="input-group-addon">
+			                   <span class="glyphicon glyphicon-calendar"></span>
+			                </span>
+			                <input type='text' class="form-control" placeholder="" style="z-index: 0" name="start_time">
+			            </div>
+			        </div>
+        		</div>
+
+        		<div class="form-group">
+        			<label class="col-md-3">Fecha y hora de fin</label>
+        			<div class="col-md-9">
+			            <div class="input-group date" id="new_fecha_hora_fin" >
+			                <span style="color: blue" class="input-group-addon">
+			                   <span class="glyphicon glyphicon-calendar"></span>
+			                </span>
+			                <input type='text' class="form-control" style="z-index: 0" placeholder="" name="end_time">
+			            </div>
+			        </div>
+        		</div>
+        		<div class="form-group">
+        			<label class="control-label col-md-3">Descripción o comentario</label>
+        			<div class="col-md-9">
+        				<textarea class="form-control" name="description"></textarea>
+        			</div>
+        		</div>
+
+        		</div>
         		
         	</fieldset>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Asignar nueva hora médica</button>
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" onclick="$('#new_appointment_form').submit()" data-dismiss="modal">Asignar nueva hora médica</button>
+        <button type="submit" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
 
@@ -86,6 +137,8 @@ Agenda general
 <script type="text/javascript">
 @section('scripts')
 var doctors=[];
+
+
 
 function load_data(){
 	$("#doctor_search").easyAutocomplete({
@@ -164,6 +217,19 @@ function get_doctors_list(){
 
 @section('ready_scripts')
 
+$('#new_fecha_hora_inicio').datetimepicker({
+    format: 'DD/MM/YYYY HH:mm',
+    locale: 'es',
+    date:moment().format(),
+});
+
+$('#new_fecha_hora_fin').datetimepicker({
+    format: 'DD/MM/YYYY HH:mm',
+    locale: 'es',
+    date:moment().format(),
+});
+
+
 $('#calendar').fullCalendar({
     locale:'es',
 	header: {
@@ -190,9 +256,15 @@ $('#calendar').fullCalendar({
 	@endforeach
 @endif
 
+@if($errors->any())
+	$('#myModal').modal('show');
+@endif
+
+
 $('#myModal').on('hidden.bs.modal', function () {
 	$('#new_appointment_form')[0].reset();
 })
-//$('#calendar').fullCalendar( 'next')
+
+
 @endsection
 </script>

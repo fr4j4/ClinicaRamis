@@ -20,6 +20,7 @@ class CreateMedicalAppointmentsTable extends Migration{
             $table->string('treatment');
             $table->dateTime('start_time');
             $table->dateTime('end_time');
+            $table->string('description');
             $table->timestamps();
         });
         /*tabla intermedia de horas medicas y doctores*/
