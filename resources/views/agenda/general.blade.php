@@ -26,7 +26,9 @@ Agenda general
         <h4 class="modal-title">Asignar hora médica</h4>
       </div>
       <div class="modal-body">
-        <p></p>
+        <form class="form" id="new_appointment_form">
+        	
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success" data-dismiss="modal">Asignar nueva hora médica</button>
@@ -105,7 +107,7 @@ $('#calendar').fullCalendar({
 @if($medApps)
 	@foreach($medApps as $m)
 		 $('#calendar').fullCalendar('renderEvent',{
-		 	title:'{{$m->patient->name." ".$m->patient->lastname}}',
+		 	title:'{{$m->patient->name." ".$m->patient->lastname." [".$m->treatment."]"}}',
 		 	start:moment.utc('{{$m->start_time}}', 'YYYY-MM-DD HH:mm:ss').toISOString(),
 		 	end:moment.utc('{{$m->end_time}}', 'YYYY-MM-DD HH:mm:ss').toISOString(),
 		 });
