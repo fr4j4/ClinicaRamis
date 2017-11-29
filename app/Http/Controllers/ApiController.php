@@ -127,9 +127,12 @@ class ApiController extends Controller{
 
 	public function get_doctors_list(){
     	$docs=collect();
-    	foreach (User::all() as $user) {
+    	foreach (User::orderBy('name','asc')->orderBy('lastname','asc')->get() as $user) {
     		if($user->hasRole('doctor')){
-    			$docs->push($user);
+    			$docs->push(array(
+    				'name'=>$user->name." ".$user->lastname,
+    				'id'=>$user->id
+    			));
     		}
     	}
     	return response()->json($docs);

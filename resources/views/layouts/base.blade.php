@@ -31,6 +31,13 @@
     <link rel="stylesheet" type="text/css" href="{{asset('/vendors/fullcalendar/dist/fullcalendar.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/vendors/fullcalendar/dist/fullcalendar.print.css')}}" media="print">
 
+
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/easyautocomplete/easy-autocomplete.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/easyautocomplete/easy-autocomplete.themes.css')}}">
+
+<!--
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/typeahead/dist/jquery.typeahead.min.css')}}">
+-->
   </head>
   @yield('styles')
 
@@ -295,7 +302,15 @@
     <script src="{{asset('vendors/switchery/dist/switchery.min.js')}}"></script>
 
     <script type="text/javascript" src="{{asset('js/bootstrap-modal-animate-css.js')}}"></script>
-   
+    
+    
+    <!-- Typeahead 
+    <script type="text/javascript" src="{{asset('vendors/typeahead/dist/typeahead.jquery.min.js')}}"></script>
+    -->
+
+    <!-- easyautocomplete -->
+    <script type="text/javascript" src="{{asset('vendors/easyautocomplete/jquery.easy-autocomplete.js')}}"></script>
+
     <script type="text/javascript">
 
 

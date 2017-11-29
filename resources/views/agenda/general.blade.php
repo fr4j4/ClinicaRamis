@@ -27,7 +27,19 @@ Agenda general
       </div>
       <div class="modal-body">
         <form class="form" id="new_appointment_form">
-        	
+        	<fieldset>
+        		{{ csrf_field() }}
+        		<input type="hidden" name="" id="doctor_id">
+        		
+        		<div class="form-group">
+        			<label class="control-label col-md-2">Doctor</label>
+        			<div class="col-md-10">
+        				<input class="form-control" name="" id="doctor_search" placeholder="buscar por nombre o apellido">
+        			</div>
+        		</div>
+        		
+        		
+        	</fieldset>
         </form>
       </div>
       <div class="modal-footer">
@@ -60,7 +72,23 @@ Agenda general
 var doctors=[];
 
 function load_data(){
+	var options = {
+	  url: "{{ route('api_get_doctors_list') }}",
+	  getValue: "name",
+	  list: {	
+	    match: {
+	      enabled: true
+	    },
+	    onClickEvent: function() {  
+          	var selectedItemValue = $("#doctor_search").getSelectedItemData().id;
+            $("#doctor_id").val(selectedItemValue).trigger("change");
+        },
+	  },
+	  theme: "plate-dark",
+	  adjustWidth: false,
+	};
 
+	$("#doctor_search").easyAutocomplete(options);
 }
 
 function new_appointment_modal(){
@@ -110,9 +138,14 @@ $('#calendar').fullCalendar({
 		 	title:'{{$m->patient->name." ".$m->patient->lastname." [".$m->treatment."]"}}',
 		 	start:moment.utc('{{$m->start_time}}', 'YYYY-MM-DD HH:mm:ss').toISOString(),
 		 	end:moment.utc('{{$m->end_time}}', 'YYYY-MM-DD HH:mm:ss').toISOString(),
+		 	description:'Descripcion ... de prueba...',
 		 });
 	@endforeach
 @endif
+
+$('#myModal').on('hidden.bs.modal', function () {
+	$('#new_appointment_form')[0].reset();
+})
 //$('#calendar').fullCalendar( 'next')
 @endsection
 </script>
