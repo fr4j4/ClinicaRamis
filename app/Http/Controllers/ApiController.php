@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Role;
 use App\Permission;
 use App\User;
+use App\Patient;
 use Auth;
 class ApiController extends Controller{
 
@@ -137,4 +138,29 @@ class ApiController extends Controller{
     	}
     	return response()->json($docs);
 	}
+
+	public function get_assistaints_list(){
+    	$docs=collect();
+    	foreach (User::orderBy('name','asc')->orderBy('lastname','asc')->get() as $user) {
+    		if($user->hasRole('asistente')){
+    			$docs->push(array(
+    				'name'=>$user->name." ".$user->lastname,
+    				'id'=>$user->id
+    			));
+    		}
+    	}
+    	return response()->json($docs);
+	}
+
+	public function get_patients_list(){
+    	$patients=collect();
+    	foreach(Patient::all() as $p){
+    		$patients->push(array(
+    				'name'=>$p->name." ".$p->lastname,
+    				'id'=>$p->id
+    			));
+    	}
+    	return response()->json($patients);
+	}
+
 }

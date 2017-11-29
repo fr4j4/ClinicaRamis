@@ -17,8 +17,7 @@ class AgendaController extends Controller{
 
     public function show_general_agenda(){
     	$medApps=MedApp::all();
-    	/*
-*/
+
     	return view('agenda.general',compact('medApps'));
     }
 }

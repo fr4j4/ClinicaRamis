@@ -30,5 +30,7 @@ Route::post('/setRoleName','ApiController@setRoleName')->name('api_change_role_n
 Route::post('/updateRoles','ApiController@updateRoles')->name('update_roles');
 
 Route::get('/doctorsList','ApiController@get_doctors_list')->name('api_get_doctors_list');
+Route::get('/assistaintsList','ApiController@get_assistaints_list')->name('api_get_assistaints_list');
+Route::get('/patientsList','ApiController@get_patients_list')->name('api_get_patients_list');
 
 Route::get('/test','ApiController@test')->name('test_api');

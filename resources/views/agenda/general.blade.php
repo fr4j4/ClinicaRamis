@@ -29,14 +29,30 @@ Agenda general
         <form class="form" id="new_appointment_form">
         	<fieldset>
         		{{ csrf_field() }}
-        		<input type="hidden" name="" id="doctor_id">
+        		<input type="hidden" name="doctor_id" id="doctor_id">
+        		<input type="hidden" name="assistaint_id" id="assistaint_id">
+        		<input type="hidden" name="patient_id" id="patient_id">
         		
+        		<div class="form-group">
+        			<label class="control-label col-md-2">Paciente</label>
+        			<div class="col-md-10">
+        				<input class="form-control" name="" id="patient_search" placeholder="buscar por nombre o apellido">
+        			</div>
+        		</div>
         		<div class="form-group">
         			<label class="control-label col-md-2">Doctor</label>
         			<div class="col-md-10">
         				<input class="form-control" name="" id="doctor_search" placeholder="buscar por nombre o apellido">
         			</div>
         		</div>
+
+        		<div class="form-group">
+        			<label class="control-label col-md-2">Asistente</label>
+        			<div class="col-md-10">
+        				<input class="form-control" name="" id="assistaint_search" placeholder="buscar por nombre o apellido">
+        			</div>
+        		</div>
+
         		
         		
         	</fieldset>
@@ -72,7 +88,7 @@ Agenda general
 var doctors=[];
 
 function load_data(){
-	var options = {
+	$("#doctor_search").easyAutocomplete({
 	  url: "{{ route('api_get_doctors_list') }}",
 	  getValue: "name",
 	  list: {	
@@ -86,9 +102,40 @@ function load_data(){
 	  },
 	  theme: "plate-dark",
 	  adjustWidth: false,
-	};
+	});
 
-	$("#doctor_search").easyAutocomplete(options);
+	$("#assistaint_search").easyAutocomplete({
+	  url: "{{ route('api_get_assistaints_list') }}",
+	  getValue: "name",
+	  list: {	
+	    match: {
+	      enabled: true
+	    },
+	    onClickEvent: function() {  
+          	var selectedItemValue = $("#assistaint_search").getSelectedItemData().id;
+            $("#assistaint_id").val(selectedItemValue).trigger("change");
+        },
+	  },
+	  theme: "plate-dark",
+	  adjustWidth: false,
+	});
+
+	$("#patient_search").easyAutocomplete({
+	  url: "{{ route('api_get_patients_list') }}",
+	  getValue: "name",
+	  list: {	
+	    match: {
+	      enabled: true
+	    },
+	    onClickEvent: function() {  
+          	var selectedItemValue = $("#patient_search").getSelectedItemData().id;
+            $("#patient_id").val(selectedItemValue).trigger("change");
+        },
+	  },
+	  theme: "plate-dark",
+	  adjustWidth: false,
+	});
+
 }
 
 function new_appointment_modal(){
