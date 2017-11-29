@@ -14,9 +14,35 @@ Agenda general
 </style>
 @endsection
 
+@section('modals')
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Asignar hora médica</h4>
+      </div>
+      <div class="modal-body">
+        <p></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Asignar nueva hora médica</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+@endsection
+
 @section('content')
+
 @if($medApps)
-<a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Asignar hora médica</a>
+
+<a href="#" class="btn btn-primary btn-sm" onclick="new_appointment_modal()" ><i class="fa fa-plus" aria-hidden="true"></i> Asignar hora médica</a>
 <div class="container">
 	<div id="calendar"></div>
 
@@ -31,6 +57,14 @@ Agenda general
 @section('scripts')
 var doctors=[];
 
+function load_data(){
+
+}
+
+function new_appointment_modal(){
+	doctors=[]
+	get_doctors_list()
+}
 
 function get_doctors_list(){
 	$.ajax({
@@ -42,10 +76,9 @@ function get_doctors_list(){
           'X-CSRF-TOKEN': "{{ csrf_token() }}",
         },
       success:function(msg){
-        /*
-        console.log('done!');
-        */
         doctors=msg;
+        load_data();
+        $('#myModal').modal('toggle');
       },
     });
 }
