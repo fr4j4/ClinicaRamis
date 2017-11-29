@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Role;
 use App\Permission;
+use App\User;
 use Auth;
 class ApiController extends Controller{
 
@@ -122,5 +123,15 @@ class ApiController extends Controller{
 	public function show_token(){
 		echo "<input type='text' value='{{csrf_token()}}'</input>";
 		//return response()->json(['token'=>$token]);
+	}
+
+	public function get_doctors_list(){
+    	$docs=collect();
+    	foreach (User::all() as $user) {
+    		if($user->hasRole('doctor')){
+    			$docs->push($user);
+    		}
+    	}
+    	return response()->json($docs);
 	}
 }

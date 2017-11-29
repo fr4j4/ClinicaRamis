@@ -9,6 +9,35 @@ class UsersTableSeeder extends Seeder{
      * @return void
      */
     public function run(){
+
+        $virginia=new User(array(
+            'email'=>'virginia.jaque@localhost.com',
+            'nickname'=>'virginia',
+            'name'=>'Virginia',
+            'lastname'=>'Jaque',
+            'password'=>bcrypt('virginia'),
+        ));
+        $virginia->save();
+
+        $lizeth=new User(array(
+            'email'=>'lizeth.astudillo@hotmail.com',
+            'nickname'=>'lizeth',
+            'name'=>'Lizeth',
+            'lastname'=>'Astudillo',
+            'password'=>bcrypt('lizeth'),
+        ));
+        $lizeth->save();
+
+
+        $rramis=new User(array(
+            'email'=>'rramis@localhost.com',
+            'nickname'=>'rramis',
+            'name'=>'Ruben',
+            'lastname'=>'Ramis',
+            'password'=>bcrypt('rramis'),
+        ));
+        $rramis->save();
+
 		$admin=new User(array(
             'email'=>'admin@localhost.com',
             'nickname'=>'admin',
@@ -19,26 +48,11 @@ class UsersTableSeeder extends Seeder{
         $admin->assignRole('administrador');
 
 
-        $doc1=new User(array(
-            'email'=>'alan.brito@localhost.com',
-            'name'=>'Alan',
-            'nickname'=>'alan',
-            'lastname'=>'Brito',
-            'password'=>bcrypt('abrito'),
-        ));
-        $doc1->save();
-        $doc1->assignRole('doctor');
-
-        $doc2=new User(array(
-            'email'=>'aquiles.baeza@localhost.com',
-            'name'=>'abaeza',
-            'nickname'=>'aquiles',
-            'lastname'=>'Baeza',
-            'password'=>bcrypt('abaeza'),
-        ));
-        $doc2->save();
-        $doc2->assignRole('doctor');
-        $doc2->assignRole('administrador');
+        $rramis->assignRole('administrador');
+        $rramis->assignRole('doctor');
+        $virginia->assignRole('administrador');
+        $lizeth->assignRole('asistente');
+        $lizeth->assignRole('doctor');
 
     }
 }

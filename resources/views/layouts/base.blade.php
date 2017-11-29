@@ -26,7 +26,10 @@
   
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/switchery/dist/switchery.min.css')}}">
 
-        <link rel="stylesheet" type="text/css" href="{{asset('css/animate.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/animate.css')}}">
+
+    <link rel="stylesheet" type="text/css" href="{{asset('/vendors/fullcalendar/dist/fullcalendar.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/vendors/fullcalendar/dist/fullcalendar.print.css')}}" media="print">
 
   </head>
   @yield('styles')
@@ -98,6 +101,17 @@
                       <li class="{{ Route::currentRouteNamed('dashboard') ? 'current-page' : '' }}"><a href="{{route('dashboard')}}"><i class="fa fa-home"></i>Inicio</a></li>
                     
                   </li>
+
+<li class="{{ Route::currentRouteNamed('show_doctor_agenda')||Route::currentRouteNamed('show_general_agenda') ? 'active' : '' }}"><a><i class="fa fa-calendar"></i> Agenda <span class="fa fa-chevron-down"></span></a>
+
+<ul class="nav child_menu">
+  <li class="{{ Route::currentRouteNamed('show_general_agenda') ? 'current-page' : '' }}"><a href="{{route('show_general_agenda')}}" >Agenda General</a></li>
+  <li class="{{ Route::currentRouteNamed('show_doctor_agenda') ? 'current-page' : '' }}"><a href="#" >Agenda Doctores</a></li>
+</ul>
+
+</li>
+
+
 @if(
   Auth::user()->can('crear_pacientes')
   ||Auth::user()->can('eliminar_pacientes')
@@ -256,6 +270,9 @@
     <script src="{{asset('vendors/moment/min/moment.min.js')}}"></script>
     <script src="{{asset('vendors/moment/locale/es.js')}}"></script>
 
+    <!-- fullcalendar-->
+    <script type="text/javascript" src="{{asset('/vendors/fullcalendar/dist/fullcalendar.js')}}"></script>
+
     <!-- datetimepicker -->
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css')}}">
     <script src="{{asset('vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')}}"></script>
@@ -311,10 +328,10 @@
         }else{
           set_menu(0);
         }
-        @yield('ready_scripts')
 
         $('#x_content').css('display','inline');
         $('#x_content').addClass('animated fadeIn');
+        @yield('ready_scripts')
       });
     </script>
 

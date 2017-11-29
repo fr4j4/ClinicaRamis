@@ -45,4 +45,16 @@ class User extends Authenticatable
     }
 
 
+    /*devuelve horas medicas en las que haya participado como doctor*/
+    public function medical_appointments_as_doctor(){
+        return $this->belongsToMany('App\MedApp','meapps_doctors','doctor_id','medapp_id');
+    }
+
+
+    /*devuelve horas medicas en las que haya participado como asistente*/
+    public function medical_appointments_as_assistant(){
+        return $this->belongsToMany('App\MedApp','meapps_assistants','assistaint_id','medapp_id');
+    }
+
+
 }

@@ -26,6 +26,7 @@ class CreatePermissionTables extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('guard_name');
+            $table->string('display_name');
             $table->integer('cat_id')->unsigned(11)->nullable();
             $table->foreign('cat_id')->references('id')->on('permissionsCat')->onDelete('cascade');
             $table->timestamps();

@@ -14,7 +14,7 @@
 <style type="text/css">
 
   .test_name{
-    text-transform:capitalize;
+    //text-transform:capitalize;
   }
 
   .role_item{
@@ -328,7 +328,7 @@ function load_data(){
   @foreach($permissions as $p)
     permissions.push({
     	id:{{$p->id}},
-    	name:"{{str_replace('_',' ',$p->name)}}",
+    	name:"{{ucfirst($p->display_name)}}",
     	cat_id:{{$p->category?$p->category->id:-1}},
     });
   @endforeach

@@ -69,7 +69,10 @@ Route::group(['middleware'=>['checkLogin'],],function(){
 	});
 
 
-
+	Route::group(['prefix'=>'agenda'],function(){
+		Route::get('/doctor/{did}/agenda','AgendaController@show_doctor_agenda')->name('show_doctor_agenda');
+		Route::get('/general','AgendaController@show_general_agenda')->name('show_general_agenda');
+	});
 
 	Route::group(['prefix'=>'test'],function(){
 		Route::get('/api1',function(){return view('test.api1');});

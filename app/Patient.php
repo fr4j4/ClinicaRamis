@@ -15,4 +15,8 @@ class Patient extends Model{
     	return Carbon::parse($this->attributes['birthday'])->age;
     	return $age;
     }
+
+    public function medical_appointments(){
+    	return $this->hasMany('App\MedApp','patient_id','id');
+    }
 }
