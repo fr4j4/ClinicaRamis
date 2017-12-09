@@ -257,6 +257,7 @@ $('#calendar').fullCalendar({
 @endif
 
 @if($errors->any())
+  load_data();
 	$('#myModal').modal('show');
 @endif
 

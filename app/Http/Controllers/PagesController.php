@@ -7,7 +7,8 @@ use App\User;
 use App\Patient;
 
 use Auth;
-use Spatie\Activitylog\Models\Activity;
+//use Spatie\Activitylog\Models\Activity;
+use App\Activity;
 class PagesController extends Controller{
     
     public function dashboard(){
