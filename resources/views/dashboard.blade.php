@@ -51,13 +51,13 @@ Bienvenido, {{Auth::user()->name}}.
 	    				@if($record->causer_id)
     						@if(Auth::user()->can('ver_usuarios'))
     							@if($record->causer->trashed())
-	    						<span style="color:red;text-decoration:line-through">{{$record->causer->name." ".$record->causer->lastname}}</span>
+	    						<span style="color:#ff4c4c;text-decoration:line-through">{{$record->causer->name." ".$record->causer->lastname}}</span>
     							@else
     							<a style="text-decoration: underline;" href="{{route('show_user_details',[$record->causer->id])}}">{{$record->causer->name}}</a>
     							@endif
     						@else
 								@if($record->causer->trashed())
-	    						<span style="color:red;text-decoration:line-through">{{$record->causer->name." ".$record->causer->lastname}}</span>
+	    						<span style="color:#ff4c4c;text-decoration:line-through">{{$record->causer->name." ".$record->causer->lastname}}</span>
     							@else
     							<span>{{$record->causer->name}}</span>
     							@endif
@@ -73,13 +73,13 @@ Bienvenido, {{Auth::user()->name}}.
 	    					
     						@if(Auth::user()->can('ver_usuarios'))
     							@if($record->subject->trashed())
-	    						<span style="color:red;text-decoration:line-through">{{$record->subject->name." ".$record->subject->lastname}}</span>
+	    						<span style="color:#ff4c4c;text-decoration:line-through">{{$record->subject->name." ".$record->subject->lastname}}</span>
     							@else
     							<a style="text-decoration: underline;" href="{{route('show_user_details',[$record->subject->id])}}">{{$record->subject->name}}</a>
     							@endif
     						@else
 								@if($record->subject->trashed())
-	    						<span style="color:red;text-decoration:line-through">{{$record->subject->name." ".$record->subject->lastname}}</span>
+	    						<span style="color:#ff4c4c;text-decoration:line-through">{{$record->subject->name." ".$record->subject->lastname}}</span>
     							@else
     							<span>{{$record->subject->name}}</span>
     							@endif
