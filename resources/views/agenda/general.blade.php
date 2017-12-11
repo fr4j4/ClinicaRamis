@@ -1,12 +1,16 @@
 @extends('layouts.base')
-@if($medApps)
+
 @section('title')
 Agenda general
 @endsection
-@endif
+
 
 @section('styles')
 <style type="text/css">
+  .fc-nonbusiness{
+    background-color: darkgray; 
+  }
+
 	.fc-today{
 		background-color: rgba(186,225,255,.5) !important;
 		color:black;
@@ -23,7 +27,7 @@ Agenda general
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Asignar hora médica</h4>
+        <h4 class="modal-title">Registrar hora médica</h4>
       </div>
        @if ($errors->any())
     <div class="alert alert-danger">
@@ -82,7 +86,7 @@ Agenda general
 			                <span style="color: blue" class="input-group-addon">
                           <span class="glyphicon glyphicon-calendar"></span>
                       </span>
-                      <input type='text' class="form-control" placeholder="" style="z-index: 0" name="start_time">
+                      <input readonly type='text' class="form-control" placeholder="" style="z-index: 0" name="start_time">
 			            </div>
 
 			        </div>
@@ -95,7 +99,7 @@ Agenda general
 			                <span style="color: blue" class="input-group-addon">
 			                   <span class="glyphicon glyphicon-calendar"></span>
 			                </span>
-			                <input type='text' class="form-control" style="z-index: 0" placeholder="" name="end_time">
+			                <input readonly type='text' class="form-control" style="z-index: 0" placeholder="" name="end_time">
 			            </div>
 			        </div>
         		</div>
@@ -112,7 +116,7 @@ Agenda general
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" onclick="$('#new_appointment_form').submit()" data-dismiss="modal">Asignar nueva hora médica</button>
+        <button type="button" class="btn btn-success" onclick="$('#new_appointment_form').submit()" data-dismiss="modal">Registrar nueva hora médica</button>
         <button type="submit" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
@@ -123,18 +127,19 @@ Agenda general
 
 @section('content')
 
-@if($medApps)
 
-<a href="#" class="btn btn-primary btn-sm" onclick="new_appointment_modal()" ><i class="fa fa-plus" aria-hidden="true"></i> Asignar hora médica</a>
-<div class="container">
-  <div class="col-md-8 col-md-push-2">
-    <div id="calendar"></div>
+
+
+<div class="col-md-2">
+<a href="#" class="btn btn-primary btn-sm" onclick="new_appointment_modal()" ><i class="fa fa-plus" aria-hidden="true"></i> Registrar hora médica</a>  
+</div>
+<div class="col-md-10">
+  <div class="col-md-12 pull-right">
+      <div id="calendar"></div>
   </div>
 </div>
 
-@else
-<h1 style="color: red">Agenda no disponible</h1>
-@endif
+
 @endsection
 
 <script type="text/javascript">
@@ -238,9 +243,16 @@ $('#new_fecha_hora_fin').datetimepicker(datetimepicker_options);
 
 
 $('#calendar').fullCalendar({
-    locale:'es',
+businessHours: {
+    // days of week. an array of zero-based day of week integers (0=Sunday)
+    dow: [0,1,2,3,4,5,6 ], // Monday - Thursday
+    start: '10:00', // a start time (10am in this example)
+    end: '18:00', // an end time (6pm in this example)
+},
+  height:'auto',
+  locale:'es',
 	header: {
-		left: 'prev,next today',
+		left: 'prev,next,today',
 		center: 'title',
 		right: 'month,agendaWeek,agendaDay,list'
 	},
@@ -251,18 +263,10 @@ $('#calendar').fullCalendar({
 	    day:      'día',
 	    list:     'lista'
 	},
+  events:'{{route("api_agenda_events")}}',
 });
 
-@if($medApps)
-	@foreach($medApps as $m)
-		 $('#calendar').fullCalendar('renderEvent',{
-		 	title:'{{$m->patient->name." ".$m->patient->lastname." [".$m->treatment."]"}}',
-		 	start:moment.utc('{{$m->start_time}}', 'YYYY-MM-DD HH:mm:ss').toISOString(),
-		 	end:moment.utc('{{$m->end_time}}', 'YYYY-MM-DD HH:mm:ss').toISOString(),
-		 	description:'Esta es una descripcion de prueba.',
-		 });
-	@endforeach
-@endif
+
 
 @if($errors->any())
   load_data();

@@ -34,3 +34,5 @@ Route::get('/assistaintsList','ApiController@get_assistaints_list')->name('api_g
 Route::get('/patientsList','ApiController@get_patients_list')->name('api_get_patients_list');
 
 Route::get('/test','ApiController@test')->name('test_api');
+
+Route::get('agenda/events/get','ApiController@get_agenda_events')->name('api_agenda_events');

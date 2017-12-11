@@ -8,6 +8,7 @@ use App\Role;
 use App\Permission;
 use App\User;
 use App\Patient;
+use App\MedApp;
 use Auth;
 class ApiController extends Controller{
 
@@ -17,6 +18,22 @@ class ApiController extends Controller{
 		return response()->json(['users_count'=>$count]);
 	}
 */
+
+	public function get_agenda_events(){
+		$events=[];
+		foreach(MedApp::all() as $m){
+			$tmp=[
+				'id'=>$m->id,
+				'title'=>$m->descripion?$m->descripion:$m->treatment,
+				'start'=>$m->start_time,
+				'end'=>$m->end_time,
+				'url'=>'#',
+			];
+			array_push($events,$tmp);
+		}
+		return response()->json($events);
+	}
+
 	public function setRoleName(Request $request){
 		$success=true;
 		$error=["code"=>0,"message"=>"NO_ERROR"];

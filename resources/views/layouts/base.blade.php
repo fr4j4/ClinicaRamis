@@ -49,7 +49,12 @@
   }
 
   footer{
+    display: none;
+    background-color: #3b5998;
+    color: white;
+    vertical-align: center;
     z-index: 1000 !important;
+
   }
   .no_selection{
     -webkit-user-select: none;  
@@ -67,8 +72,7 @@
     outline: inherit !important;
     margin-left: 0em !important;
   }
-  footer{
-  }
+
   .right_col{
   }
   </style>

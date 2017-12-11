@@ -15,14 +15,11 @@ class AgendaController extends Controller{
     
     public function show_doctor_agenda($did){
     	$doctor=User::find($did)->hasRole('doctor')?User::find($did):null;
-    	$medApps=$doctor?$doctor->medical_appointments_as_doctor:null;
-    	return view('agenda.doctor',compact('doctor','medApps'));
+    	return view('agenda.doctor',compact('doctor'));
     }
 
     public function show_general_agenda(){
-    	$medApps=MedApp::all();
-
-    	return view('agenda.general',compact('medApps'));
+    	return view('agenda.general');
     }
 
     public function newMedApp(NewMedAppRequest $req){
