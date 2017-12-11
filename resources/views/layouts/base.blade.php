@@ -262,9 +262,9 @@
 
 
     
-<!-- jQuery -->
+    <!-- jQuery -->
     <script src="{{asset('vendors/jquery/dist/jquery.min.js')}}"></script>
-     <!-- JsCookie-->
+    <!-- JsCookie-->
     <script type="text/javascript" src="{{asset('js/js.cookie.js')}}"></script>
     <!-- Bootstrap -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
@@ -281,8 +281,11 @@
     <script type="text/javascript" src="{{asset('/vendors/fullcalendar/dist/fullcalendar.js')}}"></script>
 
     <!-- datetimepicker -->
-    <link rel="stylesheet" type="text/css" href="{{asset('vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css')}}">
-    <script src="{{asset('vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css')}}">
+
+    <script src="{{asset('vendors/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js')}}"></script>
+    
+    <script type="text/javascript" src="{{asset('vendors/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.js')}}"></script>
 
 
 

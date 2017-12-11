@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Patient;
+use App\MedApp;
 
 use Auth;
 //use Spatie\Activitylog\Models\Activity;
@@ -43,6 +44,21 @@ class PagesController extends Controller{
                 ],
             ];
             array_push($stats,(object)$patients_count);
+        }
+
+        if($user->can('ver_agendas') || $user->can('registrar_horas') || $user->can('modificar_horas') || $user->can('eliminar_horas') ){
+
+            $medapps_today=[
+                'type'=>'count',
+                'title'=>'Hora médicas para hoy',
+                'value'=>MedApp::whereRaw('date(start_time) = CURDATE()')->count(),
+                'icon'=>'fa-calendar-check-o',
+                'manage_button'=>[
+                    'title'=>'ver agenda general',
+                    'url'=>route('show_general_agenda'),
+                ],
+            ];
+            array_push($stats,(object)$medapps_today);
         }
 
         if($user->can('ver_registros')){

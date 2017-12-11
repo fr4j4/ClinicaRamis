@@ -77,12 +77,14 @@ Agenda general
         		<div class="form-group">
         			<label class="col-md-3">Fecha y hora de inicio</label>
         			<div class="col-md-9">
+
 			            <div class="input-group date" id="new_fecha_hora_inicio" >
 			                <span style="color: blue" class="input-group-addon">
-			                   <span class="glyphicon glyphicon-calendar"></span>
-			                </span>
-			                <input type='text' class="form-control" placeholder="" style="z-index: 0" name="start_time">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                      </span>
+                      <input type='text' class="form-control" placeholder="" style="z-index: 0" name="start_time">
 			            </div>
+
 			        </div>
         		</div>
 
@@ -125,8 +127,9 @@ Agenda general
 
 <a href="#" class="btn btn-primary btn-sm" onclick="new_appointment_modal()" ><i class="fa fa-plus" aria-hidden="true"></i> Asignar hora médica</a>
 <div class="container">
-	<div id="calendar"></div>
-
+  <div class="col-md-8 col-md-push-2">
+    <div id="calendar"></div>
+  </div>
 </div>
 
 @else
@@ -217,17 +220,21 @@ function get_doctors_list(){
 
 @section('ready_scripts')
 
-$('#new_fecha_hora_inicio').datetimepicker({
-    format: 'DD/MM/YYYY HH:mm',
-    locale: 'es',
+datetimepicker_options={
+    format: 'yyyy-mm-dd hh:ii',
+    language: 'es',
     date:moment().format(),
-});
+    todayBtn:true,
+    weekStart:1,
+    todayHighlight:true,
+    autoclose:true,
+    startDate:moment().utc().format(),
+    daysOfWeekDisabled:[0,6],
+}
 
-$('#new_fecha_hora_fin').datetimepicker({
-    format: 'DD/MM/YYYY HH:mm',
-    locale: 'es',
-    date:moment().format(),
-});
+$('#new_fecha_hora_inicio').datetimepicker(datetimepicker_options);
+
+$('#new_fecha_hora_fin').datetimepicker(datetimepicker_options);
 
 
 $('#calendar').fullCalendar({
@@ -245,13 +252,14 @@ $('#calendar').fullCalendar({
 	    list:     'lista'
 	},
 });
+
 @if($medApps)
 	@foreach($medApps as $m)
 		 $('#calendar').fullCalendar('renderEvent',{
 		 	title:'{{$m->patient->name." ".$m->patient->lastname." [".$m->treatment."]"}}',
 		 	start:moment.utc('{{$m->start_time}}', 'YYYY-MM-DD HH:mm:ss').toISOString(),
 		 	end:moment.utc('{{$m->end_time}}', 'YYYY-MM-DD HH:mm:ss').toISOString(),
-		 	description:'Descripcion ... de prueba...',
+		 	description:'Esta es una descripcion de prueba.',
 		 });
 	@endforeach
 @endif

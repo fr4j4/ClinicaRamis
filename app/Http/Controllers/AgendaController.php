@@ -27,8 +27,8 @@ class AgendaController extends Controller{
 
     public function newMedApp(NewMedAppRequest $req){
     	$medapp=new MedApp(array(
-    		'start_time'=>Carbon::createFromFormat('d/m/Y H:i', $req->get('start_time')),
-    		'end_time'=>Carbon::createFromFormat('d/m/Y H:i', $req->get('end_time')),
+    		'start_time'=>Carbon::createFromFormat('Y-m-d H:i', $req->get('start_time')),
+    		'end_time'=>Carbon::createFromFormat('Y-m-d H:i', $req->get('end_time')),
 			'description'=>$req->get('description'),
 			'treatment'=>$req->get('treatment'),
     	));
