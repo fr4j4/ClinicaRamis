@@ -32,6 +32,9 @@ Route::group(['middleware'=>['checkLogin'],],function(){
 			Route::get('{id}/roles', 'AdminController@edit_user_roles_form')->name('edit_user_roles_form');
 			Route::post('{id}/roles', 'AdminController@edit_user_roles')->name('edit_user_roles');
 			Route::post('/editar','AdminController@update_user')->name('post_update_user');
+		
+			Route::get('/buscar','AdminController@users_search')->name('users_search');
+
 		});
 
 		Route::group(['prefix'=>'rolesYpermisos','middleware'=>['role:administrador']],function(){

@@ -63,7 +63,6 @@ Agenda general
         			</div>
         		</div>
 
-
         		<div class="form-group">
         			<label class="control-label col-md-3">Doctor</label>
         			<div class="col-md-9">

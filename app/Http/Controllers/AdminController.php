@@ -20,8 +20,14 @@ class AdminController extends Controller{
 
     /*Usuarios*/
     public function users_index(){
-    	$users=User::all();
-    	return view('admin.users.index',compact('users'));
+        $users=User::all();
+        return view('admin.users.index',compact('users'));
+    }
+
+    public function users_search(Request $req){
+        $data=$req->get('data');
+        $users=User::Where('name','like',''.$data."%")->orWhere('lastname','like',''.$data."%")->orWhere('email','like','%'.$data.'%')->orWhere('phone','like','%'.$data.'%')->orWhere('rut','like','%'.str_replace('.','',$data.'%'))->orWhere('nickname','like','%'.$data.'%')->orderBy('lastname','asc')->orderBy('name','asc')->paginate(15);
+        return view('admin.users.search',compact('users','data'));
     }
 
     public function new_user_form(){
