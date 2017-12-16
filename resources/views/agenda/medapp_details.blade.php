@@ -59,6 +59,10 @@
 				</td>
 			</tr>
 			<tr>
+				<th>Descripción/comentario</th>
+				<td>{{$medapp->description}}</td>
+			</tr>
+			<tr>
 				<th>Fecha y hora inicio</th>
 				<td>{{$medapp->start_time}}</td>
 			</tr>
