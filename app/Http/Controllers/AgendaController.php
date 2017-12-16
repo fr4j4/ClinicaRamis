@@ -19,7 +19,21 @@ class AgendaController extends Controller{
     }
 
     public function show_general_agenda(){
-    	return view('agenda.general');
+        $event_colors=[
+            [
+                'name'=>'Confirmada',
+                'color'=>'#0000ff',
+            ],
+            [
+                'name'=>'Sin confirmar',
+                'color'=>'#f48c42',
+            ],
+            [
+                'name'=>'Terminada',
+                'color'=>'#00ff00',
+            ],
+        ];
+    	return view('agenda.general',compact('event_colors'));
     }
 
     public function show_medapp_details($mid){

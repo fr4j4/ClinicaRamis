@@ -131,7 +131,18 @@ Agenda general
 
 <div class="col-md-2">
 <a href="#" class="btn btn-primary btn-sm" onclick="new_appointment_modal()" ><i class="fa fa-plus" aria-hidden="true"></i> Registrar hora médica</a>  
+
+<div class="row">
+  <ul>
+  Leyenda de colores
+  @foreach($event_colors as $e)
+  <li><span style="color: {{$e['color']}}">{{$e['name']}}</span></li>
+  @endforeach
+  </ul>
 </div>
+</div>
+
+
 <div class="col-md-10">
   <div class="col-md-12 pull-right">
       <div id="calendar"></div>
