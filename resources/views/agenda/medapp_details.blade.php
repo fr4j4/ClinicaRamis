@@ -1,6 +1,10 @@
 @extends('layouts.base')
 @section('title','Detalles hora médica')
 
+@section('panel_title')
+<a href="{{route('show_general_agenda')}}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Ir a agenda general clínica</a>
+@endsection
+
 @section('content')
 <div class="container">
 	
@@ -17,6 +21,10 @@
 						{{$medapp->patient->name." ".$medapp->patient->lastname}}
 					@endif
 				</td>
+			</tr>
+			<tr>
+				<th>Tratamiento</th>
+				<td>{{$medapp->treatment}}</td>
 			</tr>
 			<tr>
 				<th class="col-md-4">Doctores</th>
@@ -57,6 +65,14 @@
 			<tr>
 				<th>Hora y hora fin</th>
 				<td>{{$medapp->end_time}}</td>
+			</tr>
+			<tr>
+				<th>Hora confirmada?</th>
+				<td>{{$medapp->confirmed?'Si':'No'}}</td>
+			</tr>
+			<tr>
+				<th>Hora terminada?</th>
+				<td>{{$medapp->ended?'Si':'No'}}</td>
 			</tr>
 		</tbody>
 	</table>
