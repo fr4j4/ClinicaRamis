@@ -77,6 +77,9 @@ Route::group(['middleware'=>['checkLogin'],],function(){
 		Route::get('/general','AgendaController@show_general_agenda')->name('show_general_agenda');
 	
 		Route::post('/horaMedica/registrarNueva','AgendaController@newMedApp')->name('post_new_medical_appointment');
+	
+		Route::get('/horamedica/{id}/detalles','AgendaController@show_medapp_details')->name('medapp_details');
+
 	});
 
 	Route::group(['prefix'=>'test'],function(){

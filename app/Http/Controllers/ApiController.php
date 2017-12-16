@@ -20,15 +20,31 @@ class ApiController extends Controller{
 */
 
 	public function get_agenda_events(){
+		$event_colors=[
+			"confirmed"=>"#0000ff",
+			"unconfirmed"=>"#f48c42",
+			"ended"=>"#00ff00",
+		];
+
 		$events=[];
+		
 		foreach(MedApp::all() as $m){
 			$tmp=[
 				'id'=>$m->id,
 				'title'=>$m->descripion?$m->descripion:$m->treatment,
 				'start'=>$m->start_time,
 				'end'=>$m->end_time,
-				'url'=>'#',
+				'url'=>route('medapp_details',$m->id),
+				'className'=>'agenda_event',
 			];
+			if($m->confirmed){
+				$tmp['color']=$event_colors['confirmed'];
+			}else{
+				$tmp['color']=$event_colors['unconfirmed'];
+			}
+			if($m->ended){
+				$tmp['color']=$event_colors['ended'];	
+			}
 			array_push($events,$tmp);
 		}
 		return response()->json($events);

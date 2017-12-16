@@ -5,30 +5,21 @@
 @endsection
 @section('content')
 
-
-	
-
-
-
-
-	<div class="row">
-	@can('crear_usuarios')
-		<div class="col-md-4">
-			<a class="btn btn-success" href="{{route('new_user_form')}}"><i class="fa fa-plus" aria-hidden="true"></i> Registrar Nuevo Usuario</a>
-		</div>
-	@endcan
-		<form method="GET" action="{{route('users_search')}}">
-		<div class="col-md-5">
-			<input type="text" class="form-control" name="data" autofocus>
-		</div>
-		<div class="col-md-3 pull-right">
-			<button class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
-		</div>
-		</form>
+<div class="row">
+@can('crear_usuarios')
+	<div class="col-md-4">
+		<a class="btn btn-success" href="{{route('new_user_form')}}"><i class="fa fa-plus" aria-hidden="true"></i> Registrar Nuevo Usuario</a>
 	</div>
-	
-
-
+@endcan
+	<form method="GET" action="{{route('users_search')}}">
+	<div class="col-md-5">
+		<input type="text" class="form-control" name="data" autofocus>
+	</div>
+	<div class="col-md-3 pull-right">
+		<button class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+	</div>
+	</form>
+</div>
 
 <div class="table-responsive">
 <table class="table table-striped">

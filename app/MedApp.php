@@ -14,10 +14,10 @@ class MedApp extends Model{
     }
 
     public function doctors(){
-    	return $this->belongsToMany('App\MedApp','meapps_doctors','meapp_id','doctor_id');
+    	return $this->belongsToMany('App\User','meapps_doctors','medapp_id','doctor_id');
     }
 
     public function assistants(){
-    	return $this->belongsToMany('App\MedApp','meapps_assistants','meapp_id','assistant_id');
+        return $this->belongsToMany('App\User','meapps_assistants','medapp_id','assistaint_id');
     }
 }

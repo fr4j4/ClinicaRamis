@@ -22,6 +22,11 @@ class AgendaController extends Controller{
     	return view('agenda.general');
     }
 
+    public function show_medapp_details($mid){
+        $medapp=MedApp::find($mid);
+        return view('agenda.medapp_details',compact('medapp'));
+    }
+
     public function newMedApp(NewMedAppRequest $req){
     	$medapp=new MedApp(array(
     		'start_time'=>Carbon::createFromFormat('Y-m-d H:i', $req->get('start_time')),
