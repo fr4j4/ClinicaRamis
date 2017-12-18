@@ -4,6 +4,15 @@
 <h4>Registre, modifique, elimine y vea los usuarios registrados en el sistema</h4>
 @endsection
 @section('content')
+<style type="text/css">
+	.tr_link:hover{
+		color: white;
+		background: #3B5998;
+	}
+	.tr_link{
+		cursor: pointer;
+	}
+</style>
 
 <div class="row">
 @can('crear_usuarios')
@@ -21,25 +30,23 @@
 	</form>
 </div>
 
-<div class="table-responsive">
-<table class="table table-striped">
+<div class="fixed-responsive">
+<table class="table">
 	<thead>
 		<th>Nombre</th>
 		<th>Apellido</th>
-		<th>alias</th>
+		<th>Alias</th>
 		<th>E-mail</th>
 		<th>Roles</th>
-		<th>Acción</th>
 	</thead>
 	<tbody>
 		@foreach($users as $user)
-			<tr>
+			<tr  class="tr_link" onclick="window.location='{{route('show_user_details',[$user->id])}}'">
 				<td>
-					<a href="{{route('show_user_details',[$user->id])}}">{{$user->name}}
+					{{$user->name}}
 					@if(Auth::user()->id==$user->id)
 					<strong style="color: green">(es usted)</strong>
 					@endif
-					</a>
 				</td>
 				<td>{{$user->lastname}}</td>
 				<td>{{$user->nickname}}</td>
@@ -49,7 +56,6 @@
 					{{$role->name}}
 				@endforeach
 				</td>
-				<td><a href="{{route('show_user_details',[$user->id])}}">ver perfil</a></td>
 			</tr>
 		@endforeach
 	</tbody>

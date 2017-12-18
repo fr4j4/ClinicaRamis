@@ -80,6 +80,10 @@ Route::group(['middleware'=>['checkLogin'],],function(){
 	
 		Route::get('/horamedica/{id}/detalles','AgendaController@show_medapp_details')->name('medapp_details');
 
+		Route::get('/horamedica/{id}/modificar','AgendaController@medapp_edit')->name('medapp_edit');
+		Route::post('/modificar/guardar','AgendaController@medapp_update')->name('post_update_medapp');
+
+
 	});
 
 	Route::group(['prefix'=>'test'],function(){

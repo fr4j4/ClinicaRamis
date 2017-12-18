@@ -39,7 +39,7 @@ Agenda general
     </div>
     @endif
       <div class="modal-body">
-        <form class="form" id="new_appointment_form" method="POST" action="{{route('post_new_medical_appointment')}}">
+        <form class="form form-horizontal form-label-left" id="new_appointment_form" method="POST" action="{{route('post_new_medical_appointment')}}">
         	<fieldset>
         		{{ csrf_field() }}
         		<input type="hidden" name="doctor_id" id="doctor_id">
@@ -78,7 +78,7 @@ Agenda general
         		</div>
 
         		<div class="form-group">
-        			<label class="col-md-3">Fecha y hora de inicio</label>
+        			<label class="control-label col-md-3">Fecha y hora de inicio</label>
         			<div class="col-md-9">
 
 			            <div class="input-group date" id="new_fecha_hora_inicio" >
@@ -92,7 +92,7 @@ Agenda general
         		</div>
 
         		<div class="form-group">
-        			<label class="col-md-3">Fecha y hora de fin</label>
+        			<label class="control-label col-md-3">Fecha y hora de fin</label>
         			<div class="col-md-9">
 			            <div class="input-group date" id="new_fecha_hora_fin" >
 			                <span style="color: blue" class="input-group-addon">
