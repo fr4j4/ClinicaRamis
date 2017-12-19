@@ -135,7 +135,6 @@
 		</div>
 	</fieldset>
 	<div class="form-group">
-		<button class="btn btn-info col-md-2 col-md-offset-4" type="reset"><i class="fa fa-refresh" aria-hidden="true"></i> Reiniciar formulario</button>
 		<button class="btn btn-primary col-md-2" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar información</button>
 	</div>
 </form>

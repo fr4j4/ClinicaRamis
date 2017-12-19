@@ -51,7 +51,7 @@ class PagesController extends Controller{
             $medapps_today=[
                 'type'=>'count',
                 'title'=>'Hora médicas para hoy',
-                'value'=>MedApp::whereRaw('date(start_time) = CURDATE()')->count(),
+                'value'=>MedApp::whereRaw('date(start_time) = CURDATE()')->whereRaw('ended = 0')->count(),
                 'icon'=>'fa-calendar-check-o',
                 'manage_button'=>[
                     'title'=>'ver agenda general',

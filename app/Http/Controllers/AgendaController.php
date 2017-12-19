@@ -11,6 +11,7 @@ use App\User;
 use App\MedApp;
 use App\Patient;
 
+
 class AgendaController extends Controller{
     
     public function show_doctor_agenda($did){
@@ -72,8 +73,10 @@ class AgendaController extends Controller{
         if($medapp){
             $medapp->confirmed=true;
             $medapp->save();
+            return "ok";
+        }else{
+            return "failed";
         }
-        return $medapp;
     }
 
     public function medapp_end(Request $req){
@@ -81,7 +84,22 @@ class AgendaController extends Controller{
         if($medapp){
             $medapp->ended=true;
             $medapp->save();
+            return "ok";
+        }else{
+            return "failed";
         }
-        return $medapp;
+    }
+
+    public function medapp_cancel($mid){
+        //return $mid;
+        $medapp=MedApp::findOrFail($mid);
+        if($medapp){
+            $medapp->ended=true;
+            $medapp->delete();
+            return redirect()->action('AgendaController@show_general_agenda');
+        }else{
+            return "failed";
+        }
+
     }
 }

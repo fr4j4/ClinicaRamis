@@ -85,6 +85,7 @@ Route::group(['middleware'=>['checkLogin'],],function(){
 
 		Route::post('/horamedica/confirmar','AgendaController@medapp_confirm')->name('medapp_confirm');
 		Route::post('/horamedica/terminar','AgendaController@medapp_end')->name('medapp_end');
+		Route::get('/horamedica/{id}/terminar','AgendaController@medapp_cancel')->name('medapp_cancel');
 
 
 	});
