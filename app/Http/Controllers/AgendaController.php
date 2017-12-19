@@ -62,8 +62,26 @@ class AgendaController extends Controller{
     	return redirect()->action('AgendaController@show_general_agenda');
     }
 
-    public function medapp_edit($mid){
+    public function medapp_update($mid){
         $medapp=MedApp::find($mid);
-        return view('agenda.edit_medapp',compact('medapp'));
+        return view('agenda.medapp_update',compact('medapp'));
+    }
+
+    public function medapp_confirm(Request $req){
+        $medapp=MedApp::findOrFail($req->get('medapp_id'));
+        if($medapp){
+            $medapp->confirmed=true;
+            $medapp->save();
+        }
+        return $medapp;
+    }
+
+    public function medapp_end(Request $req){
+        $medapp=MedApp::findOrFail($req->get('medapp_id'));
+        if($medapp){
+            $medapp->ended=true;
+            $medapp->save();
+        }
+        return $medapp;
     }
 }

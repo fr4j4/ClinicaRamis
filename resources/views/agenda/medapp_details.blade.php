@@ -4,9 +4,10 @@
 @section('panel_title')
 <div class="col-md-12">
 	<a href="{{route('show_general_agenda')}}" class="col-md-3 btn btn-primary btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i>  Ir a agenda general clínica</a>
-	<a href="{{route('medapp_edit',$medapp->id)}}" class="col-md-2 btn btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i>  Modificar</a>
+	<a href="{{route('medapp_update',$medapp->id)}}" class="col-md-2 btn btn-info btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Actualizar estado</a>
+	<!--
 	<a href="#" class="col-md-2 btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i>  Cancelar</a>
-	
+	-->
 </div>
 
 @endsection

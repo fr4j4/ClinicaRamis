@@ -117,7 +117,11 @@
 
 <ul class="nav child_menu">
   <li class="{{ Route::currentRouteNamed('show_general_agenda') ? 'current-page' : '' }}"><a href="{{route('show_general_agenda')}}" >Agenda General</a></li>
-  <li class="{{ Route::currentRouteNamed('show_doctor_agenda') ? 'current-page' : '' }}"><a href="#" >Agenda Doctores</a></li>
+  <!--
+  <li class="{{ Route::currentRouteNamed('show_doctor_agenda') ? 'current-page' : '' }}"><a href="#" >Agenda Doctores</a>
+  
+  </li>
+-->
 </ul>
 
 </li>

@@ -21,7 +21,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => '/home/nothades/Escritorio/ClinicaRamis/storage/framework/cache/data',
+        'path' => '/home/fr4j4/git/clinicaramis/storage/framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -53,196 +53,52 @@
     ),
     'prefix' => 'laravel_cache',
   ),
-  'jwt' => 
+  'auth' => 
   array (
-    'secret' => 'changeme',
-    'keys' => 
+    'defaults' => 
     array (
-      'public' => NULL,
-      'private' => NULL,
-      'passphrase' => NULL,
+      'guard' => 'web',
+      'passwords' => 'users',
     ),
-    'ttl' => 60,
-    'refresh_ttl' => 20160,
-    'algo' => 'HS256',
-    'required_claims' => 
+    'guards' => 
     array (
-      0 => 'iss',
-      1 => 'iat',
-      2 => 'exp',
-      3 => 'nbf',
-      4 => 'sub',
-      5 => 'jti',
+      'web' => 
+      array (
+        'driver' => 'session',
+        'provider' => 'users',
+      ),
+      'api' => 
+      array (
+        'driver' => 'passport',
+        'provider' => 'users',
+      ),
     ),
-    'persistent_claims' => 
-    array (
-    ),
-    'blacklist_enabled' => true,
-    'blacklist_grace_period' => 0,
     'providers' => 
     array (
-      'user' => 'Tymon\\JWTAuth\\Providers\\User\\EloquentUserAdapter',
-      'jwt' => 'Tymon\\JWTAuth\\Providers\\JWT\\NamshiAdapter',
-      'auth' => 'Tymon\\JWTAuth\\Providers\\Auth\\IlluminateAuthAdapter',
-      'storage' => 'Tymon\\JWTAuth\\Providers\\Storage\\IlluminateCacheAdapter',
-    ),
-    'user' => 'App\\User',
-    'identifier' => 'id',
-  ),
-  'database' => 
-  array (
-    'default' => 'mysql',
-    'connections' => 
-    array (
-      'sqlite' => 
+      'users' => 
       array (
-        'driver' => 'sqlite',
-        'database' => 'clinicaramis',
-        'prefix' => '',
-      ),
-      'mysql' => 
-      array (
-        'driver' => 'mysql',
-        'host' => '127.0.0.1',
-        'port' => '3306',
-        'database' => 'clinicaramis',
-        'username' => 'root',
-        'password' => 'root',
-        'unix_socket' => '',
-        'charset' => 'utf8mb4',
-        'collation' => 'utf8mb4_unicode_ci',
-        'prefix' => '',
-        'strict' => true,
-        'engine' => NULL,
-      ),
-      'pgsql' => 
-      array (
-        'driver' => 'pgsql',
-        'host' => '127.0.0.1',
-        'port' => '3306',
-        'database' => 'clinicaramis',
-        'username' => 'root',
-        'password' => 'root',
-        'charset' => 'utf8',
-        'prefix' => '',
-        'schema' => 'public',
-        'sslmode' => 'prefer',
-      ),
-      'sqlsrv' => 
-      array (
-        'driver' => 'sqlsrv',
-        'host' => '127.0.0.1',
-        'port' => '3306',
-        'database' => 'clinicaramis',
-        'username' => 'root',
-        'password' => 'root',
-        'charset' => 'utf8',
-        'prefix' => '',
+        'driver' => 'eloquent',
+        'model' => 'App\\User',
       ),
     ),
-    'migrations' => 'migrations',
-    'redis' => 
+    'passwords' => 
     array (
-      'client' => 'predis',
-      'default' => 
+      'users' => 
       array (
-        'host' => '127.0.0.1',
-        'password' => NULL,
-        'port' => '6379',
-        'database' => 0,
+        'provider' => 'users',
+        'table' => 'password_resets',
+        'expire' => 60,
       ),
     ),
   ),
-  'broadcasting' => 
+  'activitylog' => 
   array (
-    'default' => 'log',
-    'connections' => 
-    array (
-      'pusher' => 
-      array (
-        'driver' => 'pusher',
-        'key' => '',
-        'secret' => '',
-        'app_id' => '',
-        'options' => 
-        array (
-        ),
-      ),
-      'redis' => 
-      array (
-        'driver' => 'redis',
-        'connection' => 'default',
-      ),
-      'log' => 
-      array (
-        'driver' => 'log',
-      ),
-      'null' => 
-      array (
-        'driver' => 'null',
-      ),
-    ),
-  ),
-  'filesystems' => 
-  array (
-    'default' => 'local',
-    'cloud' => 's3',
-    'disks' => 
-    array (
-      'local' => 
-      array (
-        'driver' => 'local',
-        'root' => '/home/nothades/Escritorio/ClinicaRamis/storage/app',
-      ),
-      'public' => 
-      array (
-        'driver' => 'local',
-        'root' => '/home/nothades/Escritorio/ClinicaRamis/storage/app/public',
-        'url' => 'http://localhost/storage',
-        'visibility' => 'public',
-      ),
-      'user_avatars' => 
-      array (
-        'driver' => 'local',
-        'root' => '/home/nothades/Escritorio/ClinicaRamis/public/user_avatars',
-      ),
-      'patient_pictures' => 
-      array (
-        'driver' => 'local',
-        'root' => '/home/nothades/Escritorio/ClinicaRamis/public/patient_pictures',
-      ),
-      's3' => 
-      array (
-        'driver' => 's3',
-        'key' => NULL,
-        'secret' => NULL,
-        'region' => NULL,
-        'bucket' => NULL,
-      ),
-    ),
-  ),
-  'mail' => 
-  array (
-    'driver' => 'smtp',
-    'host' => 'smtp.mailtrap.io',
-    'port' => '2525',
-    'from' => 
-    array (
-      'address' => 'hello@example.com',
-      'name' => 'Example',
-    ),
-    'encryption' => NULL,
-    'username' => NULL,
-    'password' => NULL,
-    'sendmail' => '/usr/sbin/sendmail -bs',
-    'markdown' => 
-    array (
-      'theme' => 'default',
-      'paths' => 
-      array (
-        0 => '/home/nothades/Escritorio/ClinicaRamis/resources/views/vendor/mail',
-      ),
-    ),
+    'enabled' => true,
+    'delete_records_older_than_days' => 365,
+    'default_log_name' => 'default',
+    'default_auth_driver' => NULL,
+    'subject_returns_soft_deleted_models' => true,
+    'activity_model' => 'App\\Activity',
   ),
   'app' => 
   array (
@@ -253,7 +109,7 @@
     'timezone' => 'UTC',
     'locale' => 'en',
     'fallback_locale' => 'es_carlos_londono',
-    'key' => 'base64:P6QN3DoqaeCm+msGOKmY16I7WgxwEqRZS61SsbPObnk=',
+    'key' => 'base64:L/hMMZ/VtH3DSVdxHqlRPugPjzgybnKis/Tn7P1fK+Q=',
     'cipher' => 'AES-256-CBC',
     'log' => 'single',
     'log_level' => 'debug',
@@ -327,72 +183,106 @@
       'JWTFactory' => 'Tymon\\JWTAuth\\Facades\\JWTFactory',
     ),
   ),
-  'session' => 
+  'services' => 
   array (
-    'driver' => 'file',
-    'lifetime' => 120,
-    'expire_on_close' => false,
-    'encrypt' => false,
-    'files' => '/home/nothades/Escritorio/ClinicaRamis/storage/framework/sessions',
-    'connection' => NULL,
-    'table' => 'sessions',
-    'store' => NULL,
-    'lottery' => 
+    'mailgun' => 
     array (
-      0 => 2,
-      1 => 100,
+      'domain' => NULL,
+      'secret' => NULL,
     ),
-    'cookie' => 'laravel_session',
-    'path' => '/',
-    'domain' => NULL,
-    'secure' => false,
-    'http_only' => true,
-    'same_site' => NULL,
+    'ses' => 
+    array (
+      'key' => NULL,
+      'secret' => NULL,
+      'region' => 'us-east-1',
+    ),
+    'sparkpost' => 
+    array (
+      'secret' => NULL,
+    ),
+    'stripe' => 
+    array (
+      'model' => 'App\\User',
+      'key' => NULL,
+      'secret' => NULL,
+    ),
   ),
-  'activitylog' => 
+  'filesystems' => 
   array (
-    'enabled' => true,
-    'delete_records_older_than_days' => 365,
-    'default_log_name' => 'default',
-    'default_auth_driver' => NULL,
-    'subject_returns_soft_deleted_models' => true,
-    'activity_model' => 'App\\Activity',
+    'default' => 'local',
+    'cloud' => 's3',
+    'disks' => 
+    array (
+      'local' => 
+      array (
+        'driver' => 'local',
+        'root' => '/home/fr4j4/git/clinicaramis/storage/app',
+      ),
+      'public' => 
+      array (
+        'driver' => 'local',
+        'root' => '/home/fr4j4/git/clinicaramis/storage/app/public',
+        'url' => 'http://localhost/storage',
+        'visibility' => 'public',
+      ),
+      'user_avatars' => 
+      array (
+        'driver' => 'local',
+        'root' => '/home/fr4j4/git/clinicaramis/public/user_avatars',
+      ),
+      'patient_pictures' => 
+      array (
+        'driver' => 'local',
+        'root' => '/home/fr4j4/git/clinicaramis/public/patient_pictures',
+      ),
+      's3' => 
+      array (
+        'driver' => 's3',
+        'key' => NULL,
+        'secret' => NULL,
+        'region' => NULL,
+        'bucket' => NULL,
+      ),
+    ),
   ),
-  'auth' => 
+  'permission' => 
   array (
-    'defaults' => 
+    'models' => 
     array (
-      'guard' => 'web',
-      'passwords' => 'users',
+      'permission' => 'App\\Permission',
+      'role' => 'App\\Role',
     ),
-    'guards' => 
+    'table_names' => 
     array (
-      'web' => 
-      array (
-        'driver' => 'session',
-        'provider' => 'users',
-      ),
-      'api' => 
-      array (
-        'driver' => 'passport',
-        'provider' => 'users',
-      ),
+      'roles' => 'roles',
+      'permissions' => 'permissions',
+      'model_has_permissions' => 'model_has_permissions',
+      'model_has_roles' => 'model_has_roles',
+      'role_has_permissions' => 'role_has_permissions',
     ),
-    'providers' => 
+    'cache_expiration_time' => 1440,
+    'log_registration_exception' => true,
+  ),
+  'mail' => 
+  array (
+    'driver' => 'smtp',
+    'host' => 'smtp.mailtrap.io',
+    'port' => '2525',
+    'from' => 
     array (
-      'users' => 
-      array (
-        'driver' => 'eloquent',
-        'model' => 'App\\User',
-      ),
+      'address' => 'hello@example.com',
+      'name' => 'Example',
     ),
-    'passwords' => 
+    'encryption' => NULL,
+    'username' => NULL,
+    'password' => NULL,
+    'sendmail' => '/usr/sbin/sendmail -bs',
+    'markdown' => 
     array (
-      'users' => 
+      'theme' => 'default',
+      'paths' => 
       array (
-        'provider' => 'users',
-        'table' => 'password_resets',
-        'expire' => 60,
+        0 => '/home/fr4j4/git/clinicaramis/resources/views/vendor/mail',
       ),
     ),
   ),
@@ -442,54 +332,164 @@
       'table' => 'failed_jobs',
     ),
   ),
+  'broadcasting' => 
+  array (
+    'default' => 'log',
+    'connections' => 
+    array (
+      'pusher' => 
+      array (
+        'driver' => 'pusher',
+        'key' => '',
+        'secret' => '',
+        'app_id' => '',
+        'options' => 
+        array (
+        ),
+      ),
+      'redis' => 
+      array (
+        'driver' => 'redis',
+        'connection' => 'default',
+      ),
+      'log' => 
+      array (
+        'driver' => 'log',
+      ),
+      'null' => 
+      array (
+        'driver' => 'null',
+      ),
+    ),
+  ),
   'view' => 
   array (
     'paths' => 
     array (
-      0 => '/home/nothades/Escritorio/ClinicaRamis/resources/views',
+      0 => '/home/fr4j4/git/clinicaramis/resources/views',
     ),
-    'compiled' => '/home/nothades/Escritorio/ClinicaRamis/storage/framework/views',
+    'compiled' => '/home/fr4j4/git/clinicaramis/storage/framework/views',
   ),
-  'permission' => 
+  'session' => 
   array (
-    'models' => 
+    'driver' => 'file',
+    'lifetime' => 120,
+    'expire_on_close' => false,
+    'encrypt' => false,
+    'files' => '/home/fr4j4/git/clinicaramis/storage/framework/sessions',
+    'connection' => NULL,
+    'table' => 'sessions',
+    'store' => NULL,
+    'lottery' => 
     array (
-      'permission' => 'App\\Permission',
-      'role' => 'App\\Role',
+      0 => 2,
+      1 => 100,
     ),
-    'table_names' => 
-    array (
-      'roles' => 'roles',
-      'permissions' => 'permissions',
-      'model_has_permissions' => 'model_has_permissions',
-      'model_has_roles' => 'model_has_roles',
-      'role_has_permissions' => 'role_has_permissions',
-    ),
-    'cache_expiration_time' => 1440,
-    'log_registration_exception' => true,
+    'cookie' => 'laravel_session',
+    'path' => '/',
+    'domain' => NULL,
+    'secure' => false,
+    'http_only' => true,
+    'same_site' => NULL,
   ),
-  'services' => 
+  'jwt' => 
   array (
-    'mailgun' => 
+    'secret' => 'changeme',
+    'keys' => 
     array (
-      'domain' => NULL,
-      'secret' => NULL,
+      'public' => NULL,
+      'private' => NULL,
+      'passphrase' => NULL,
     ),
-    'ses' => 
+    'ttl' => 60,
+    'refresh_ttl' => 20160,
+    'algo' => 'HS256',
+    'required_claims' => 
     array (
-      'key' => NULL,
-      'secret' => NULL,
-      'region' => 'us-east-1',
+      0 => 'iss',
+      1 => 'iat',
+      2 => 'exp',
+      3 => 'nbf',
+      4 => 'sub',
+      5 => 'jti',
     ),
-    'sparkpost' => 
+    'persistent_claims' => 
     array (
-      'secret' => NULL,
     ),
-    'stripe' => 
+    'blacklist_enabled' => true,
+    'blacklist_grace_period' => 0,
+    'providers' => 
     array (
-      'model' => 'App\\User',
-      'key' => NULL,
-      'secret' => NULL,
+      'user' => 'Tymon\\JWTAuth\\Providers\\User\\EloquentUserAdapter',
+      'jwt' => 'Tymon\\JWTAuth\\Providers\\JWT\\NamshiAdapter',
+      'auth' => 'Tymon\\JWTAuth\\Providers\\Auth\\IlluminateAuthAdapter',
+      'storage' => 'Tymon\\JWTAuth\\Providers\\Storage\\IlluminateCacheAdapter',
+    ),
+    'user' => 'App\\User',
+    'identifier' => 'id',
+  ),
+  'database' => 
+  array (
+    'default' => 'mysql',
+    'connections' => 
+    array (
+      'sqlite' => 
+      array (
+        'driver' => 'sqlite',
+        'database' => 'clinicaramis',
+        'prefix' => '',
+      ),
+      'mysql' => 
+      array (
+        'driver' => 'mysql',
+        'host' => '127.0.0.1',
+        'port' => '3306',
+        'database' => 'clinicaramis',
+        'username' => 'root',
+        'password' => '789632541',
+        'unix_socket' => '',
+        'charset' => 'utf8mb4',
+        'collation' => 'utf8mb4_unicode_ci',
+        'prefix' => '',
+        'strict' => true,
+        'engine' => NULL,
+      ),
+      'pgsql' => 
+      array (
+        'driver' => 'pgsql',
+        'host' => '127.0.0.1',
+        'port' => '3306',
+        'database' => 'clinicaramis',
+        'username' => 'root',
+        'password' => '789632541',
+        'charset' => 'utf8',
+        'prefix' => '',
+        'schema' => 'public',
+        'sslmode' => 'prefer',
+      ),
+      'sqlsrv' => 
+      array (
+        'driver' => 'sqlsrv',
+        'host' => '127.0.0.1',
+        'port' => '3306',
+        'database' => 'clinicaramis',
+        'username' => 'root',
+        'password' => '789632541',
+        'charset' => 'utf8',
+        'prefix' => '',
+      ),
+    ),
+    'migrations' => 'migrations',
+    'redis' => 
+    array (
+      'client' => 'predis',
+      'default' => 
+      array (
+        'host' => '127.0.0.1',
+        'password' => NULL,
+        'port' => '6379',
+        'database' => 0,
+      ),
     ),
   ),
   'trustedproxy' => 
