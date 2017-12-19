@@ -160,8 +160,9 @@ function ajax_confirm_medapp(){
           'X-CSRF-TOKEN': "{{ csrf_token() }}",
         },
       success:function(msg){
-        console.log(msg);
+        //console.log(msg);
         alert("Hora médica confirmada");
+        window.location.reload()
       },
     });
 
@@ -182,8 +183,9 @@ function ajax_end_medapp(){
           'X-CSRF-TOKEN': "{{ csrf_token() }}",
         },
       success:function(msg){
-        console.log(msg);
+        //console.log(msg);
         alert("Hora médica finalizada");
+        window.location.reload()
       },
     });
 
